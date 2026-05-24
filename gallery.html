@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proof of Work | Parth Narula | ScriptJacker | Bug Bounties Achivements</title>
+<meta name="description" content="Hall of Fame screenshots, certificates, letters, and swag from 300+ responsible vulnerability disclosures.">
+<meta property="og:title" content="Proof of Work | Parth Narula | ScriptJacker">
+<meta property="og:description" content="Hall of Fame screenshots, certificates, letters, and swag from 300+ responsible disclosures.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bugbounty.scriptjacker.in/gallery.html">
+<link rel="canonical" href="https://bugbounty.scriptjacker.in/gallery.html">
+<style>
+:root {
+    --bg: #0c0f1a;
+    --bg-elevated: #121628;
+    --bg-card: #181d2e;
+    --bg-hover: #1e2438;
+    --text: #e8ecf1;
+    --text-dim: #8892a8;
+    --text-muted: #5a6380;
+    --accent: #38bdf8;
+    --accent-soft: rgba(56,189,248,0.1);
+    --gold: #fbbf24;
+    --gold-soft: rgba(251,191,36,0.1);
+    --green: #34d399;
+    --purple: #a78bfa;
+    --border: #1e2338;
+    --border-light: #2a3050;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ===== HEADER ===== */
+.header {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(12,15,26,0.9);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.header-name span {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.header-nav a {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.header-nav a:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+/* ===== HERO ===== */
+.hero {
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+}
+
+.hero p {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== CATEGORY TABS ===== */
+.cat-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.cat-tab {
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cat-tab:hover { color: var(--text-dim); }
+
+.cat-tab.active {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: rgba(56,189,248,0.15);
+}
+
+.cat-count {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    background: var(--bg-elevated);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* ===== SEARCH ===== */
+.gallery-search {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    outline: none;
+}
+
+.gallery-search:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.gallery-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* ===== GALLERY GRID ===== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.gallery-item:hover {
+    border-color: var(--border-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.gallery-thumb {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover .gallery-thumb img {
+    transform: scale(1.03);
+}
+
+.gallery-placeholder {
+    color: var(--text-muted);
+    font-size: 2.5rem;
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay span {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gallery-info {
+    padding: 1rem 1.25rem;
+}
+
+.gallery-domain {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+
+.gallery-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+}
+
+.gallery-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.gallery-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+.tag-hof { background: var(--accent-soft); color: var(--accent); }
+.tag-cert { background: var(--green-soft); color: var(--green); }
+.tag-letter { background: var(--purple-soft); color: var(--purple); }
+.tag-swag { background: var(--gold-soft); color: var(--gold); }
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    text-align: center;
+}
+
+.lightbox-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.lightbox-domain {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.lightbox-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 3rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .header-nav { gap: 1rem; }
+    .header-nav a { font-size: 0.8rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .gallery-info { padding: 0.75rem; }
+    .lightbox-nav { display: none; }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container">
+        <div class="header-inner">
+            <div class="header-name">Parth Narula <span>@ScriptJacker</span></div>
+            <nav class="header-nav">
+                <a href="index.html">Portfolio</a>
+                <a href="gallery.html">Proof of Work</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>Proof of Work</h1>
+        <p>Hall of Fame screenshots, certificates, letters, and swag from every organization that recognized my responsible disclosures.</p>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" style="padding-top:0;">
+    <div class="container">
+
+        <div class="cat-tabs">
+            <button class="cat-tab active" data-cat="all">
+                All <span class="cat-count" id="count-all">0</span>
+            </button>
+            <button class="cat-tab" data-cat="hof">
+                🏅 Hall of Fame <span class="cat-count" id="count-hof">0</span>
+            </button>
+            <button class="cat-tab" data-cat="cert">
+                📜 Certificates <span class="cat-count" id="count-cert">0</span>
+            </button>
+            <button class="cat-tab" data-cat="letter">
+                ✉️ Letters <span class="cat-count" id="count-letter">0</span>
+            </button>
+            <button class="cat-tab" data-cat="swag">
+                🎁 Swag <span class="cat-count" id="count-swag">0</span>
+            </button>
+        </div>
+
+        <input type="text" class="gallery-search" id="gallerySearch" placeholder="Search by domain or organization name...">
+        <div class="gallery-count" id="galleryCount">Loading...</div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Items injected by JS -->
+        </div>
+
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#10094;</button>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#10095;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-info">
+        <div class="lightbox-title" id="lightboxTitle"></div>
+        <div class="lightbox-domain" id="lightboxDomain"></div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <p>Parth Narula (ScriptJacker). All findings were responsibly disclosed.</p>
+    </div>
+</footer>
+
+<script>
+// ===== GALLERY DATA =====
+// Add your photos here. Copy a block and modify.
+// image: path to your image file (e.g., "assets/hof/boeing.jpg")
+// thumb: path to thumbnail (optional, falls back to image)
+// domain: the target domain
+// title: organization name
+// category: "hof" | "cert" | "letter" | "swag"
+// date: when you received it (optional)
+// hofUrl: link to the public Hall of Fame page (optional)
+
+const GALLERY_ITEMS = [
+    // ===== HALL OF FAME SCREENSHOTS =====
+    // Copy this block for each HoF screenshot:
+    /*
+    {
+        image: "assets/hof/boeing.jpg",
+        thumb: "assets/hof/boeing.jpg",
+        domain: "boeing.com",
+        title: "Boeing",
+        category: "hof",
+        date: "2024-03-15",
+        hofUrl: "https://..."
+    },
+    
+    */
+
+
+    // ===== CERTIFICATES =====
+    /*
+    {
+        image: "assets/certs/clearbio.jpg",
+        thumb: "assets/certs/clearbio.jpg",
+        domain: "clear.bio",
+        title: "Clear.bio",
+        category: "cert",
+        date: "2023-11-20"
+    },
+    */
+
+    // ===== LETTERS =====
+    /*
+    {
+        image: "assets/letters/ctw.jpg",
+        thumb: "assets/letters/ctw.jpg",
+        domain: "ctw.inc",
+        title: "CTW Inc",
+        category: "letter",
+        date: "2024-01-10"
+    },
+    */
+
+        // ===== CERTIFICATES =====
+    {
+        image: "assets/certs/neoshare.jpg",
+        thumb: "assets/certs/neoshare.jpg",
+        domain: "neoshare.io",
+        title: "Neoshare",
+        category: "cert"
+    },
+    {
+        image: "assets/certs/nykaa.jpg",
+        thumb: "assets/certs/nykaa.jpg",
+        domain: "nykaa.com",
+        title: "Nykaa",
+        category: "cert"
+    },
+
+    // ===== LETTERS =====
+    {
+        image: "assets/letters/avans.jpg",
+        thumb: "assets/letters/avans.jpg",
+        domain: "avans.nl",
+        title: "Avans Hogeschool",
+        category: "letter"
+    },
+    {
+        image: "assets/letters/windesheim.jpg",
+        thumb: "assets/letters/windesheim.jpg",
+        domain: "windesheim.nl",
+        title: "Hogeschool Windesheim",
+        category: "letter"
+    },
+    {
+        image: "assets/letters/clearbio.jpg",
+        thumb: "assets/letters/clearbio.jpg",
+        domain: "clear.bio",
+        title: "Clear.bio",
+        category: "letter"
+    },
+    {
+        image: "assets/letters/ctw.jpg",
+        thumb: "assets/letters/ctw.jpg",
+        domain: "ctw.inc",
+        title: "CTW Inc",
+        category: "letter"
+    },
+    {
+        image: "assets/letters/maastricht.jpg",
+        thumb: "assets/letters/maastricht.jpg",
+        domain: "maastrichtuniversity.nl",
+        title: "Maastricht University",
+        category: "letter"
+    },
+    {
+        image: "assets/letters/zonemeetjesland.jpg",
+        thumb: "assets/letters/zonemeetjesland.jpg",
+        domain: "zonemeetjesland.be",
+        title: "Hulpverleningszone Meetjesland",
+        category: "letter"
+    },
+    {
+        image: "assets/letters/wortell.jpg",
+        thumb: "assets/letters/wortell.jpg",
+        domain: "wortell.com",
+        title: "Wortell",
+        category: "letter"
+    },
+
+    // ===== SWAG =====
+    /*
+    {
+        image: "assets/swag/redgames.jpg",
+        thumb: "assets/swag/redgames.jpg",
+        domain: "redgames.co",
+        title: "Red Games Co",
+        category: "swag",
+        date: "2023-12-05"
+    },
+    */
+
+    {
+        image: "assets/swag/l1.jpg",
+        thumb: "assets/swag/l1.jpg",
+        domain: "rijkzwaan.com",
+        title: "Rijk Zwaan",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l2.jpg",
+        thumb: "assets/swag/l2.jpg",
+        domain: "gdata.de",
+        title: "G DATA CyberDefense",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l3.jpg",
+        thumb: "assets/swag/l3.jpg",
+        domain: "bmc.com",
+        title: "BMC Software",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l4.jpeg",
+        thumb: "assets/swag/l4.jpeg",
+        domain: "wortell.com",
+        title: "Wortell",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l5.jpg",
+        thumb: "assets/swag/l5.jpg",
+        domain: "bbc.com",
+        title: "BBC",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l6.jpg",
+        thumb: "assets/swag/l6.jpg",
+        domain: "pirelli.com",
+        title: "Pirelli",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l7.jpg",
+        thumb: "assets/swag/l7.jpg",
+        domain: "todyl.com",
+        title: "Todyl",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l8.jpg",
+        thumb: "assets/swag/l8.jpg",
+        domain: "raalte.nl",
+        title: "Raalte",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l9.jpg",
+        thumb: "assets/swag/l9.jpg",
+        domain: "bandsintown.com",
+        title: "Bandsintown",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l10.jpg",
+        thumb: "assets/swag/l10.jpg",
+        domain: "draytek.com",
+        title: "DrayTek",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l11.jpg",
+        thumb: "assets/swag/l11.jpg",
+        domain: "sutty.nl",
+        title: "Sutty",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l12.jpg",
+        thumb: "assets/swag/l12.jpg",
+        domain: "idealo.de",
+        title: "Idealo",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l13.jpg",
+        thumb: "assets/swag/l13.jpg",
+        domain: "gea.com",
+        title: "GEA Group",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l14.jpg",
+        thumb: "assets/swag/l14.jpg",
+        domain: "bytebloggerbase.com",
+        title: "Byte Bloggerbase",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l15.jpg",
+        thumb: "assets/swag/l15.jpg",
+        domain: "shiprocket.in",
+        title: "Shiprocket",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l16.jpg",
+        thumb: "assets/swag/l16.jpg",
+        domain: "dehaat.com",
+        title: "DeHaat",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l17.jpg",
+        thumb: "assets/swag/l17.jpg",
+        domain: "cleartax.in",
+        title: "ClearTax",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l18.jpg",
+        thumb: "assets/swag/l18.jpg",
+        domain: "kivi.nl",
+        title: "KIVI Engineering Society",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l19.jpg",
+        thumb: "assets/swag/l19.jpg",
+        domain: "polisen.se",
+        title: "Swedish Police",
+        category: "swag"
+    },
+    {
+        image: "assets/swag/l20.jpg",
+        thumb: "assets/swag/l20.jpg",
+        domain: "gea.com",
+        title: "GEA Group",
+        category: "swag"
+    },
+
+
+//HOF
+
+{
+        image: "assets/hof/1000minds.jpeg",
+        thumb: "assets/hof/1000minds.jpeg",
+        domain: "1000minds.com",
+        title: "1000minds",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/10xbanking.jpeg",
+        thumb: "assets/hof/10xbanking.jpeg",
+        domain: "10xbanking.com",
+        title: "10x Banking",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/365bank.jpeg",
+        thumb: "assets/hof/365bank.jpeg",
+        domain: "365.bank",
+        title: "365.bank",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/accodeing.jpeg",
+        thumb: "assets/hof/accodeing.jpeg",
+        domain: "accodeing.com",
+        title: "Accodeing",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/achema.jpeg",
+        thumb: "assets/hof/achema.jpeg",
+        domain: "achmea.nl",
+        title: "Achmea Insurance",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/aihw.jpeg",
+        thumb: "assets/hof/aihw.jpeg",
+        domain: "aihw.gov.au",
+        title: "Australian Institute of Health \u0026 Welfare",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/airmeet.jpeg",
+        thumb: "assets/hof/airmeet.jpeg",
+        domain: "airmeet.com",
+        title: "Airmeet",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/aldi.jpeg",
+        thumb: "assets/hof/aldi.jpeg",
+        domain: "aldi-sued.com",
+        title: "ALDI Süd",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/amtrust.jpeg",
+        thumb: "assets/hof/amtrust.jpeg",
+        domain: "amtrustgroup.com",
+        title: "AmTrust Financial",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/attensi.jpeg",
+        thumb: "assets/hof/attensi.jpeg",
+        domain: "attensi.com",
+        title: "Attensi",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-afsa.jpeg",
+        thumb: "assets/hof/au-afsa.jpeg",
+        domain: "afsa.gov.au",
+        title: "Australian Financial Security Authority",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-ag.jpeg",
+        thumb: "assets/hof/au-ag.jpeg",
+        domain: "ag.gov.au",
+        title: "Attorney-General\u0027s Department",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-arc.jpeg",
+        thumb: "assets/hof/au-arc.jpeg",
+        domain: "arc.gov.au",
+        title: "Australian Research Council",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/audinate.jpeg",
+        thumb: "assets/hof/audinate.jpeg",
+        domain: "audinate.com",
+        title: "Audinate",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-home.jpeg",
+        thumb: "assets/hof/au-home.jpeg",
+        domain: "homeaffairs.gov.au",
+        title: "Department of Home Affairs",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-industry.jpeg",
+        thumb: "assets/hof/au-industry.jpeg",
+        domain: "industry.gov.au",
+        title: "Dept. of Industry, Science \u0026 Resources",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-ip.jpeg",
+        thumb: "assets/hof/au-ip.jpeg",
+        domain: "ipaustralia.gov.au",
+        title: "IP Australia",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-ndiscommission.jpeg",
+        thumb: "assets/hof/au-ndiscommission.jpeg",
+        domain: "ndiscommission.gov.au",
+        title: "NDIS Quality \u0026 Safeguards Commission",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-ppsr.jpeg",
+        thumb: "assets/hof/au-ppsr.jpeg",
+        domain: "ppsr.gov.au",
+        title: "Personal Property Securities Register",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-tax.jpeg",
+        thumb: "assets/hof/au-tax.jpeg",
+        domain: "igt.gov.au",
+        title: "Inspector-General of Taxation",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/au-wa.jpeg",
+        thumb: "assets/hof/au-wa.jpeg",
+        domain: "wa.gov.au",
+        title: "Government of Western Australia",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/avm.jpeg",
+        thumb: "assets/hof/avm.jpeg",
+        domain: "avm99963.com",
+        title: "AVM99963",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/bankaxept.jpeg",
+        thumb: "assets/hof/bankaxept.jpeg",
+        domain: "bankaxept.no",
+        title: "BankAxept (Payment System)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/basf.jpeg",
+        thumb: "assets/hof/basf.jpeg",
+        domain: "basf.com",
+        title: "BASF SE",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/bbc.jpeg",
+        thumb: "assets/hof/bbc.jpeg",
+        domain: "bbc.com",
+        title: "BBC",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/belwu.jpeg",
+        thumb: "assets/hof/belwu.jpeg",
+        domain: "belwue.de",
+        title: "BelWü (Academic Network)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/berlin.jpeg",
+        thumb: "assets/hof/berlin.jpeg",
+        domain: "berlin.de",
+        title: "City of Berlin",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/blackarrow.jpeg",
+        thumb: "assets/hof/blackarrow.jpeg",
+        domain: "blackarrowtrading.com",
+        title: "Black Arrow Trading",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/boeing.jpeg",
+        thumb: "assets/hof/boeing.jpeg",
+        domain: "boeing.com",
+        title: "Boeing",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/bokadirekt.jpeg",
+        thumb: "assets/hof/bokadirekt.jpeg",
+        domain: "bokadirekt.se",
+        title: "Bokadirekt",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/braunschweig-uni.jpeg",
+        thumb: "assets/hof/braunschweig-uni.jpeg",
+        domain: "tu-braunschweig.de",
+        title: "TU Braunschweig",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/bringme.jpeg",
+        thumb: "assets/hof/bringme.jpeg",
+        domain: "bringme.com",
+        title: "Bringme",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/byteblogger.jpeg",
+        thumb: "assets/hof/byteblogger.jpeg",
+        domain: "bytebloggerbase.com",
+        title: "ByteBloggerBase",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/ccv.jpeg",
+        thumb: "assets/hof/ccv.jpeg",
+        domain: "ccv.eu",
+        title: "CCV Group (Payments)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/charles.jpeg",
+        thumb: "assets/hof/charles.jpeg",
+        domain: "cuni.cz",
+        title: "Charles University, Prague",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/chillforce.jpeg",
+        thumb: "assets/hof/chillforce.jpeg",
+        domain: "chillforceltd.co.uk",
+        title: "Chillforce Ltd",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/chromatic.jpeg",
+        thumb: "assets/hof/chromatic.jpeg",
+        domain: "chromatic.com",
+        title: "Chromatic",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/clayHR.jpeg",
+        thumb: "assets/hof/clayHR.jpeg",
+        domain: "clayhr.com",
+        title: "ClayHR",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/clearbio.jpeg",
+        thumb: "assets/hof/clearbio.jpeg",
+        domain: "clear.bio",
+        title: "Clear",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/club-burgge.jpeg",
+        thumb: "assets/hof/club-burgge.jpeg",
+        domain: "clubbrugge.be",
+        title: "Club Brugge KV",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/cm.jpeg",
+        thumb: "assets/hof/cm.jpeg",
+        domain: "cm.be",
+        title: "CM (Belgian Health Insurance)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/coinswitch.jpeg",
+        thumb: "assets/hof/coinswitch.jpeg",
+        domain: "coinswitch.co",
+        title: "CoinSwitch",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/coloop.jpeg",
+        thumb: "assets/hof/coloop.jpeg",
+        domain: "coloop.ai",
+        title: "Coloop AI",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/commerzbank.jpeg",
+        thumb: "assets/hof/commerzbank.jpeg",
+        domain: "commerzbank.de",
+        title: "Commerzbank",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/commune-di-preganziol.jpeg",
+        thumb: "assets/hof/commune-di-preganziol.jpeg",
+        domain: "comune.preganziol.tv.it",
+        title: "Municipality of Preganziol",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/danacita.jpeg",
+        thumb: "assets/hof/danacita.jpeg",
+        domain: "danacita.co.id",
+        title: "Danacita",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/deutscheborse.jpeg",
+        thumb: "assets/hof/deutscheborse.jpeg",
+        domain: "deutsche-boerse.com",
+        title: "Deutsche Börse",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/dfrnt.jpeg",
+        thumb: "assets/hof/dfrnt.jpeg",
+        domain: "dfrnt.com",
+        title: "DFRNT",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/eeport.jpeg",
+        thumb: "assets/hof/eeport.jpeg",
+        domain: "ts.ee",
+        title: "Port of Tallinn",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/ee-port.jpeg",
+        thumb: "assets/hof/ee-port.jpeg",
+        domain: "ts.ee",
+        title: "Port of Tallinn",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/elfster.jpeg",
+        thumb: "assets/hof/elfster.jpeg",
+        domain: "elfster.com",
+        title: "Elfster",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/EMBL.jpeg",
+        thumb: "assets/hof/EMBL.jpeg",
+        domain: "ebi.ac.uk",
+        title: "EMBL-EBI (European Bioinformatics)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/escan.jpeg",
+        thumb: "assets/hof/escan.jpeg",
+        domain: "escanav.com",
+        title: "Escanav",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/eterna.jpeg",
+        thumb: "assets/hof/eterna.jpeg",
+        domain: "eternagame.org",
+        title: "Eterna (Stanford)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/eu-union.jpeg",
+        thumb: "assets/hof/eu-union.jpeg",
+        domain: "europa.eu",
+        title: "European Union",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/evri.jpeg",
+        thumb: "assets/hof/evri.jpeg",
+        domain: "evri.com",
+        title: "Evri (formerly Hermes)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/exirio.jpeg",
+        thumb: "assets/hof/exirio.jpeg",
+        domain: "exirio.com",
+        title: "Exirio",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/fatora.jpeg",
+        thumb: "assets/hof/fatora.jpeg",
+        domain: "fatora.io",
+        title: "Fatora",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/fazz.jpeg",
+        thumb: "assets/hof/fazz.jpeg",
+        domain: "fazz.com",
+        title: "Fazz Financial",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/fbk.jpeg",
+        thumb: "assets/hof/fbk.jpeg",
+        domain: "fbk.eu",
+        title: "Fondazione Bruno Kessler",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/fhmunster.jpeg",
+        thumb: "assets/hof/fhmunster.jpeg",
+        domain: "fh-muenster.de",
+        title: "Münster Univ. of Applied Sciences",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/freedom.jpeg",
+        thumb: "assets/hof/freedom.jpeg",
+        domain: "freedom.nl",
+        title: "Freedom Internet",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/fyr.jpeg",
+        thumb: "assets/hof/fyr.jpeg",
+        domain: "fyr.io",
+        title: "Fyr",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/gaji-gesa.jpeg",
+        thumb: "assets/hof/gaji-gesa.jpeg",
+        domain: "gajigesa.com",
+        title: "GajiGesa",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/gea.jpeg",
+        thumb: "assets/hof/gea.jpeg",
+        domain: "gea.com",
+        title: "GEA Group",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/gmx.jpeg",
+        thumb: "assets/hof/gmx.jpeg",
+        domain: "gmx.net",
+        title: "GMX (United Internet)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/gooisemeren.jpeg",
+        thumb: "assets/hof/gooisemeren.jpeg",
+        domain: "gooisemeren.nl",
+        title: "Municipality of Gooise Meren",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/hebcal.jpeg",
+        thumb: "assets/hof/hebcal.jpeg",
+        domain: "hebcal.com",
+        title: "Hebcal",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/hippovideo.jpeg",
+        thumb: "assets/hof/hippovideo.jpeg",
+        domain: "hippovideo.io",
+        title: "Hippo Video",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/hsb.jpeg",
+        thumb: "assets/hof/hsb.jpeg",
+        domain: "hs-bremen.de",
+        title: "Hochschule Bremen",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/htm.jpeg",
+        thumb: "assets/hof/htm.jpeg",
+        domain: "htm.nl",
+        title: "HTM (The Hague Transport)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/inovex.jpeg",
+        thumb: "assets/hof/inovex.jpeg",
+        domain: "inovex.de",
+        title: "inovex",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/intuiface.jpeg",
+        thumb: "assets/hof/intuiface.jpeg",
+        domain: "intuiface.com",
+        title: "Intuiface",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/irfu.jpeg",
+        thumb: "assets/hof/irfu.jpeg",
+        domain: "irfu.se",
+        title: "IRFU Sweden",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/javascriptfortoday.jpeg",
+        thumb: "assets/hof/javascriptfortoday.jpeg",
+        domain: "javascripttoday.com",
+        title: "JavaScript Today",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/jp-ama.jpeg",
+        thumb: "assets/hof/jp-ama.jpeg",
+        domain: "ama.ne.jp",
+        title: "AMA Japan",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/julieandjoy.jpeg",
+        thumb: "assets/hof/julieandjoy.jpeg",
+        domain: "julieandjoy.fr",
+        title: "Julie \u0026 Joy",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/kdo.jpeg",
+        thumb: "assets/hof/kdo.jpeg",
+        domain: "kdo.de",
+        title: "KDO (Municipal IT Provider)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/kliksafe.jpeg",
+        thumb: "assets/hof/kliksafe.jpeg",
+        domain: "kliksafe.nl",
+        title: "Kliksafe",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/kommunicate.jpeg",
+        thumb: "assets/hof/kommunicate.jpeg",
+        domain: "kommunicate.io",
+        title: "Kommunicate",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/leavewizard.jpeg",
+        thumb: "assets/hof/leavewizard.jpeg",
+        domain: "leavewizard.com",
+        title: "LeaveWizard",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/lloyds.jpeg",
+        thumb: "assets/hof/lloyds.jpeg",
+        domain: "lloyds.com",
+        title: "Lloyd\u0027s of London",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/looka.jpeg",
+        thumb: "assets/hof/looka.jpeg",
+        domain: "looka.com",
+        title: "Looka",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/loopcloud.jpeg",
+        thumb: "assets/hof/loopcloud.jpeg",
+        domain: "loopcloud.com",
+        title: "Loopcloud",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/loopmasters.jpeg",
+        thumb: "assets/hof/loopmasters.jpeg",
+        domain: "loopmasters.com",
+        title: "Loopmasters",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/lumc.jpeg",
+        thumb: "assets/hof/lumc.jpeg",
+        domain: "lumc.nl",
+        title: "Leiden University Medical Center",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/marel.jpeg",
+        thumb: "assets/hof/marel.jpeg",
+        domain: "marel.com",
+        title: "Marel",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/marseille.jpeg",
+        thumb: "assets/hof/marseille.jpeg",
+        domain: "marseille.fr",
+        title: "City of Marseille",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/masterhackers.jpeg",
+        thumb: "assets/hof/masterhackers.jpeg",
+        domain: "masterhackers.com",
+        title: "MasterHackers",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/matchis.jpeg",
+        thumb: "assets/hof/matchis.jpeg",
+        domain: "matchis.nl",
+        title: "Matchis (Stem Cell Foundation)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/mbodigitaal.jpeg",
+        thumb: "assets/hof/mbodigitaal.jpeg",
+        domain: "mbodigitaal.nl",
+        title: "MBO Digitaal",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/mediatek.jpeg",
+        thumb: "assets/hof/mediatek.jpeg",
+        domain: "mediatek.com",
+        title: "MediaTek",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/michelin.jpeg",
+        thumb: "assets/hof/michelin.jpeg",
+        domain: "michelin.com",
+        title: "Michelin",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/modalku.jpeg",
+        thumb: "assets/hof/modalku.jpeg",
+        domain: "modalku.co.id",
+        title: "Modalku / Funding Societies",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/muenster.jpeg",
+        thumb: "assets/hof/muenster.jpeg",
+        domain: "fh-muenster.de",
+        title: "Münster Univ. of Applied Sciences",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/nelogica.jpeg",
+        thumb: "assets/hof/nelogica.jpeg",
+        domain: "nelogica.com.br",
+        title: "Nelogica",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/networkapp.jpeg",
+        thumb: "assets/hof/networkapp.jpeg",
+        domain: "networkapp.com",
+        title: "NetworkApp",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/next.jpeg",
+        thumb: "assets/hof/next.jpeg",
+        domain: "nextapp.co",
+        title: "NextApp",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/nexus.jpeg",
+        thumb: "assets/hof/nexus.jpeg",
+        domain: "nexus.org",
+        title: "Nexus",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/nexxwave.jpeg",
+        thumb: "assets/hof/nexxwave.jpeg",
+        domain: "nexxwave.be",
+        title: "Nexxwave",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/nhn.jpeg",
+        thumb: "assets/hof/nhn.jpeg",
+        domain: "nhn.no",
+        title: "Norsk Helsenett (Health Network)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/nordnet.jpeg",
+        thumb: "assets/hof/nordnet.jpeg",
+        domain: "nordnet.se",
+        title: "Nordnet",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/norkart.jpeg",
+        thumb: "assets/hof/norkart.jpeg",
+        domain: "norkart.no",
+        title: "Norkart",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/ntuc.jpeg",
+        thumb: "assets/hof/ntuc.jpeg",
+        domain: "ntucenterprise.sg",
+        title: "NTU Enterprise (Nanyang Tech)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/onlinetri.jpeg",
+        thumb: "assets/hof/onlinetri.jpeg",
+        domain: "onlinetri.com",
+        title: "OnlineTri",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/otterbox.jpeg",
+        thumb: "assets/hof/otterbox.jpeg",
+        domain: "otterbox.com",
+        title: "OtterBox",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/paddle.jpeg",
+        thumb: "assets/hof/paddle.jpeg",
+        domain: "paddle.com",
+        title: "Paddle",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/philips.jpeg",
+        thumb: "assets/hof/philips.jpeg",
+        domain: "philips.com",
+        title: "Royal Philips",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/pluginboutique.jpeg",
+        thumb: "assets/hof/pluginboutique.jpeg",
+        domain: "pluginboutique.com",
+        title: "Plugin Boutique",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/plum.jpeg",
+        thumb: "assets/hof/plum.jpeg",
+        domain: "plum-medien.de",
+        title: "Plum Medien",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/pmg.jpeg",
+        thumb: "assets/hof/pmg.jpeg",
+        domain: "pmgnet.de",
+        title: "PMG",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/polarity.jpeg",
+        thumb: "assets/hof/polarity.jpeg",
+        domain: "polarity.io",
+        title: "Polarity",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/praamid.jpeg",
+        thumb: "assets/hof/praamid.jpeg",
+        domain: "praamid.ee",
+        title: "Praamid Estonia",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/projectadmission.jpeg",
+        thumb: "assets/hof/projectadmission.jpeg",
+        domain: "projectadmission.com",
+        title: "Project Admission",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/publiq.jpeg",
+        thumb: "assets/hof/publiq.jpeg",
+        domain: "publiq.be",
+        title: "PUBLIQ",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/radboud.jpeg",
+        thumb: "assets/hof/radboud.jpeg",
+        domain: "ru.nl",
+        title: "Radboud University",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/redeia.jpeg",
+        thumb: "assets/hof/redeia.jpeg",
+        domain: "redeia.com",
+        title: "Redeia (Spanish Power Grid)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/redgames.jpeg",
+        thumb: "assets/hof/redgames.jpeg",
+        domain: "redgames.co",
+        title: "Red Games",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/redvilla.jpeg",
+        thumb: "assets/hof/redvilla.jpeg",
+        domain: "redvilla.tech",
+        title: "RedVilla",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/rently.jpeg",
+        thumb: "assets/hof/rently.jpeg",
+        domain: "rently.com",
+        title: "Rently",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/resideo.jpeg",
+        thumb: "assets/hof/resideo.jpeg",
+        domain: "resideo.com",
+        title: "Resideo Technologies",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/safeconnect.jpeg",
+        thumb: "assets/hof/safeconnect.jpeg",
+        domain: "safe-connect.com",
+        title: "Safe-Connect",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/sbab.jpeg",
+        thumb: "assets/hof/sbab.jpeg",
+        domain: "sbab.se",
+        title: "SBAB Bank",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/seantis.jpeg",
+        thumb: "assets/hof/seantis.jpeg",
+        domain: "seantis.ch",
+        title: "Seantis",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/sef.jpeg",
+        thumb: "assets/hof/sef.jpeg",
+        domain: "sef.co.za",
+        title: "SEF",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/sheffield.jpeg",
+        thumb: "assets/hof/sheffield.jpeg",
+        domain: "sheffield.ac.uk",
+        title: "University of Sheffield",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/shippit.jpeg",
+        thumb: "assets/hof/shippit.jpeg",
+        domain: "shippit.com",
+        title: "Shippit",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/silfo.jpeg",
+        thumb: "assets/hof/silfo.jpeg",
+        domain: "silfo.nl",
+        title: "Silfo",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/skipr.jpeg",
+        thumb: "assets/hof/skipr.jpeg",
+        domain: "skipr.co",
+        title: "Skipr",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/sol1.jpeg",
+        thumb: "assets/hof/sol1.jpeg",
+        domain: "sol1.com.au",
+        title: "Sol1",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/sudwest.jpeg",
+        thumb: "assets/hof/sudwest.jpeg",
+        domain: "sudwestfryslan.nl",
+        title: "Municipality of Súdwest-Fryslân",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/sutty.jpeg",
+        thumb: "assets/hof/sutty.jpeg",
+        domain: "sutty.nl",
+        title: "Sutty",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/swile.jpeg",
+        thumb: "assets/hof/swile.jpeg",
+        domain: "swile.co",
+        title: "Swile",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/sword.jpeg",
+        thumb: "assets/hof/sword.jpeg",
+        domain: "swordhealth.com",
+        title: "Sword Health",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/thws.jpeg",
+        thumb: "assets/hof/thws.jpeg",
+        domain: "thws.de",
+        title: "THWS Würzburg-Schweinfurt",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/tickercounter.jpeg",
+        thumb: "assets/hof/tickercounter.jpeg",
+        domain: "ticketcounter.nl",
+        title: "TicketCounter",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/touchbistro.jpeg",
+        thumb: "assets/hof/touchbistro.jpeg",
+        domain: "touchbistro.com",
+        title: "TouchBistro",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/tresorit.jpeg",
+        thumb: "assets/hof/tresorit.jpeg",
+        domain: "tresorit.com",
+        title: "Tresorit",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/tubingen.jpeg",
+        thumb: "assets/hof/tubingen.jpeg",
+        domain: "tuebingen.ai",
+        title: "Tübingen AI Center",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/tu-delft.jpeg",
+        thumb: "assets/hof/tu-delft.jpeg",
+        domain: "tudelft.nl",
+        title: "TU Delft",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/tv4.jpeg",
+        thumb: "assets/hof/tv4.jpeg",
+        domain: "tv4.se",
+        title: "TV4 (Swedish Television)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/twingate.jpeg",
+        thumb: "assets/hof/twingate.jpeg",
+        domain: "twingate.com",
+        title: "Twingate",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/uk-dnsprivacy.jpeg",
+        thumb: "assets/hof/uk-dnsprivacy.jpeg",
+        domain: "dnsprivacy.org.uk",
+        title: "DNS Privacy Project",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/umcutrecht.jpeg",
+        thumb: "assets/hof/umcutrecht.jpeg",
+        domain: "umcutrecht.nl",
+        title: "UMC Utrecht",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/unesco.jpeg",
+        thumb: "assets/hof/unesco.jpeg",
+        domain: "unesco.org",
+        title: "UNESCO",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/uriports.jpeg",
+        thumb: "assets/hof/uriports.jpeg",
+        domain: "uriports.com",
+        title: "URIports",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/urldna.jpeg",
+        thumb: "assets/hof/urldna.jpeg",
+        domain: "urldna.io",
+        title: "URLDna",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/utwente.jpeg",
+        thumb: "assets/hof/utwente.jpeg",
+        domain: "proto.utwente.nl",
+        title: "University of Twente",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/uwv.jpeg",
+        thumb: "assets/hof/uwv.jpeg",
+        domain: "uwv.nl",
+        title: "UWV (Employee Insurance Agency)",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/valg.jpeg",
+        thumb: "assets/hof/valg.jpeg",
+        domain: "valg.no",
+        title: "Norwegian Directorate of Elections",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/vector.jpeg",
+        thumb: "assets/hof/vector.jpeg",
+        domain: "vectorcrypto.com",
+        title: "Vector Crypto",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/vicus.jpeg",
+        thumb: "assets/hof/vicus.jpeg",
+        domain: "vicus.nl",
+        title: "Vicus",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/videodock.jpeg",
+        thumb: "assets/hof/videodock.jpeg",
+        domain: "videodock.com",
+        title: "VideoDock",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/visma.jpeg",
+        thumb: "assets/hof/visma.jpeg",
+        domain: "visma.com",
+        title: "Visma",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/volkerwessels.jpeg",
+        thumb: "assets/hof/volkerwessels.jpeg",
+        domain: "volkerwessels.com",
+        title: "VolkerWessels",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/westerkwartier.jpeg",
+        thumb: "assets/hof/westerkwartier.jpeg",
+        domain: "westerkwartier.nl",
+        title: "Municipality of Westerkwartier",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/wetri.jpeg",
+        thumb: "assets/hof/wetri.jpeg",
+        domain: "we-tri.nl",
+        title: "We-Tri",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/whatfix.jpeg",
+        thumb: "assets/hof/whatfix.jpeg",
+        domain: "whatfix.com",
+        title: "Whatfix",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/who.jpeg",
+        thumb: "assets/hof/who.jpeg",
+        domain: "who.int",
+        title: "World Health Organization",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/xasecase.jpeg",
+        thumb: "assets/hof/xasecase.jpeg",
+        domain: "xasecase.com",
+        title: "Xasecase",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/zazzle.jpeg",
+        thumb: "assets/hof/zazzle.jpeg",
+        domain: "zazzle.com",
+        title: "Zazzle",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/zepto.jpeg",
+        thumb: "assets/hof/zepto.jpeg",
+        domain: "zeptonow.com",
+        title: "Zepto",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/zetes.jpeg",
+        thumb: "assets/hof/zetes.jpeg",
+        domain: "zetes.com",
+        title: "Zetes",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/ziegler.jpeg",
+        thumb: "assets/hof/ziegler.jpeg",
+        domain: "zieglergroup.com",
+        title: "Ziegler Group",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/ziekenhuis.jpeg",
+        thumb: "assets/hof/ziekenhuis.jpeg",
+        domain: "ziekenhuisamstelland.nl",
+        title: "Ziekenhuis Amstelland",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/zonecollege.jpeg",
+        thumb: "assets/hof/zonecollege.jpeg",
+        domain: "zonecollege.nl",
+        title: "Zone College",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/zone-meetjesland.jpeg",
+        thumb: "assets/hof/zone-meetjesland.jpeg",
+        domain: "zonemeetjesland.be",
+        title: "Hulpverleningszone Meetjesland",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/zuyd.jpeg",
+        thumb: "assets/hof/zuyd.jpeg",
+        domain: "zuyd.nl",
+        title: "Zuyd University",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/dehaat.jpeg",
+        thumb: "assets/hof/dehaat.jpeg",
+        domain: "dehaat.in",
+        title: "Dehaat",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/isibanki.jpeg",
+        thumb: "assets/hof/isibanki.jpeg",
+        domain: "landsbanki.is",
+        title: "Landsbanki",
+        category: "hof",
+    },
+    {
+        image: "assets/hof/vng2.jpeg",
+        thumb: "assets/hof/vng2.jpeg",
+        domain: "informatiebeveiligingsdienst.nl",
+        title: "Informatiebeveiligingsdienst (IBD)",
+        category: "hof",
+    }
+
+];
+
+// Category labels
+const CAT_LABELS = {
+    hof: "Hall of Fame",
+    cert: "Certificate",
+    letter: "Letter",
+    swag: "Swag"
+};
+
+const CAT_CLASSES = {
+    hof: "tag-hof",
+    cert: "tag-cert",
+    letter: "tag-letter",
+    swag: "tag-swag"
+};
+
+let currentCat = "all";
+let searchQuery = "";
+let filteredItems = [];
+let lightboxIndex = 0;
+
+function updateCounts() {
+    document.getElementById("count-all").textContent = GALLERY_ITEMS.length;
+    document.getElementById("count-hof").textContent = GALLERY_ITEMS.filter(i => i.category === "hof").length;
+    document.getElementById("count-cert").textContent = GALLERY_ITEMS.filter(i => i.category === "cert").length;
+    document.getElementById("count-letter").textContent = GALLERY_ITEMS.filter(i => i.category === "letter").length;
+    document.getElementById("count-swag").textContent = GALLERY_ITEMS.filter(i => i.category === "swag").length;
+}
+
+function renderGallery() {
+    filteredItems = GALLERY_ITEMS.filter(item => {
+        if (currentCat !== "all" && item.category !== currentCat) return false;
+        if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            return (item.domain && item.domain.toLowerCase().includes(q)) ||
+                   (item.title && item.title.toLowerCase().includes(q));
+        }
+        return true;
+    });
+
+    document.getElementById("galleryCount").textContent = 
+        "Showing " + filteredItems.length + " of " + GALLERY_ITEMS.length + " items";
+
+    const grid = document.getElementById("galleryGrid");
+
+    if (filteredItems.length === 0) {
+        grid.innerHTML = `
+            <div style="grid-column:1/-1; text-align:center; padding:4rem; color:var(--text-muted);">
+                <div style="font-size:3rem; margin-bottom:1rem;">📂</div>
+                <p>No items yet. Add your photos to the GALLERY_ITEMS array in the HTML file.</p>
+                <p style="margin-top:0.5rem; font-size:0.85rem;">See the commented examples in the script section.</p>
+            </div>
+        `;
+        return;
+    }
+
+    grid.innerHTML = filteredItems.map((item, index) => `
+        <div class="gallery-item" onclick="openLightbox(${index})">
+            <div class="gallery-thumb">
+                ${item.image ? 
+                    `<img src="${item.thumb || item.image}" alt="${item.title}" loading="lazy">` :
+                    `<div class="gallery-placeholder">📷</div>`
+                }
+                <div class="gallery-overlay"><span>Click to view</span></div>
+            </div>
+            <div class="gallery-info">
+                <div class="gallery-domain">${item.domain}</div>
+                <div class="gallery-title">${item.title}</div>
+                <div class="gallery-meta">
+                    ${item.date ? new Date(item.date).toLocaleDateString("en-US", {year:"numeric", month:"short"}) : ""}
+                </div>
+                <span class="gallery-tag ${CAT_CLASSES[item.category] || "tag-hof"}">${CAT_LABELS[item.category] || item.category}</span>
+                ${item.hofUrl ? `<div style="margin-top:0.5rem;"><a href="${item.hofUrl}" target="_blank" onclick="event.stopPropagation()" style="font-size:0.75rem;">View Hall of Fame page &rarr;</a></div>` : ""}
+            </div>
+        </div>
+    `).join("");
+}
+
+// Tab clicks
+document.querySelectorAll(".cat-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+        document.querySelectorAll(".cat-tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentCat = tab.dataset.cat;
+        renderGallery();
+    });
+});
+
+// Search
+document.getElementById("gallerySearch").addEventListener("input", e => {
+    searchQuery = e.target.value;
+    renderGallery();
+});
+
+// Lightbox
+function openLightbox(index) {
+    lightboxIndex = index;
+    const item = filteredItems[index];
+    document.getElementById("lightboxImg").src = item.image || "";
+    document.getElementById("lightboxTitle").textContent = item.title;
+    document.getElementById("lightboxDomain").textContent = item.domain;
+    document.getElementById("lightbox").classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function closeLightbox(e) {
+    if (e && e.target !== e.currentTarget && !e.target.classList.contains("lightbox-close")) return;
+    document.getElementById("lightbox").classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+function navLightbox(dir) {
+    lightboxIndex += dir;
+    if (lightboxIndex < 0) lightboxIndex = filteredItems.length - 1;
+    if (lightboxIndex >= filteredItems.length) lightboxIndex = 0;
+    const item = filteredItems[lightboxIndex];
+    document.getElementById("lightboxImg").src = item.image || "";
+    document.getElementById("lightboxTitle").textContent = item.title;
+    document.getElementById("lightboxDomain").textContent = item.domain;
+}
+
+// Keyboard
+document.addEventListener("keydown", e => {
+    if (!document.getElementById("lightbox").classList.contains("active")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") navLightbox(-1);
+    if (e.key === "ArrowRight") navLightbox(1);
+});
+
+// Init
+updateCounts();
+renderGallery();
+</script>
+
+</body>
+</html>

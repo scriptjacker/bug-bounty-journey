@@ -1,0 +1,2708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parth Narula | ScriptJacker | Bug Bounty Achievements</title>
+<meta name="description" content="Parth Narula (ScriptJacker) - 250+ Hall of Fames recognized by governments, Fortune 500 companies, universities, and critical infrastructure worldwide.">
+<meta property="og:title" content="Parth Narula | ScriptJacker | Bug Bounty Achievements | Security Research Portfolio">
+<meta property="og:description" content="250+ Hall of Fames across governments, Global 500, universities, and critical infrastructure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bugbounty.scriptjacker.in">
+<link rel="canonical" href="https://bugbounty.scriptjacker.in">
+<style>
+:root {
+    --bg: #0c0f1a; --bg-elevated: #121628; --bg-card: #181d2e; --bg-hover: #1e2438;
+    --text: #e8ecf1; --text-dim: #8892a8; --text-muted: #5a6380;
+    --accent: #38bdf8; --accent-soft: rgba(56,189,248,0.1);
+    --gold: #fbbf24; --gold-soft: rgba(251,191,36,0.1);
+    --green: #34d399; --green-soft: rgba(52,211,153,0.1);
+    --red: #f87171; --red-soft: rgba(248,113,113,0.1);
+    --purple: #a78bfa; --purple-soft: rgba(167,139,250,0.1);
+    --orange: #fb923c; --orange-soft: rgba(251,146,60,0.1);
+    --pink: #f472b6; --pink-soft: rgba(244,114,182,0.1);
+    --border: #1e2338; --border-light: #2a3050;
+    --radius: 16px; --radius-sm: 10px;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+[data-theme="light"] {
+    --bg: #f6f7fb; --bg-elevated: #edeef4; --bg-card: #ffffff; --bg-hover: #f0f1f8;
+    --text: #1a1d2e; --text-dim: #4b5068; --text-muted: #7a7f98;
+    --accent: #0284c7; --accent-soft: rgba(2,132,199,0.08);
+    --gold: #d97706; --gold-soft: rgba(217,119,6,0.08);
+    --green: #059669; --green-soft: rgba(5,150,105,0.08);
+    --red: #dc2626; --red-soft: rgba(220,38,38,0.08);
+    --purple: #7c3aed; --purple-soft: rgba(124,58,237,0.08);
+    --orange: #ea580c; --orange-soft: rgba(234,88,12,0.08);
+    --pink: #db2777; --pink-soft: rgba(219,39,119,0.08);
+    --border: #dfe1ea; --border-light: #c8cad8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:.6rem 1.5rem;border-bottom:1px solid var(--border);font-size:.8rem;position:sticky;top:0;z-index:100;background:var(--bg);backdrop-filter:blur(12px)}
+.topbar-left{display:flex;align-items:center;gap:.5rem}
+.topbar-left .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.topbar-left span{color:var(--green);font-weight:500}
+.topbar-right{display:flex;gap:.5rem;align-items:center}
+.theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);padding:.35rem .7rem;border-radius:6px;cursor:pointer;font-size:.8rem;transition:all .2s}
+.theme-btn:hover{border-color:var(--accent);color:var(--text)}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:4rem 0;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(ellipse 80% 50% at 20% 40%,rgba(56,189,248,.06) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 60%,rgba(251,191,36,.04) 0%,transparent 50%);pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.hero-name{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:.25rem}
+.hero-handle{font-family:var(--font-mono);font-size:1.1rem;color:var(--accent);margin-bottom:1.5rem;font-weight:500}
+.hero-bio{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--text-dim);max-width:640px;margin-bottom:2.5rem;line-height:1.6}
+.hero-bio strong{color:var(--text);font-weight:600}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-stat{display:flex;flex-direction:column}
+.hero-stat-num{font-size:2.2rem;font-weight:700;color:var(--accent);font-family:var(--font-mono);line-height:1}
+.hero-stat-label{font-size:.78rem;color:var(--text-muted);margin-top:.35rem;text-transform:uppercase;letter-spacing:.06em}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:var(--radius-sm);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;border:none;text-decoration:none;font-family:var(--font)}
+.btn-primary{background:var(--accent);color:#000}
+.btn-primary:hover{filter:brightness(1.15);box-shadow:0 0 30px rgba(56,189,248,.2);text-decoration:none}
+.btn-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--border-light)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--text);text-decoration:none}
+.section{padding:5rem 0;border-top:1px solid var(--border)}
+.section-header{margin-bottom:2.5rem}
+.section-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:600;margin-bottom:.5rem}
+.section-title{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem;line-height:1.2}
+.section-desc{color:var(--text-dim);font-size:1rem;max-width:600px;line-height:1.6}
+.prestige-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.6rem}
+.prestige-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.15rem;transition:all .2s;position:relative}
+.prestige-card:hover{border-color:var(--border-light);transform:translateY(-2px);background:var(--bg-hover)}
+.prestige-rank{position:absolute;top:.75rem;right:.85rem;font-family:var(--font-mono);font-size:.68rem;color:var(--text-muted);font-weight:600;opacity:.6}
+.prestige-name{font-weight:600;font-size:.92rem;margin-bottom:.15rem;line-height:1.3;padding-right:2rem}
+.prestige-domain{font-family:var(--font-mono);font-size:.72rem;color:var(--text-muted);margin-bottom:.4rem}
+.prestige-meta{font-size:.72rem;color:var(--text-muted);margin-bottom:.4rem}
+.tag{display:inline-block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:4px}
+.tag-un{background:var(--purple-soft);color:var(--purple)}.tag-f500{background:var(--gold-soft);color:var(--gold)}.tag-gov{background:var(--red-soft);color:var(--red)}.tag-uni{background:var(--green-soft);color:var(--green)}.tag-fin{background:var(--orange-soft);color:var(--orange)}.tag-media{background:var(--pink-soft);color:var(--pink)}.tag-tech{background:var(--accent-soft);color:var(--accent)}.tag-ngo{background:var(--gold-soft);color:var(--gold)}.tag-muni{background:var(--red-soft);color:var(--red)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:all .2s}
+.skill-card:hover{border-color:var(--border-light)}.skill-icon{font-size:1.6rem;margin-bottom:.75rem}.skill-name{font-weight:600;font-size:1rem;margin-bottom:.35rem}.skill-desc{font-size:.82rem;color:var(--text-dim);line-height:1.5}
+.cve-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.6rem 1.2rem;background:var(--accent-soft);border:1px solid rgba(56,189,248,.15);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:.85rem;font-weight:600;color:var(--accent)}
+.hof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.6rem}
+.hof-card{display:flex;align-items:center;gap:.85rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.9rem 1.1rem;transition:all .2s}
+.hof-card:hover{border-color:var(--gold);background:var(--gold-soft)}.hof-icon{font-size:1.3rem;flex-shrink:0}.hof-name{font-weight:600;font-size:.9rem;line-height:1.3}.hof-meta{font-size:.72rem;color:var(--text-muted);margin-top:.1rem}
+.eco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.eco-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;transition:all .2s}
+.eco-item:hover{border-color:var(--border-light)}.eco-number{font-size:2.5rem;font-weight:700;color:var(--accent);font-family:var(--font-mono);line-height:1;margin-bottom:.5rem}.eco-label{font-weight:600;font-size:1rem;margin-bottom:.5rem}.eco-desc{font-size:.84rem;color:var(--text-dim);line-height:1.6}
+.bar-row{display:grid;grid-template-columns:110px 1fr 36px;align-items:center;gap:1rem;padding:.55rem 0}.bar-label{font-size:.82rem;color:var(--text-dim)}.bar-track{height:6px;background:var(--bg-elevated);border-radius:999px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:999px;transition:width 1s ease}.bar-count{font-size:.78rem;font-family:var(--font-mono);color:var(--text-muted);text-align:right}
+.country-grid{display:flex;flex-wrap:wrap;gap:.5rem}.country-chip{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .8rem;background:var(--bg-card);border:1px solid var(--border);border-radius:999px;font-size:.82rem;transition:all .2s}.country-chip:hover{border-color:var(--border-light);background:var(--bg-hover)}.country-flag{font-size:.95rem}.country-name{color:var(--text-dim)}.country-count{font-family:var(--font-mono);font-size:.72rem;color:var(--text-muted);background:var(--bg-elevated);padding:.08rem .35rem;border-radius:4px}
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.85rem}.rec-item{display:flex;align-items:flex-start;gap:.85rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.15rem}.rec-icon{font-size:1.4rem;flex-shrink:0;margin-top:.1rem}.rec-text strong{display:block;font-size:.95rem;margin-bottom:.15rem}.rec-text span{font-size:.78rem;color:var(--text-muted)}
+.directory-section{background:var(--bg-elevated)}
+.dir-tabs{display:flex;gap:.35rem;margin-bottom:1.25rem;flex-wrap:wrap;padding-bottom:.85rem;border-bottom:1px solid var(--border)}
+.dir-tab{padding:.45rem .9rem;border-radius:var(--radius-sm);border:1px solid transparent;background:transparent;color:var(--text-muted);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font)}.dir-tab:hover{color:var(--text-dim)}.dir-tab.active{background:var(--accent-soft);color:var(--accent);border-color:rgba(56,189,248,.15)}
+.dir-search{width:100%;max-width:360px;padding:.7rem 1rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:.88rem;margin-bottom:.85rem;outline:none;font-family:var(--font);transition:border-color .2s}.dir-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.dir-count{font-size:.78rem;color:var(--text-muted);margin-bottom:.85rem}
+.dir-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-card)}
+.dir-table{width:100%;border-collapse:collapse;font-size:.85rem}.dir-table th{text-align:left;padding:.8rem 1.15rem;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:600;border-bottom:1px solid var(--border);background:var(--bg-elevated);white-space:nowrap}.dir-table td{padding:.75rem 1.15rem;border-bottom:1px solid var(--border);vertical-align:middle}.dir-table tr:last-child td{border-bottom:none}.dir-table tbody tr:hover td{background:var(--bg-hover)}
+.row-domain{font-family:var(--font-mono);font-size:.76rem;color:var(--accent)}.row-name{font-weight:500}
+.row-type{display:inline-block;padding:.18rem .55rem;border-radius:4px;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+.type-gov{background:var(--red-soft);color:var(--red)}.type-uni{background:var(--purple-soft);color:var(--purple)}.type-corp{background:var(--gold-soft);color:var(--gold)}.type-tech{background:var(--accent-soft);color:var(--accent)}.type-fin{background:var(--orange-soft);color:var(--orange)}.type-media{background:var(--pink-soft);color:var(--pink)}.type-muni{background:var(--red-soft);color:var(--red)}.type-health{background:var(--green-soft);color:var(--green)}.type-ngo{background:var(--gold-soft);color:var(--gold)}.type-sports{background:var(--green-soft);color:var(--green)}.type-pol{background:var(--purple-soft);color:var(--purple)}.type-personal{background:rgba(136,146,168,.1);color:var(--text-dim)}
+.row-badge{display:inline-flex;align-items:center;font-size:.68rem;padding:.12rem .45rem;border-radius:4px;background:var(--bg-elevated);border:1px solid var(--border);margin-right:.25rem;white-space:nowrap;font-weight:500}
+.row-badge.first{color:var(--accent);border-color:rgba(56,189,248,.2)}.row-badge.swag{color:var(--gold);border-color:rgba(251,191,36,.2)}.row-badge.cert{color:var(--purple);border-color:rgba(167,139,250,.2)}.row-badge.ack{color:var(--text-dim)}.row-badge-default{font-size:.72rem;color:var(--text-muted)}
+.contact{text-align:center;padding:5rem 0;position:relative}.contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,var(--accent-soft) 0%,transparent 60%);pointer-events:none}.contact h2{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:700;margin-bottom:.75rem;position:relative}.contact p{color:var(--text-dim);max-width:480px;margin:0 auto 1.5rem;position:relative;font-size:.95rem}.contact-links{display:flex;justify-content:center;gap:.65rem;flex-wrap:wrap;position:relative}
+.footer{text-align:center;padding:1.5rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.78rem}
+@media print{.topbar{display:none}.hero{min-height:auto;padding:2rem 0}.hero-actions{display:none}.section{padding:2rem 0;break-inside:avoid}.contact,.footer{display:none}.dir-tabs,.dir-search{display:none}body{background:#fff;color:#000}}
+@media(max-width:768px){.topbar{font-size:.72rem;padding:.5rem 1rem}.hero-stats{gap:1.5rem}.hero-stat-num{font-size:1.8rem}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%;justify-content:center}.prestige-grid{grid-template-columns:repeat(2,1fr)}.hof-grid{grid-template-columns:1fr}.eco-grid,.skills-grid{grid-template-columns:1fr}.bar-row{grid-template-columns:85px 1fr 32px}.dir-table th:nth-child(4),.dir-table td:nth-child(4){display:none}}
+@media(max-width:480px){.prestige-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-left"><div class="pulse"></div><span>Available for security research & pentesting</span></div><div class="topbar-right"><button class="theme-btn"><a href="gallery.html">Proof of Work</a></button><button class="theme-btn" onclick="window.print()">📄 PDF</button><button class="theme-btn" onclick="toggleTheme()" id="themeToggle">☀️</button></div></div>
+
+<section class="hero"><div class="container"><div class="hero-content">
+<h1 class="hero-name">Parth Narula</h1>
+<div class="hero-handle">@ScriptJacker</div>
+<p class="hero-bio">I am Security researcher recognized by <strong>400+ organizations</strong> (listed <strong>335+ organizations</strong> and not others due to Non Disclosure) for responsibly disclosing vulnerabilities. My work spans governments, Fortune 500 companies, universities, hospitals, and critical infrastructure across <strong>35+ countries</strong>.</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="hero-stat-num">335+</div><div class="hero-stat-label">Organizations</div></div>
+<div class="hero-stat"><div class="hero-stat-num">40+</div><div class="hero-stat-label">First ever HoF</div></div>
+<div class="hero-stat"><div class="hero-stat-num">35+</div><div class="hero-stat-label">Countries</div></div>
+<div class="hero-stat"><div class="hero-stat-num">29+</div><div class="hero-stat-label">Swag received</div></div>
+</div>
+<div class="hero-actions">
+<a href="gallery.html" class="btn btn-primary">Proof of Work</a>
+<a href="#directory" class="btn btn-primary">View full list</a>
+<a href="#contact" class="btn btn-ghost">Get in touch</a>
+<a href="https://calendly.com/scriptjacker/30min" target="_blank" class="btn btn-ghost">Book a Call</a>
+</div>
+</div></div></section>
+
+<section class="section" id="prestige"><div class="container">
+<div class="section-header"><div class="section-label">Trusted by</div><h2 class="section-title">Top 50 Organizations that recognized my work</h2><p class="section-desc">The most recognized organizations in the world that have acknowledged my security research, ranked by size, revenue, and global significance.</p></div>
+<div class="prestige-grid"><div class="prestige-card"><div class="prestige-rank">#1</div><div class="prestige-name">World Health Organization</div><div class="prestige-domain">who.int</div><div class="prestige-meta">🌍 International</div><span class="tag tag-un">UN / Intl</span></div>
+<div class="prestige-card"><div class="prestige-rank">#2</div><div class="prestige-name">UNESCO</div><div class="prestige-domain">unesco.org</div><div class="prestige-meta">🌍 International</div><span class="tag tag-un">UN / Intl</span></div>
+<div class="prestige-card"><div class="prestige-rank">#3</div><div class="prestige-name">European Union</div><div class="prestige-domain">europa.eu</div><div class="prestige-meta">🇪🇺 Europe</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#4</div><div class="prestige-name">Boeing</div><div class="prestige-domain">boeing.com</div><div class="prestige-meta">🇺🇸 United States</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#5</div><div class="prestige-name">BASF SE</div><div class="prestige-domain">basf.com</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#6</div><div class="prestige-name">Royal Philips</div><div class="prestige-domain">philips.com</div><div class="prestige-meta">🇳🇱 Netherlands</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#7</div><div class="prestige-name">Michelin</div><div class="prestige-domain">michelin.com</div><div class="prestige-meta">🇫🇷 France</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#8</div><div class="prestige-name">MediaTek</div><div class="prestige-domain">mediatek.com</div><div class="prestige-meta">🇹🇼 Taiwan</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#9</div><div class="prestige-name">ALDI Süd</div><div class="prestige-domain">aldi-sued.com</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#10</div><div class="prestige-name">Pirelli</div><div class="prestige-domain">pirelli.com</div><div class="prestige-meta">🇮🇹 Italy</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#11</div><div class="prestige-name">BBC</div><div class="prestige-domain">bbc.com</div><div class="prestige-meta">🇬🇧 United Kingdom</div><span class="tag tag-media">Media</span></div>
+<div class="prestige-card"><div class="prestige-rank">#12</div><div class="prestige-name">Lloyd's of London</div><div class="prestige-domain">lloyds.com</div><div class="prestige-meta">🇬🇧 United Kingdom</div><span class="tag tag-fin">Finance</span></div>
+<div class="prestige-card"><div class="prestige-rank">#13</div><div class="prestige-name">Commerzbank</div><div class="prestige-domain">commerzbank.de</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-fin">Finance</span></div>
+<div class="prestige-card"><div class="prestige-rank">#14</div><div class="prestige-name">Deutsche Börse</div><div class="prestige-domain">deutsche-boerse.com</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-fin">Finance</span></div>
+<div class="prestige-card"><div class="prestige-rank">#15</div><div class="prestige-name">Evri (formerly Hermes)</div><div class="prestige-domain">evri.com</div><div class="prestige-meta">🇬🇧 United Kingdom</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#16</div><div class="prestige-name">VolkerWessels</div><div class="prestige-domain">volkerwessels.com</div><div class="prestige-meta">🇳🇱 Netherlands</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#17</div><div class="prestige-name">Redeia (Spanish Power Grid)</div><div class="prestige-domain">redeia.com</div><div class="prestige-meta">🇪🇸 Spain</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#18</div><div class="prestige-name">GEA Group</div><div class="prestige-domain">gea.com</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#19</div><div class="prestige-name">Marel</div><div class="prestige-domain">marel.com</div><div class="prestige-meta">🇮🇸 Iceland</div><span class="tag tag-f500">Global Brand</span></div>
+<div class="prestige-card"><div class="prestige-rank">#20</div><div class="prestige-name">Achmea Insurance</div><div class="prestige-domain">achmea.nl</div><div class="prestige-meta">🇳🇱 Netherlands</div><span class="tag tag-fin">Finance</span></div>
+<div class="prestige-card"><div class="prestige-rank">#21</div><div class="prestige-name">Proton AG (ProtonMail/VPN)</div><div class="prestige-domain">proton.me</div><div class="prestige-meta">🇨🇭 Switzerland</div><span class="tag tag-tech">Tech</span></div>
+<div class="prestige-card"><div class="prestige-rank">#22</div><div class="prestige-name">Wiz (Cloud Security)</div><div class="prestige-domain">wiz.io</div><div class="prestige-meta">🇺🇸 United States</div><span class="tag tag-tech">Tech</span></div>
+<div class="prestige-card"><div class="prestige-rank">#23</div><div class="prestige-name">Swedish Police Authority</div><div class="prestige-domain">polisen.se</div><div class="prestige-meta">🇸🇪 Sweden</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#24</div><div class="prestige-name">Norwegian Directorate of Elections</div><div class="prestige-domain">valg.no</div><div class="prestige-meta">🇳🇴 Norway</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#25</div><div class="prestige-name">Department of Home Affairs</div><div class="prestige-domain">homeaffairs.gov.au</div><div class="prestige-meta">🇦🇺 Australia</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#26</div><div class="prestige-name">City of Berlin</div><div class="prestige-domain">berlin.de</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#27</div><div class="prestige-name">City of Marseille</div><div class="prestige-domain">marseille.fr</div><div class="prestige-meta">🇫🇷 France</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#28</div><div class="prestige-name">DSB (Danish State Railways)</div><div class="prestige-domain">dsb.dk</div><div class="prestige-meta">🇩🇰 Denmark</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#29</div><div class="prestige-name">Swedish Medical Products Agency</div><div class="prestige-domain">lakemedelsverket.se</div><div class="prestige-meta">🇸🇪 Sweden</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#30</div><div class="prestige-name">UWV (Employee Insurance Agency)</div><div class="prestige-domain">uwv.nl</div><div class="prestige-meta">🇳🇱 Netherlands</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#31</div><div class="prestige-name">NWO (Dutch Research Council)</div><div class="prestige-domain">nwo.nl</div><div class="prestige-meta">🇳🇱 Netherlands</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#32</div><div class="prestige-name">Australian Research Council</div><div class="prestige-domain">arc.gov.au</div><div class="prestige-meta">🇦🇺 Australia</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#33</div><div class="prestige-name">Attorney-General's Department</div><div class="prestige-domain">ag.gov.au</div><div class="prestige-meta">🇦🇺 Australia</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#34</div><div class="prestige-name">Australian Prudential Regulation Authority</div><div class="prestige-domain">apra.gov.au</div><div class="prestige-meta">🇦🇺 Australia</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#35</div><div class="prestige-name">IP Australia</div><div class="prestige-domain">ipaustralia.gov.au</div><div class="prestige-meta">🇦🇺 Australia</div><span class="tag tag-gov">Government</span></div>
+<div class="prestige-card"><div class="prestige-rank">#36</div><div class="prestige-name">Nordnet</div><div class="prestige-domain">nordnet.se</div><div class="prestige-meta">🇸🇪 Sweden</div><span class="tag tag-fin">Finance</span></div>
+<div class="prestige-card"><div class="prestige-rank">#37</div><div class="prestige-name">BankAxept (Payment System)</div><div class="prestige-domain">bankaxept.no</div><div class="prestige-meta">🇳🇴 Norway</div><span class="tag tag-fin">Finance</span></div>
+<div class="prestige-card"><div class="prestige-rank">#38</div><div class="prestige-name">Handelsblatt Media Group</div><div class="prestige-domain">handelsblattgroup.com</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-media">Media</span></div>
+<div class="prestige-card"><div class="prestige-rank">#39</div><div class="prestige-name">TV4 (Swedish Television)</div><div class="prestige-domain">tv4.se</div><div class="prestige-meta">🇸🇪 Sweden</div><span class="tag tag-media">Media</span></div>
+<div class="prestige-card"><div class="prestige-rank">#40</div><div class="prestige-name">Visma</div><div class="prestige-domain">visma.com</div><div class="prestige-meta">🇳🇴 Norway</div><span class="tag tag-tech">Tech</span></div>
+<div class="prestige-card"><div class="prestige-rank">#41</div><div class="prestige-name">GetYourGuide</div><div class="prestige-domain">getyourguide.com</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-tech">Tech</span></div>
+<div class="prestige-card"><div class="prestige-rank">#42</div><div class="prestige-name">Cambridge University Press</div><div class="prestige-domain">cambridge.org</div><div class="prestige-meta">🇬🇧 United Kingdom</div><span class="tag tag-uni">University</span></div>
+<div class="prestige-card"><div class="prestige-rank">#43</div><div class="prestige-name">University of St Andrews</div><div class="prestige-domain">st-andrews.ac.uk</div><div class="prestige-meta">🇬🇧 United Kingdom</div><span class="tag tag-uni">University</span></div>
+<div class="prestige-card"><div class="prestige-rank">#44</div><div class="prestige-name">University of Sheffield</div><div class="prestige-domain">sheffield.ac.uk</div><div class="prestige-meta">🇬🇧 United Kingdom</div><span class="tag tag-uni">University</span></div>
+<div class="prestige-card"><div class="prestige-rank">#45</div><div class="prestige-name">TU Delft</div><div class="prestige-domain">tudelft.nl</div><div class="prestige-meta">🇳🇱 Netherlands</div><span class="tag tag-uni">University</span></div>
+<div class="prestige-card"><div class="prestige-rank">#46</div><div class="prestige-name">Charles University, Prague</div><div class="prestige-domain">cuni.cz</div><div class="prestige-meta">🇨🇿 Czech Republic</div><span class="tag tag-uni">University</span></div>
+<div class="prestige-card"><div class="prestige-rank">#47</div><div class="prestige-name">EMBL-EBI (European Bioinformatics)</div><div class="prestige-domain">ebi.ac.uk</div><div class="prestige-meta">🇬🇧 United Kingdom</div><span class="tag tag-uni">University</span></div>
+<div class="prestige-card"><div class="prestige-rank">#48</div><div class="prestige-name">Maastricht University</div><div class="prestige-domain">maastrichtuniversity.nl</div><div class="prestige-meta">🇳🇱 Netherlands</div><span class="tag tag-uni">University</span></div>
+<div class="prestige-card"><div class="prestige-rank">#49</div><div class="prestige-name">G DATA CyberDefense</div><div class="prestige-domain">gdata.de</div><div class="prestige-meta">🇩🇪 Germany</div><span class="tag tag-tech">Company</span></div>
+<div class="prestige-card"><div class="prestige-rank">#50</div><div class="prestige-name">AS Tallinna Sadam (Port of Tallinn)</div><div class="prestige-domain">ts.ee</div><div class="prestige-meta">🇪🇪 Estonia</div><span class="tag tag-tech">Company</span></div></div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><div class="section-label">Expertise</div><h2 class="section-title">What I specialize in</h2><p class="section-desc">My research focuses on vulnerabilities that have real business impact, the kind that bypass security controls and expose sensitive data.</p></div>
+<div class="skills-grid">
+<div class="skill-card"><div class="skill-icon">🔓</div><div class="skill-name">IDOR</div><div class="skill-desc">Insecure Direct Object References: Accessing unauthorized resources through parameter manipulation to view, modify, or delete other users' data.</div></div>
+<div class="skill-card"><div class="skill-icon">⬆️</div><div class="skill-name">Privilege Escalation</div><div class="skill-desc">Vertical and horizontal privilege escalation to gain unauthorized admin access or impersonate other user roles within applications.</div></div>
+<div class="skill-card"><div class="skill-icon">🧩</div><div class="skill-name">Business Logic Flaws</div><div class="skill-desc">Breaking intended application workflows: race conditions, price manipulation, bypassing payment flows, and process exploitation.</div></div>
+<div class="skill-card"><div class="skill-icon">🔑</div><div class="skill-name">Authentication Bypass</div><div class="skill-desc">Broken authentication mechanisms: session hijacking, token flaws, OAuth misconfigurations, and authentication flow manipulation.</div></div>
+</div>
+<div class="cve-badge">🛡️ CVE-2025-56697 — Assigned CVE Identifier</div>
+<a href="https://scriptjacker.medium.com" target="_blank" class="btn btn-ghost">Medium Articles</a>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><div class="section-label">Pioneer</div><h2 class="section-title">I was the First researcher on these programs</h2><p class="section-desc">Being the first security researcher to be inducted into a Hall of Fame means I found vulnerabilities before anyone else was looking.</p></div>
+<div class="hof-grid"><div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">City of Berlin</div><div class="hof-meta">berlin.de · 🇩🇪 Germany</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Commerzbank</div><div class="hof-meta">commerzbank.de · 🇩🇪 Germany</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">University of St Andrews</div><div class="hof-meta">st-andrews.ac.uk · 🇬🇧 United Kingdom</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">BankAxept (Payment System)</div><div class="hof-meta">bankaxept.no · 🇳🇴 Norway</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Government of Western Australia</div><div class="hof-meta">wa.gov.au · 🇦🇺 Australia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Australian Financial Security Authority</div><div class="hof-meta">afsa.gov.au · 🇦🇺 Australia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Personal Property Securities Register</div><div class="hof-meta">ppsr.gov.au · 🇦🇺 Australia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Dept. of Industry, Science & Resources</div><div class="hof-meta">industry.gov.au · 🇦🇺 Australia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Inspector-General of Taxation</div><div class="hof-meta">igt.gov.au · 🇦🇺 Australia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">ZenDiS: Digital Sovereignty</div><div class="hof-meta">zendis.de · 🇩🇪 Germany</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Whatfix</div><div class="hof-meta">whatfix.com · 🇮🇳 India</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Zepto</div><div class="hof-meta">zeptonow.com · 🇮🇳 India</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Bokadirekt</div><div class="hof-meta">bokadirekt.se · 🇸🇪 Sweden</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">TicketCounter</div><div class="hof-meta">ticketcounter.nl · 🇳🇱 Netherlands</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Hulpverleningszone Meetjesland</div><div class="hof-meta">zonemeetjesland.be · 🇧🇪 Belgium</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Modalku / Funding Societies</div><div class="hof-meta">modalku.co.id · 🇮🇩 Indonesia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">KIVI (Royal Engineers Society)</div><div class="hof-meta">kivi.nl · 🇳🇱 Netherlands</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Matchis (Stem Cell Foundation)</div><div class="hof-meta">matchis.nl · 🇳🇱 Netherlands</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Gi Effektivt</div><div class="hof-meta">gieffektivt.no · 🇳🇴 Norway</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">BelWü (Academic Network)</div><div class="hof-meta">belwue.de · 🇩🇪 Germany</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">THWS Würzburg-Schweinfurt</div><div class="hof-meta">thws.de · 🇩🇪 Germany</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">MBO Digitaal</div><div class="hof-meta">mbodigitaal.nl · 🇳🇱 Netherlands</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">SIF/ERDA (Univ. of Copenhagen)</div><div class="hof-meta">sif.erda.dk · 🇩🇰 Denmark</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Praamid Estonia</div><div class="hof-meta">praamid.ee · 🇪🇪 Estonia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">TS Estonia</div><div class="hof-meta">ts.ee · 🇪🇪 Estonia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Bringme</div><div class="hof-meta">bringme.com · 🇧🇪 Belgium</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">WhatIsMyBrowser</div><div class="hof-meta">whatismybrowser.com · 🇦🇺 Australia</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Xledger</div><div class="hof-meta">xledger.com · 🇳🇴 Norway</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Attensi</div><div class="hof-meta">attensi.com · 🇳🇴 Norway</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Elfster</div><div class="hof-meta">elfster.com · 🇺🇸 United States</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Seantis</div><div class="hof-meta">seantis.ch · 🇨🇭 Switzerland</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Sutty</div><div class="hof-meta">sutty.nl · 🇳🇱 Netherlands</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Accodeing</div><div class="hof-meta">accodeing.com · 🇳🇱 Netherlands</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Coloop AI</div><div class="hof-meta">coloop.ai · 🇪🇺 Europe</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">VideoDock</div><div class="hof-meta">videodock.com · 🇳🇱 Netherlands</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Metacode</div><div class="hof-meta">metacode.biz · 🇪🇺 Europe</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">CTW Inc</div><div class="hof-meta">ctw.inc · 🇯🇵 Japan</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Red Games</div><div class="hof-meta">redgames.co · 🇺🇸 United States</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Julie & Joy</div><div class="hof-meta">julieandjoy.fr · 🇫🇷 France</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">CSCherr</div><div class="hof-meta">cscherr.de · 🇩🇪 Germany</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Daniel Fisher</div><div class="hof-meta">danielfisher.com · 🇺🇸 United States</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">LennyBacon</div><div class="hof-meta">lennybacon.com · 🇩🇪 Germany</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">AVM99963</div><div class="hof-meta">avm99963.com · 🇪🇺 Europe</div></div></div>
+<div class="hof-card"><div class="hof-icon">🥇</div><div class="hof-content"><div class="hof-name">Felix Brezo</div><div class="hof-meta">felixbrezo.com · 🇪🇸 Spain</div></div></div></div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><div class="section-label">Coverage</div><h2 class="section-title">I have secured every kind of organization</h2><p class="section-desc">From city governments to global corporations, from hospitals to universities. No ecosystem is off limits.</p></div>
+<div class="eco-grid">
+<div class="eco-item"><div class="eco-number">45+</div><div class="eco-label">Government bodies</div><div class="eco-desc">Federal departments, state governments, municipalities, election systems, police, and UN agencies across Australia, Europe, and more.</div></div>
+<div class="eco-item"><div class="eco-number">40+</div><div class="eco-label">Universities & research</div><div class="eco-desc">From Cambridge and TU Delft to Charles University Prague, EMBL-EBI, and the Tübingen AI Center. Academic and medical centers included.</div></div>
+<div class="eco-item"><div class="eco-number">230+</div><div class="eco-label">Companies & organizations</div><div class="eco-desc">Spanning aerospace, finance, retail, media, healthcare, energy, gaming, logistics, cybersecurity, and technology sectors worldwide.</div></div>
+</div></div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><div class="section-label">Industries</div><h2 class="section-title">Sectors I have worked across</h2></div>
+<div class="bar-row"><div class="bar-label">Technology</div><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><div class="bar-count">185+</div></div>
+<div class="bar-row"><div class="bar-label">Government</div><div class="bar-track"><div class="bar-fill" style="width:22.2%"></div></div><div class="bar-count">45+</div></div>
+<div class="bar-row"><div class="bar-label">University</div><div class="bar-track"><div class="bar-fill" style="width:20.5%"></div></div><div class="bar-count">40+</div></div>
+<div class="bar-row"><div class="bar-label">Corporation</div><div class="bar-track"><div class="bar-fill" style="width:11.9%"></div></div><div class="bar-count">22+</div></div>
+<div class="bar-row"><div class="bar-label">Finance</div><div class="bar-track"><div class="bar-fill" style="width:9.2%"></div></div><div class="bar-count">17+</div></div>
+<div class="bar-row"><div class="bar-label">Independent</div><div class="bar-track"><div class="bar-fill" style="width:6.5%"></div></div><div class="bar-count">12+</div></div>
+<div class="bar-row"><div class="bar-label">Nonprofit</div><div class="bar-track"><div class="bar-fill" style="width:4.9%"></div></div><div class="bar-count">10+</div></div>
+<div class="bar-row"><div class="bar-label">Media</div><div class="bar-track"><div class="bar-fill" style="width:2.7%"></div></div><div class="bar-count">7+</div></div>
+<div class="bar-row"><div class="bar-label">Sports</div><div class="bar-track"><div class="bar-fill" style="width:1.1%"></div></div><div class="bar-count">4+</div></div>
+<div class="bar-row"><div class="bar-label">Healthcare</div><div class="bar-track"><div class="bar-fill" style="width:0.5%"></div></div><div class="bar-count">3+</div></div>
+<div class="bar-row"><div class="bar-label">Other</div><div class="bar-track"><div class="bar-fill" style="width:0.5%"></div></div><div class="bar-count">2+</div></div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><div class="section-label">Global</div><h2 class="section-title">Countries where I have found vulnerabilities</h2></div>
+<div class="country-grid"><div class="country-chip"><span class="country-flag">🇳🇱</span><span class="country-name">Netherlands</span><span class="country-count">63</span></div>
+<div class="country-chip"><span class="country-flag">🇩🇪</span><span class="country-name">Germany</span><span class="country-count">45</span></div>
+<div class="country-chip"><span class="country-flag">🇺🇸</span><span class="country-name">United States</span><span class="country-count">44</span></div>
+<div class="country-chip"><span class="country-flag">🇪🇺</span><span class="country-name">Europe</span><span class="country-count">29</span></div>
+<div class="country-chip"><span class="country-flag">🇦🇺</span><span class="country-name">Australia</span><span class="country-count">25</span></div>
+<div class="country-chip"><span class="country-flag">🇬🇧</span><span class="country-name">United Kingdom</span><span class="country-count">19</span></div>
+<div class="country-chip"><span class="country-flag">🇸🇪</span><span class="country-name">Sweden</span><span class="country-count">14</span></div>
+<div class="country-chip"><span class="country-flag">🇮🇳</span><span class="country-name">India</span><span class="country-count">14</span></div>
+<div class="country-chip"><span class="country-flag">🇧🇪</span><span class="country-name">Belgium</span><span class="country-count">12</span></div>
+<div class="country-chip"><span class="country-flag">🇳🇴</span><span class="country-name">Norway</span><span class="country-count">8</span></div>
+<div class="country-chip"><span class="country-flag">🇫🇷</span><span class="country-name">France</span><span class="country-count">8</span></div>
+<div class="country-chip"><span class="country-flag">🇨🇭</span><span class="country-name">Switzerland</span><span class="country-count">7</span></div>
+<div class="country-chip"><span class="country-flag">🇨🇿</span><span class="country-name">Czech Republic</span><span class="country-count">5</span></div>
+<div class="country-chip"><span class="country-flag">🇮🇹</span><span class="country-name">Italy</span><span class="country-count">4</span></div>
+<div class="country-chip"><span class="country-flag">🇪🇸</span><span class="country-name">Spain</span><span class="country-count">3</span></div>
+<div class="country-chip"><span class="country-flag">🇮🇩</span><span class="country-name">Indonesia</span><span class="country-count">3</span></div>
+<div class="country-chip"><span class="country-flag">🌍</span><span class="country-name">International</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇩🇰</span><span class="country-name">Denmark</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇹🇼</span><span class="country-name">Taiwan</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇮🇸</span><span class="country-name">Iceland</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇳🇿</span><span class="country-name">New Zealand</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇸🇬</span><span class="country-name">Singapore</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇨🇦</span><span class="country-name">Canada</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇧🇷</span><span class="country-name">Brazil</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇪🇪</span><span class="country-name">Estonia</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇿🇦</span><span class="country-name">South Africa</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇵🇱</span><span class="country-name">Poland</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇯🇵</span><span class="country-name">Japan</span><span class="country-count">2</span></div>
+<div class="country-chip"><span class="country-flag">🇸🇮</span><span class="country-name">Slovenia</span><span class="country-count">1</span></div>
+<div class="country-chip"><span class="country-flag">🇸🇰</span><span class="country-name">Slovakia</span><span class="country-count">1</span></div>
+<div class="country-chip"><span class="country-flag">🇱🇹</span><span class="country-name">Lithuania</span><span class="country-count">1</span></div>
+<div class="country-chip"><span class="country-flag">🇧🇭</span><span class="country-name">Bahrain</span><span class="country-count">1</span></div>
+<div class="country-chip"><span class="country-flag">🇷🇺</span><span class="country-name">Russia</span><span class="country-count">1</span></div>
+<div class="country-chip"><span class="country-flag">🇹🇭</span><span class="country-name">Thailand</span><span class="country-count">1</span></div></div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><div class="section-label">Recognition</div><h2 class="section-title">How organizations recognized my work</h2></div>
+<div class="rec-grid">
+<div class="rec-item"><div class="rec-icon">🏅</div><div class="rec-text"><strong>250+ Hall of Fames</strong><span>Public security researcher recognition</span></div></div>
+<div class="rec-item"><div class="rec-icon">⭐</div><div class="rec-text"><strong>44+ First-ever HoF entries</strong><span>Pioneer on these programs</span></div></div>
+<div class="rec-item"><div class="rec-icon">🎁</div><div class="rec-text"><strong>29+ Swag packages & Many Bounties</strong><span>Physical recognition from programs</span></div></div>
+<div class="rec-item"><div class="rec-icon">📜</div><div class="rec-text"><strong>8+ Certificates & letters</strong><span>Formal written acknowledgments</span></div></div>
+</div></div></section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Evidence</div>
+            <h2 class="section-title">Proof of Work</h2>
+            <p class="section-desc">Screenshots, certificates, letters, and photos of swag I have received from programs around the world.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏅</div>
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">Hall of Fame Screenshots</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Public recognition pages</div>
+            </div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📜</div>
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">Certificates</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Formal acknowledgments</div>
+            </div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✉️</div>
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">Letters</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Personal thank you notes, LOR, LOA</div>
+            </div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎁</div>
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">Swag</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Physical items received</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="gallery.html" class="btn btn-primary">View all photos</a>
+        </div>
+    </div>
+</section>
+
+<section class="section directory-section" id="directory"><div class="container">
+<div class="section-header"><div class="section-label">Complete record</div><h2 class="section-title">Every single finding</h2><p class="section-desc">The full list of every organization that recognized me (which was allowed to be listed). Filter by type or search. Some Recognition have been intentionally categorized as Hall of Fame, due to privacy.</p></div>
+<div class="dir-tabs">
+<button class="dir-tab active" data-filter="all">All (330)</button>
+<button class="dir-tab" data-filter="top">Top 50</button>
+<button class="dir-tab" data-filter="government">Government</button>
+<button class="dir-tab" data-filter="university">University</button>
+<button class="dir-tab" data-filter="corporation">Corporation</button>
+<button class="dir-tab" data-filter="finance">Finance</button>
+<button class="dir-tab" data-filter="media">Media</button>
+<button class="dir-tab" data-filter="company">Company</button>
+<button class="dir-tab" data-filter="first">First HoF (44)</button>
+<button class="dir-tab" data-filter="swag">Swag (29)</button>
+</div>
+<input type="text" class="dir-search" id="dirSearch" placeholder="Search by domain, organization, or country...">
+<div class="dir-count" id="dirCount">Showing all 330 findings</div>
+<div class="dir-table-wrap"><table class="dir-table" id="dirTable"><thead><tr><th>Domain</th><th>Organization</th><th>Type</th><th>Country</th><th>Recognition</th></tr></thead>
+<tbody id="dirBody"><tr data-type="tech" data-country="NZ" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">1000minds.com</span></td>
+    <td><span class="row-name">1000minds</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇿 NZ</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">10xbanking.com</span></td>
+    <td><span class="row-name">10x Banking</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="SK" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">365.bank</span></td>
+    <td><span class="row-name">365.bank</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇸🇰 SK</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">accodeing.com</span></td>
+    <td><span class="row-name">Accodeing</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="fin" data-country="NL" data-first="0" data-top="1" data-recog="swag">
+    <td><span class="row-domain">achmea.nl</span></td>
+    <td><span class="row-name">Achmea Insurance</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">act.gov.au</span></td>
+    <td><span class="row-name">ACT Government</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="CH" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">adfinis.com</span></td>
+    <td><span class="row-name">Adfinis</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇭 CH</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">agrevolution.in</span></td>
+    <td><span class="row-name">AgRevolution</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="media" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">airmail.news</span></td>
+    <td><span class="row-name">Airmail News</span></td>
+    <td><span class="row-type type-media">Media</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">airmeet.com</span></td>
+    <td><span class="row-name">Airmeet</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="DE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">aldi-sued.com</span></td>
+    <td><span class="row-name">ALDI Süd</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="JP" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ama.ne.jp</span></td>
+    <td><span class="row-name">AMA Japan</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇯🇵 JP</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BR" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">amdb.com.br</span></td>
+    <td><span class="row-name">AMDB</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇷 BR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">amtrustgroup.com</span></td>
+    <td><span class="row-name">AmTrust Financial</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">amtrusttitleevents.com</span></td>
+    <td><span class="row-name">AmTrust Title Events</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="GB" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">anglianwater.co.uk</span></td>
+    <td><span class="row-name">Anglian Water</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">appcraft.nl</span></td>
+    <td><span class="row-name">AppCraft</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">appypie.com</span></td>
+    <td><span class="row-name">Appy Pie</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">arkadium.com</span></td>
+    <td><span class="row-name">Arkadium</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">atswarra.com</span></td>
+    <td><span class="row-name">ATS Warra</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NO" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">attensi.com</span></td>
+    <td><span class="row-name">Attensi</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">ag.gov.au</span></td>
+    <td><span class="row-name">Attorney-General's Department</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">audinate.com</span></td>
+    <td><span class="row-name">Audinate</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">afsa.gov.au</span></td>
+    <td><span class="row-name">Australian Financial Security Authority</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">aihw.gov.au</span></td>
+    <td><span class="row-name">Australian Institute of Health & Welfare</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">apra.gov.au</span></td>
+    <td><span class="row-name">Australian Prudential Regulation Authority</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">arc.gov.au</span></td>
+    <td><span class="row-name">Australian Research Council</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">taxombudsman.gov.au</span></td>
+    <td><span class="row-name">Australian Tax Ombudsman</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="letter">
+    <td><span class="row-domain">avans.nl</span></td>
+    <td><span class="row-name">Avans University</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge cert">Letter</span></td>
+</tr>
+<tr data-type="personal" data-country="EU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">avm99963.com</span></td>
+    <td><span class="row-name">AVM99963</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="personal" data-country="FR" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">bacardi55.io</span></td>
+    <td><span class="row-name">Bacardi55</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="corp" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">bahag.com</span></td>
+    <td><span class="row-name">BAHAG (Bauhaus Parent)</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">bandsintown.com</span></td>
+    <td><span class="row-name">Bandsintown</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="fin" data-country="NO" data-first="1" data-top="1" data-recog="hof">
+    <td><span class="row-domain">bankaxept.no</span></td>
+    <td><span class="row-name">BankAxept (Payment System)</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="corp" data-country="DE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">basf.com</span></td>
+    <td><span class="row-name">BASF SE</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="media" data-country="GB" data-first="0" data-top="1" data-recog="swag">
+    <td><span class="row-domain">bbc.com</span></td>
+    <td><span class="row-name">BBC</span></td>
+    <td><span class="row-type type-media">Media</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">beatport.com</span></td>
+    <td><span class="row-name">Beatport</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">belwue.de</span></td>
+    <td><span class="row-name">BelWü (Academic Network)</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="SE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">beneri.se</span></td>
+    <td><span class="row-name">Beneri</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">billiger-mietwagen.de</span></td>
+    <td><span class="row-name">Billiger-Mietwagen</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="LT" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">bitdegree.org</span></td>
+    <td><span class="row-name">BitDegree</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇱🇹 LT</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">blackarrowtrading.com</span></td>
+    <td><span class="row-name">Black Arrow Trading</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">blinq.me</span></td>
+    <td><span class="row-name">Blinq</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">bmc.com</span></td>
+    <td><span class="row-name">BMC Software</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="corp" data-country="US" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">boeing.com</span></td>
+    <td><span class="row-name">Boeing</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="SE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">bokadirekt.se</span></td>
+    <td><span class="row-name">Bokadirekt</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="uni" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">bournemouth.ac.uk</span></td>
+    <td><span class="row-name">Bournemouth University</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">bringme.com</span></td>
+    <td><span class="row-name">Bringme</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">byte-physics.de</span></td>
+    <td><span class="row-name">Byte Physics</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">bytebloggerbase.com</span></td>
+    <td><span class="row-name">ByteBloggerBase</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="uni" data-country="GB" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">cambridge.org</span></td>
+    <td><span class="row-name">Cambridge University Press</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ccv.eu</span></td>
+    <td><span class="row-name">CCV Group (Payments)</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="CZ" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">cuni.cz</span></td>
+    <td><span class="row-name">Charles University, Prague</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇨🇿 CZ</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">tu-chemnitz.de</span></td>
+    <td><span class="row-name">Chemnitz University of Technology</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">chillforceltd.co.uk</span></td>
+    <td><span class="row-name">Chillforce Ltd</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">chromatic.com</span></td>
+    <td><span class="row-name">Chromatic</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="DE" data-first="1" data-top="1" data-recog="hof">
+    <td><span class="row-domain">berlin.de</span></td>
+    <td><span class="row-name">City of Berlin</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="gov" data-country="FR" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">marseille.fr</span></td>
+    <td><span class="row-name">City of Marseille</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ck12.org</span></td>
+    <td><span class="row-name">CK-12 Foundation</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">clayhr.com</span></td>
+    <td><span class="row-name">ClayHR</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="cert">
+    <td><span class="row-domain">clear.bio</span></td>
+    <td><span class="row-name">Clear</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge cert">Certificate</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">cleartax.in</span></td>
+    <td><span class="row-name">ClearTax</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">cleeng.com</span></td>
+    <td><span class="row-name">Cleeng</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">clinicalsupportsystems.com</span></td>
+    <td><span class="row-name">Clinical Support Systems</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="sports" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">clubbrugge.be</span></td>
+    <td><span class="row-name">Club Brugge KV</span></td>
+    <td><span class="row-type type-sports">Sports</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">cm.be</span></td>
+    <td><span class="row-name">CM (Belgian Health Insurance)</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">coinswitch.co</span></td>
+    <td><span class="row-name">CoinSwitch</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">coloop.ai</span></td>
+    <td><span class="row-name">Coloop AI</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="fin" data-country="DE" data-first="1" data-top="1" data-recog="hof">
+    <td><span class="row-domain">commerzbank.de</span></td>
+    <td><span class="row-name">Commerzbank</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">cougarboard.com</span></td>
+    <td><span class="row-name">CougarBoard</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="DE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">cscherr.de</span></td>
+    <td><span class="row-name">CSCherr</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="JP" data-first="1" data-top="0" data-recog="hof,cert">
+    <td><span class="row-domain">ctw.inc</span></td>
+    <td><span class="row-name">CTW Inc</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇯🇵 JP</td>
+    <td><span class="row-badge first">1st HoF</span><span class="row-badge cert">Certificate</span></td>
+</tr>
+<tr data-type="tech" data-country="ID" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">danacita.co.id</span></td>
+    <td><span class="row-name">Danacita</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇩 ID</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="US" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">danielfisher.com</span></td>
+    <td><span class="row-name">Daniel Fisher</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="corp" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">debijenkorf.nl</span></td>
+    <td><span class="row-name">de Bijenkorf</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">homeaffairs.gov.au</span></td>
+    <td><span class="row-name">Department of Home Affairs</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">dewr.gov.au</span></td>
+    <td><span class="row-name">Dept. of Employment & Workplace Relations</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">industry.gov.au</span></td>
+    <td><span class="row-name">Dept. of Industry, Science & Resources</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="fin" data-country="DE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">deutsche-boerse.com</span></td>
+    <td><span class="row-name">Deutsche Börse</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="SE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">dfrnt.com</span></td>
+    <td><span class="row-name">DFRNT</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">dnsprivacy.org.uk</span></td>
+    <td><span class="row-name">DNS Privacy Project</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">do.de</span></td>
+    <td><span class="row-name">do.de (Domain Registrar)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="SE" data-first="0" data-top="0" data-recog="ack">
+    <td><span class="row-domain">dramatify.com</span></td>
+    <td><span class="row-name">Dramatify</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge ack">Acknowledged</span></td>
+</tr>
+<tr data-type="tech" data-country="TW" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">draytek.com</span></td>
+    <td><span class="row-name">DrayTek</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇹🇼 TW</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="gov" data-country="DK" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">dsb.dk</span></td>
+    <td><span class="row-name">DSB (Danish State Railways)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇩🇰 DK</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="NZ" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">easycrypto.com</span></td>
+    <td><span class="row-name">Easy Crypto</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇳🇿 NZ</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">easybell.de</span></td>
+    <td><span class="row-name">Easybell</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">eerlijkdigitaalonderwijs.nl</span></td>
+    <td><span class="row-name">Eerlijk Digitaal Onderwijs</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="SE" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">eiscat.se</span></td>
+    <td><span class="row-name">EISCAT Scientific Association</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="gov" data-country="ES" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">eitb.eus</span></td>
+    <td><span class="row-name">EITB (Basque Public Broadcaster)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇪🇸 ES</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">elements.nl</span></td>
+    <td><span class="row-name">Elements</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">elfster.com</span></td>
+    <td><span class="row-name">Elfster</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="uni" data-country="GB" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">ebi.ac.uk</span></td>
+    <td><span class="row-name">EMBL-EBI (European Bioinformatics)</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">empireflippers.com</span></td>
+    <td><span class="row-name">Empire Flippers</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">encre.me</span></td>
+    <td><span class="row-name">Encre</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">escanav.com</span></td>
+    <td><span class="row-name">Escanav</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">esign.eu</span></td>
+    <td><span class="row-name">eSign</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">essentialenergy.com.au</span></td>
+    <td><span class="row-name">Essential Energy</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">eternagame.org</span></td>
+    <td><span class="row-name">Eterna (Stanford)</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="EU" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">europa.eu</span></td>
+    <td><span class="row-name">European Union</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">evolu.software</span></td>
+    <td><span class="row-name">Evolu Software</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="GB" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">evri.com</span></td>
+    <td><span class="row-name">Evri (formerly Hermes)</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">exirio.com</span></td>
+    <td><span class="row-name">Exirio</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="SE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">fagerhult.se</span></td>
+    <td><span class="row-name">Fagerhult Group</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BH" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">fatora.io</span></td>
+    <td><span class="row-name">Fatora</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇭 BH</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="SG" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">fazz.com</span></td>
+    <td><span class="row-name">Fazz Financial</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇸🇬 SG</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="ES" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">felixbrezo.com</span></td>
+    <td><span class="row-name">Felix Brezo</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇪🇸 ES</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">flexcom.de</span></td>
+    <td><span class="row-name">Flexcom</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="IT" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">fbk.eu</span></td>
+    <td><span class="row-name">Fondazione Bruno Kessler</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇮🇹 IT</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">free.law</span></td>
+    <td><span class="row-name">Free Law Project</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">freedom.nl</span></td>
+    <td><span class="row-name">Freedom Internet</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">freelanceprojectmanager.be</span></td>
+    <td><span class="row-name">Freelance PM</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">fundaments.nl</span></td>
+    <td><span class="row-name">Fundaments</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">fyr.io</span></td>
+    <td><span class="row-name">Fyr</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">gdata.de</span></td>
+    <td><span class="row-name">G DATA CyberDefense</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="ID" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gajigesa.com</span></td>
+    <td><span class="row-name">GajiGesa</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇩 ID</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gbtwente.nl</span></td>
+    <td><span class="row-name">GB Twente</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="DE" data-first="0" data-top="1" data-recog="swag">
+    <td><span class="row-domain">gea.com</span></td>
+    <td><span class="row-name">GEA Group</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">getyourguide.com</span></td>
+    <td><span class="row-name">GetYourGuide</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="NO" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gieffektivt.no</span></td>
+    <td><span class="row-name">Gi Effektivt</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="CZ" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gigaprint.cz</span></td>
+    <td><span class="row-name">GigaPrint</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇿 CZ</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gmx.net</span></td>
+    <td><span class="row-name">GMX (United Internet)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gokoppa.com</span></td>
+    <td><span class="row-name">GoKoppa</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gothick.org.uk</span></td>
+    <td><span class="row-name">Gothick</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">wa.gov.au</span></td>
+    <td><span class="row-name">Government of Western Australia</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hackclusive.com</span></td>
+    <td><span class="row-name">Hackclusive</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">han.nl</span></td>
+    <td><span class="row-name">HAN University of Applied Sciences</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="media" data-country="DE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">handelsblattgroup.com</span></td>
+    <td><span class="row-name">Handelsblatt Media Group</span></td>
+    <td><span class="row-type type-media">Media</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hanula.me</span></td>
+    <td><span class="row-name">Hanula</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hebcal.com</span></td>
+    <td><span class="row-name">Hebcal</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hetcak.nl</span></td>
+    <td><span class="row-name">Het CAK (Healthcare Admin)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">higlobe.com</span></td>
+    <td><span class="row-name">HiGlobe</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hippovideo.io</span></td>
+    <td><span class="row-name">Hippo Video</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hs-bremen.de</span></td>
+    <td><span class="row-name">Hochschule Bremen</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hs-harz.de</span></td>
+    <td><span class="row-name">Hochschule Harz</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">hoplr.com</span></td>
+    <td><span class="row-name">Hoplr</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="muni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">htm.nl</span></td>
+    <td><span class="row-name">HTM (The Hague Transport)</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="muni" data-country="BE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">zonemeetjesland.be</span></td>
+    <td><span class="row-name">Hulpverleningszone Meetjesland</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">idealo.de</span></td>
+    <td><span class="row-name">Idealo</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="SE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">industriutrustning.se</span></td>
+    <td><span class="row-name">Industriutrustning</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">inflectra.com</span></td>
+    <td><span class="row-name">Inflectra Corporation</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">inovex.de</span></td>
+    <td><span class="row-name">inovex</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">igt.gov.au</span></td>
+    <td><span class="row-name">Inspector-General of Taxation</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="CH" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">instride.ch</span></td>
+    <td><span class="row-name">InStride</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇭 CH</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">intevation.de</span></td>
+    <td><span class="row-name">Intevation</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="FR" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">intuiface.com</span></td>
+    <td><span class="row-name">Intuiface</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">ipaustralia.gov.au</span></td>
+    <td><span class="row-name">IP Australia</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="sports" data-country="SE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">irfu.se</span></td>
+    <td><span class="row-name">IRFU Sweden</span></td>
+    <td><span class="row-type type-sports">Sports</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">isifederal.net</span></td>
+    <td><span class="row-name">ISI Federal</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">javascripttoday.com</span></td>
+    <td><span class="row-name">JavaScript Today</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="FR" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">julieandjoy.fr</span></td>
+    <td><span class="row-name">Julie & Joy</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="personal" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">katiethe.dev</span></td>
+    <td><span class="row-name">KatieThe.Dev</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">kdo.de</span></td>
+    <td><span class="row-name">KDO (Municipal IT Provider)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">kedalion.nl</span></td>
+    <td><span class="row-name">Kedalion</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="NL" data-first="1" data-top="0" data-recog="hof,swag">
+    <td><span class="row-domain">kivi.nl</span></td>
+    <td><span class="row-name">KIVI (Royal Engineers Society)</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge first">1st HoF</span><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">kliksafe.nl</span></td>
+    <td><span class="row-name">Kliksafe</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">kommunicate.io</span></td>
+    <td><span class="row-name">Kommunicate</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">lacallegroup.com</span></td>
+    <td><span class="row-name">La Calle Group</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">labelradar.com</span></td>
+    <td><span class="row-name">Label Radar</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">lain.la</span></td>
+    <td><span class="row-name">Lain</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="fin" data-country="IS" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">landsbanki.is</span></td>
+    <td><span class="row-name">Landsbanki</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇮🇸 IS</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">leavewizard.com</span></td>
+    <td><span class="row-name">LeaveWizard</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="PL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">lectus24.pl</span></td>
+    <td><span class="row-name">Lectus24</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇵🇱 PL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">lumc.nl</span></td>
+    <td><span class="row-name">Leiden University Medical Center</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="DE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">lennybacon.com</span></td>
+    <td><span class="row-name">LennyBacon</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="CH" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">leuchterag.ch</span></td>
+    <td><span class="row-name">Leuchter AG</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇭 CH</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="GB" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">lloyds.com</span></td>
+    <td><span class="row-name">Lloyd's of London</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="CA" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">looka.com</span></td>
+    <td><span class="row-name">Looka</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇦 CA</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">loopcloud.com</span></td>
+    <td><span class="row-name">Loopcloud</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">loopmasters.com</span></td>
+    <td><span class="row-name">Loopmasters</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="CZ" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">lynt.cz</span></td>
+    <td><span class="row-name">Lynt</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇿 CZ</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">lyricsindia.net</span></td>
+    <td><span class="row-name">Lyrics India</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="1" data-recog="cert">
+    <td><span class="row-domain">maastrichtuniversity.nl</span></td>
+    <td><span class="row-name">Maastricht University</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge cert">Certificate</span></td>
+</tr>
+<tr data-type="corp" data-country="IS" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">marel.com</span></td>
+    <td><span class="row-name">Marel</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇮🇸 IS</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">masterhackers.com</span></td>
+    <td><span class="row-name">MasterHackers</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="NL" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">matchis.nl</span></td>
+    <td><span class="row-name">Matchis (Stem Cell Foundation)</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">mbodigitaal.nl</span></td>
+    <td><span class="row-name">MBO Digitaal</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">mboutrecht.nl</span></td>
+    <td><span class="row-name">MBO Utrecht</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="TW" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">mediatek.com</span></td>
+    <td><span class="row-name">MediaTek</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇹🇼 TW</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">metacode.biz</span></td>
+    <td><span class="row-name">Metacode</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="corp" data-country="FR" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">michelin.com</span></td>
+    <td><span class="row-name">Michelin</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="ID" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">modalku.co.id</span></td>
+    <td><span class="row-name">Modalku / Funding Societies</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇮🇩 ID</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="muni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">gooisemeren.nl</span></td>
+    <td><span class="row-name">Municipality of Gooise Meren</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="muni" data-country="IT" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">comune.preganziol.tv.it</span></td>
+    <td><span class="row-name">Municipality of Preganziol</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇮🇹 IT</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="muni" data-country="NL" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">raalte.nl</span></td>
+    <td><span class="row-name">Municipality of Raalte</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="muni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sudwestfryslan.nl</span></td>
+    <td><span class="row-name">Municipality of Súdwest-Fryslân</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="muni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">veere.nl</span></td>
+    <td><span class="row-name">Municipality of Veere</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="muni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">westerkwartier.nl</span></td>
+    <td><span class="row-name">Municipality of Westerkwartier</span></td>
+    <td><span class="row-type type-muni">Municipality</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">mywage.de</span></td>
+    <td><span class="row-name">MyWage</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">fh-muenster.de</span></td>
+    <td><span class="row-name">Münster Univ. of Applied Sciences</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">narrativv.ai</span></td>
+    <td><span class="row-name">Narrativv AI</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ndiscommission.gov.au</span></td>
+    <td><span class="row-name">NDIS Quality & Safeguards Commission</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ndix.net</span></td>
+    <td><span class="row-name">NDIX (Internet Exchange)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BR" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">nelogica.com.br</span></td>
+    <td><span class="row-name">Nelogica</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇷 BR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="cert">
+    <td><span class="row-domain">neoshare.de</span></td>
+    <td><span class="row-name">Neoshare</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge cert">Certificate</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">networkapp.com</span></td>
+    <td><span class="row-name">NetworkApp</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">nextapp.co</span></td>
+    <td><span class="row-name">NextApp</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">nexus.org</span></td>
+    <td><span class="row-name">Nexus</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">nexxwave.be</span></td>
+    <td><span class="row-name">Nexxwave</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">nitrado.net</span></td>
+    <td><span class="row-name">Nitrado</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="RU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">nodasoft.com</span></td>
+    <td><span class="row-name">Nodasoft / ABCP</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇷🇺 RU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="SE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">nordnet.se</span></td>
+    <td><span class="row-name">Nordnet</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NO" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">norkart.no</span></td>
+    <td><span class="row-name">Norkart</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="NO" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">nhn.no</span></td>
+    <td><span class="row-name">Norsk Helsenett (Health Network)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="NO" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">valg.no</span></td>
+    <td><span class="row-name">Norwegian Directorate of Elections</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="CZ" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">notino.com</span></td>
+    <td><span class="row-name">Notino</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇨🇿 CZ</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="SG" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ntucenterprise.sg</span></td>
+    <td><span class="row-name">NTU Enterprise (Nanyang Tech)</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇸🇬 SG</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="NL" data-first="0" data-top="1" data-recog="swag">
+    <td><span class="row-domain">nwo.nl</span></td>
+    <td><span class="row-name">NWO (Dutch Research Council)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge swag">HoF & Swag</span></td>
+</tr>
+<tr data-type="corp" data-country="IN" data-first="0" data-top="0" data-recog="cert">
+    <td><span class="row-domain">nykaa.com</span></td>
+    <td><span class="row-name">Nykaa</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge cert">Certificate</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">oasen.nl</span></td>
+    <td><span class="row-name">Oasen (Water Utility)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">odav.de</span></td>
+    <td><span class="row-name">ODAV AG</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">onlinetri.com</span></td>
+    <td><span class="row-name">OnlineTri</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">oroinc.com</span></td>
+    <td><span class="row-name">Oro Inc</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">otterbox.com</span></td>
+    <td><span class="row-name">OtterBox</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">paddle.com</span></td>
+    <td><span class="row-name">Paddle</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="TH" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">paocloud.co.th</span></td>
+    <td><span class="row-name">PAO Cloud</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇹🇭 TH</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">paretosecurity.com</span></td>
+    <td><span class="row-name">Pareto Security</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="AU" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ppsr.gov.au</span></td>
+    <td><span class="row-name">Personal Property Securities Register</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="corp" data-country="IT" data-first="0" data-top="1" data-recog="swag">
+    <td><span class="row-domain">pirelli.com</span></td>
+    <td><span class="row-name">Pirelli</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇮🇹 IT</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">pluginboutique.com</span></td>
+    <td><span class="row-name">Plugin Boutique</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">plum-medien.de</span></td>
+    <td><span class="row-name">Plum Medien</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">pmgnet.de</span></td>
+    <td><span class="row-name">PMG</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">polarity.io</span></td>
+    <td><span class="row-name">Polarity</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="EE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">praamid.ee</span></td>
+    <td><span class="row-name">Praamid Estonia</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇪🇪 EE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="cert">
+    <td><span class="row-domain">projectadmission.com</span></td>
+    <td><span class="row-name">Project Admission</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge cert">Certificate</span></td>
+</tr>
+<tr data-type="tech" data-country="CH" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">proton.me</span></td>
+    <td><span class="row-name">Proton AG (ProtonMail/VPN)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇭 CH</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">publiq.be</span></td>
+    <td><span class="row-name">PUBLIQ</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ru.nl</span></td>
+    <td><span class="row-name">Radboud University</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="media" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">rb-media.nl</span></td>
+    <td><span class="row-name">RB Media</span></td>
+    <td><span class="row-type type-media">Media</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="1" data-top="0" data-recog="hof,swag">
+    <td><span class="row-domain">redgames.co</span></td>
+    <td><span class="row-name">Red Games</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge first">1st HoF</span><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="corp" data-country="ES" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">redeia.com</span></td>
+    <td><span class="row-name">Redeia (Spanish Power Grid)</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇪🇸 ES</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">redvilla.tech</span></td>
+    <td><span class="row-name">RedVilla</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="SI" data-first="0" data-top="0" data-recog="ack">
+    <td><span class="row-domain">register.si</span></td>
+    <td><span class="row-name">Register.si (Domain Registry)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇸🇮 SI</td>
+    <td><span class="row-badge ack">Acknowledged</span></td>
+</tr>
+<tr data-type="tech" data-country="ZA" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">rehive.com</span></td>
+    <td><span class="row-name">Rehive</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇿🇦 ZA</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">rently.com</span></td>
+    <td><span class="row-name">Rently</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">resideo.com</span></td>
+    <td><span class="row-name">Resideo Technologies</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">resol.de</span></td>
+    <td><span class="row-name">RESOL (Solar Energy)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="NL" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">rijkzwaan.nl</span></td>
+    <td><span class="row-name">Rijk Zwaan (Global Seeds)</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">roboin.io</span></td>
+    <td><span class="row-name">Roboin</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">rootnet.nl</span></td>
+    <td><span class="row-name">Rootnet</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="NL" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">philips.com</span></td>
+    <td><span class="row-name">Royal Philips</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">safe-connect.com</span></td>
+    <td><span class="row-name">Safe-Connect</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="fin" data-country="SE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sbab.se</span></td>
+    <td><span class="row-name">SBAB Bank</span></td>
+    <td><span class="row-type type-fin">Finance</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">scoleiden.nl</span></td>
+    <td><span class="row-name">SCO Leiden</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="CH" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">seantis.ch</span></td>
+    <td><span class="row-name">Seantis</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇭 CH</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="ZA" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sef.co.za</span></td>
+    <td><span class="row-name">SEF</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇿🇦 ZA</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sendpulse.com</span></td>
+    <td><span class="row-name">SendPulse</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">senzer.nl</span></td>
+    <td><span class="row-name">Senzer (Public Employment)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">shippit.com</span></td>
+    <td><span class="row-name">Shippit</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">shiprocket.in</span></td>
+    <td><span class="row-name">Shiprocket</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">shuttle.eu</span></td>
+    <td><span class="row-name">Shuttle</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sider.nl</span></td>
+    <td><span class="row-name">Sider</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DK" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sif.erda.dk</span></td>
+    <td><span class="row-name">SIF/ERDA (Univ. of Copenhagen)</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇰 DK</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">silfo.nl</span></td>
+    <td><span class="row-name">Silfo</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">simplymadeapps.com</span></td>
+    <td><span class="row-name">Simply Made Apps</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">skipr.co</span></td>
+    <td><span class="row-name">Skipr</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="GB" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">skipso.com</span></td>
+    <td><span class="row-name">Skipso</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="PL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">smseagle.eu</span></td>
+    <td><span class="row-name">SMSEagle</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇵🇱 PL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">snapsendsolve.com</span></td>
+    <td><span class="row-name">Snap Send Solve</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">snel.com</span></td>
+    <td><span class="row-name">Snel.com</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sol1.com.au</span></td>
+    <td><span class="row-name">Sol1</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="pol" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sp.nl</span></td>
+    <td><span class="row-name">SP (Socialist Party NL)</span></td>
+    <td><span class="row-type type-pol">Political</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">sparkhire.com</span></td>
+    <td><span class="row-name">SparkHire</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="ngo" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">stadtfabrikanten.org</span></td>
+    <td><span class="row-name">Stadtfabrikanten</span></td>
+    <td><span class="row-type type-ngo">Nonprofit</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="CZ" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">stickypassword.com</span></td>
+    <td><span class="row-name">Sticky Password</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇿 CZ</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="1" data-top="0" data-recog="hof,swag">
+    <td><span class="row-domain">sutty.nl</span></td>
+    <td><span class="row-name">Sutty</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge first">1st HoF</span><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="gov" data-country="SE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">lakemedelsverket.se</span></td>
+    <td><span class="row-name">Swedish Medical Products Agency</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="SE" data-first="0" data-top="1" data-recog="swag">
+    <td><span class="row-domain">polisen.se</span></td>
+    <td><span class="row-name">Swedish Police Authority</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="FR" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">swile.co</span></td>
+    <td><span class="row-name">Swile</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">swordhealth.com</span></td>
+    <td><span class="row-name">Sword Health</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">tabletoptournaments.net</span></td>
+    <td><span class="row-name">Tabletop Tournaments</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="personal" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">thundersquared.com</span></td>
+    <td><span class="row-name">Thundersquared</span></td>
+    <td><span class="row-type type-personal">Independent</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">thws.de</span></td>
+    <td><span class="row-name">THWS Würzburg-Schweinfurt</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ticketcounter.nl</span></td>
+    <td><span class="row-name">TicketCounter</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">timeblndr.com</span></td>
+    <td><span class="row-name">Timeblndr</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">tngtech.com</span></td>
+    <td><span class="row-name">TNG Technology Consulting</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">todyl.com</span></td>
+    <td><span class="row-name">Todyl</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="CA" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">touchbistro.com</span></td>
+    <td><span class="row-name">TouchBistro</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇦 CA</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="FR" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">transfernow.net</span></td>
+    <td><span class="row-name">TransferNow</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="CH" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">tresorit.com</span></td>
+    <td><span class="row-name">Tresorit</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇨🇭 CH</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">trustedshops.com</span></td>
+    <td><span class="row-name">Trusted Shops</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="EE" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ts.ee</span></td>
+    <td><span class="row-name">Port of Tallinn</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇪 EE</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ts-shipping.com</span></td>
+    <td><span class="row-name">TS Shipping</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">tu-braunschweig.de</span></td>
+    <td><span class="row-name">TU Braunschweig</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">tudelft.nl</span></td>
+    <td><span class="row-name">TU Delft</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="media" data-country="SE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">tv4.se</span></td>
+    <td><span class="row-name">TV4 (Swedish Television)</span></td>
+    <td><span class="row-type type-media">Media</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">twingate.com</span></td>
+    <td><span class="row-name">Twingate</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">tuebingen.ai</span></td>
+    <td><span class="row-name">Tübingen AI Center</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">umcutrecht.nl</span></td>
+    <td><span class="row-name">UMC Utrecht</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="INT" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">unesco.org</span></td>
+    <td><span class="row-name">UNESCO</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🌍 INT</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">united-domains.de</span></td>
+    <td><span class="row-name">United Domains</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">uni-muenster.de</span></td>
+    <td><span class="row-name">University of Münster</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="GB" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">sheffield.ac.uk</span></td>
+    <td><span class="row-name">University of Sheffield</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="GB" data-first="1" data-top="1" data-recog="hof">
+    <td><span class="row-domain">st-andrews.ac.uk</span></td>
+    <td><span class="row-name">University of St Andrews</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇬🇧 GB</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="uni" data-country="FR" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">unistra.fr</span></td>
+    <td><span class="row-name">University of Strasbourg</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇫🇷 FR</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">proto.utwente.nl</span></td>
+    <td><span class="row-name">University of Twente</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">uriports.com</span></td>
+    <td><span class="row-name">URIports</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">urldna.io</span></td>
+    <td><span class="row-name">URLDna</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="NL" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">uwv.nl</span></td>
+    <td><span class="row-name">UWV (Employee Insurance Agency)</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">vectorcrypto.com</span></td>
+    <td><span class="row-name">Vector Crypto</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">getvero.com</span></td>
+    <td><span class="row-name">Vero</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">vicus.nl</span></td>
+    <td><span class="row-name">Vicus</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">videodock.com</span></td>
+    <td><span class="row-name">VideoDock</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="NO" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">visma.com</span></td>
+    <td><span class="row-name">Visma</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="corp" data-country="NL" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">volkerwessels.com</span></td>
+    <td><span class="row-name">VolkerWessels</span></td>
+    <td><span class="row-type type-corp">Corporation</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">unihackers.com</span></td>
+    <td><span class="row-name">Unihackers</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">we-tri.nl</span></td>
+    <td><span class="row-name">We-Tri</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">webador.com</span></td>
+    <td><span class="row-name">Webador</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">westburydigital.com.au</span></td>
+    <td><span class="row-name">Westbury Digital</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="1" data-top="0" data-recog="hof">
+    <td><span class="row-domain">whatfix.com</span></td>
+    <td><span class="row-name">Whatfix</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="AU" data-first="1" data-top="0" data-recog="hof,swag">
+    <td><span class="row-domain">whatismybrowser.com</span></td>
+    <td><span class="row-name">WhatIsMyBrowser</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇦🇺 AU</td>
+    <td><span class="row-badge first">1st HoF</span><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="IT" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">wildix.com</span></td>
+    <td><span class="row-name">Wildix</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇹 IT</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="cert">
+    <td><span class="row-domain">windesheim.nl</span></td>
+    <td><span class="row-name">Windesheim University</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge cert">Certificate</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">wiz.io</span></td>
+    <td><span class="row-name">Wiz (Cloud Security)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="CH" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">informatiebeveiligingsdienst.nl</span></td>
+    <td><span class="row-name">Informatiebeveiligingsdienst (IBD)</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="INT" data-first="0" data-top="1" data-recog="hof">
+    <td><span class="row-domain">who.int</span></td>
+    <td><span class="row-name">World Health Organization</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🌍 INT</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="swag">
+    <td><span class="row-domain">wortell.com</span></td>
+    <td><span class="row-name">Wortell</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="EU" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">xasecase.com</span></td>
+    <td><span class="row-name">Xasecase</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇪🇺 EU</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">xelion.com</span></td>
+    <td><span class="row-name">Xelion</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="NO" data-first="1" data-top="0" data-recog="hof,swag">
+    <td><span class="row-domain">xledger.com</span></td>
+    <td><span class="row-name">Xledger</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇳🇴 NO</td>
+    <td><span class="row-badge first">1st HoF</span><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="SE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">xpd.se</span></td>
+    <td><span class="row-name">XPD</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇸🇪 SE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">yellowduck.be</span></td>
+    <td><span class="row-name">Yellow Duck</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="US" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">zazzle.com</span></td>
+    <td><span class="row-name">Zazzle</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇺🇸 US</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="gov" data-country="DE" data-first="1" data-top="0" data-recog="hof,swag">
+    <td><span class="row-domain">zendis.de</span></td>
+    <td><span class="row-name">ZenDiS — Digital Sovereignty</span></td>
+    <td><span class="row-type type-gov">Government</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge first">1st HoF</span><span class="row-badge swag">Swag</span></td>
+</tr>
+<tr data-type="tech" data-country="IN" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">zeptonow.com</span></td>
+    <td><span class="row-name">Zepto</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇮🇳 IN</td>
+    <td><span class="row-badge first">1st HoF</span></td>
+</tr>
+<tr data-type="tech" data-country="BE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">zetes.com</span></td>
+    <td><span class="row-name">Zetes</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇧🇪 BE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="tech" data-country="DE" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">zieglergroup.com</span></td>
+    <td><span class="row-name">Ziegler Group</span></td>
+    <td><span class="row-type type-tech">Company</span></td>
+    <td>🇩🇪 DE</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="health" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">ziekenhuisamstelland.nl</span></td>
+    <td><span class="row-name">Ziekenhuis Amstelland</span></td>
+    <td><span class="row-type type-health">Healthcare</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">zonecollege.nl</span></td>
+    <td><span class="row-name">Zone College</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr>
+<tr data-type="uni" data-country="NL" data-first="0" data-top="0" data-recog="hof">
+    <td><span class="row-domain">zuyd.nl</span></td>
+    <td><span class="row-name">Zuyd University</span></td>
+    <td><span class="row-type type-uni">University</span></td>
+    <td>🇳🇱 NL</td>
+    <td><span class="row-badge-default">Hall of Fame</span></td>
+</tr></tbody></table></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="container">
+<h2>Let's work together</h2>
+<p>Available for penetration testing, red team operations, security consulting, and bug bounty program management.</p>
+<div class="contact-links">
+<a href="https://calendly.com/scriptjacker/30min" target="_blank" class="btn btn-primary">Book a Call</a>
+<a href="mailto:parth.narula@scriptjacker.in" class="btn btn-ghost">Email me</a>
+<a href="https://www.linkedin.com/in/parth-narula-86283821a" target="_blank" class="btn btn-ghost">LinkedIn</a>
+<a href="https://x.com/scriptjacker" target="_blank" class="btn btn-ghost">Twitter</a>
+<a href="https://github.com/scriptjacker" target="_blank" class="btn btn-ghost">GitHub</a>
+</div></div></section>
+
+<footer class="footer"><div class="container"><p>Parth Narula (ScriptJacker). All findings were responsibly disclosed.</p></div></footer>
+
+<script>
+function toggleTheme(){const b=document.body,t=document.getElementById('themeToggle');if(b.getAttribute('data-theme')==='light'){b.removeAttribute('data-theme');t.textContent='☀️'}else{b.setAttribute('data-theme','light');t.textContent='🌙'}}
+let currentFilter='all',searchTerm='';
+function filterDirectory(){const rows=document.querySelectorAll('#dirBody tr');let visible=0;rows.forEach(row=>{const domain=row.cells[0].textContent.toLowerCase(),name=row.cells[1].textContent.toLowerCase(),typeText=row.dataset.type,country=row.cells[3].textContent.toLowerCase(),recog=row.dataset.recog||'',isFirst=row.dataset.first==='1',isTop=row.dataset.top==='1';let show=true;if(currentFilter==='top'){if(!isTop)show=false}else if(currentFilter==='government'){if(typeText!=='gov'&&typeText!=='muni')show=false}else if(currentFilter==='university'){if(typeText!=='uni')show=false}else if(currentFilter==='corporation'){if(typeText!=='corp')show=false}else if(currentFilter==='finance'){if(typeText!=='fin')show=false}else if(currentFilter==='media'){if(typeText!=='media')show=false}else if(currentFilter==='company'){if(typeText!=='tech')show=false}else if(currentFilter==='first'){if(!isFirst)show=false}else if(currentFilter==='swag'){if(!recog.includes('swag'))show=false};if(searchTerm){const q=searchTerm.toLowerCase();if(!domain.includes(q)&&!name.includes(q)&&!country.includes(q))show=false};row.style.display=show?'':'none';if(show)visible++});document.getElementById('dirCount').textContent='Showing '+visible+' of 330 findings'}
+document.querySelectorAll('.dir-tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.dir-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');currentFilter=tab.dataset.filter;filterDirectory()})});
+document.getElementById('dirSearch').addEventListener('input',e=>{searchTerm=e.target.value;filterDirectory()});
+</script>
+</body></html>
