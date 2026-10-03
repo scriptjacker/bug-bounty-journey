@@ -111,7 +111,8 @@ writeFileSync(root + "data/orgs.json", JSON.stringify({
 }));
 
 /* Gallery fixes: wrong extension on one letter, one screenshot that was on disk but never listed. */
-const fixed = items.map((it) => (it.src === "assets/letters/wortell.jpg" ? { ...it, src: "assets/letters/wortell.jpeg" } : it));
+const fixed = items.map((it) => (it.src === "assets/letters/wortell.jpg" ? { ...it, src: "assets/letters/wortell.jpeg" } : it))
+  .map((it) => (it.domain === "rijkzwaan.com" ? { ...it, domain: "rijkzwaan.nl" } : it)); // match the directory entry
 fixed.push({ src: "assets/hof/simpleinout.jpeg", title: "Simple In/Out", domain: "simpleinout.com", category: "hof" });
 for (const it of fixed) if (!existsSync(root + it.src)) throw new Error("Missing " + it.src);
 writeFileSync(root + "data/gallery.json", JSON.stringify(fixed, null, 1));
