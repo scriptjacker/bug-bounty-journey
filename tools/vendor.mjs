@@ -14,7 +14,7 @@ const ICONS = [
   "command", "list", "x", "shield-check", "bug", "key", "lock-key-open", "puzzle-piece", "plugs-connected",
   "device-mobile", "robot", "network", "trophy", "certificate", "medal", "gift", "seal-check", "graduation-cap",
   "briefcase", "quotes", "caret-left", "caret-right", "arrows-out", "user-switch", "fingerprint", "article",
-  "flag", "terminal-window", "globe-hemisphere-west", "files", "identification-card", "phone", "pen-nib",
+  "flag", "terminal-window", "globe-hemisphere-west", "files", "identification-card", "pen-nib",
 ];
 const symbols = ICONS.map((name) => {
   const svg = readFileSync(`${nm}@phosphor-icons/core/assets/regular/${name}.svg`, "utf8");
