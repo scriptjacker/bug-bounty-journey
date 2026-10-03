@@ -4,7 +4,7 @@
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const REC = { hof: "Hall of Fame", swag: "Swag", cert: "Certificate", letter: "Letter of appreciation", cve: "CVEs", ack: "Acknowledged", gift: "Gift card" };
 const showCountry = (code) => code !== "EU" && code !== "INT";
-const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"/></svg>`;
+const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=ee130414#i-arrow-up-right"/></svg>`;
 
 export function prepare(data, gallery = []) {
   const countryName = Object.fromEntries(data.countries.map((c) => [c.code, c.name]));
@@ -85,6 +85,8 @@ export function siteStats(d, gallery = []) {
     galleryHof: gallery.filter((g) => g.category === "hof").length,
     galleryLetters: gallery.filter((g) => g.category === "letter" || g.category === "cert").length,
     gallerySwag: gallery.filter((g) => g.category === "swag").length,
+    galleryAwards: gallery.filter((g) => g.category === "award").length,
+    galleryCredentials: gallery.filter((g) => g.category === "credential").length,
     sector: Object.fromEntries(Object.keys(d.sectors).map((k) => [k, count((o) => o.sector === k)])),
     topCountries: mapped.slice().sort((a, b) => b.count - a.count).slice(0, 7),
   };

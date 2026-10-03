@@ -55,7 +55,8 @@ const urlOf = new Map(d.orgs.filter((o) => o.url).map((o) => [o.domain, o.url]))
 for (const g of gallery) {
   if (g.category === "hof" && urlOf.has(g.domain)) g.url = urlOf.get(g.domain);
   else delete g.url;
-  if (!d.orgs.some((o) => o.domain === g.domain)) console.warn(`gallery: ${g.src} points to ${g.domain}, which is not in orgs`);
+  const fromOrg = ["hof", "letter", "cert", "swag"].includes(g.category); // "award" and "credential" are my own records
+  if (fromOrg && !d.orgs.some((o) => o.domain === g.domain)) console.warn(`gallery: ${g.src} points to ${g.domain}, which is not in orgs`);
 }
 writeFileSync(galleryFile, JSON.stringify(gallery, null, 1));
 const mapped = d.countries.filter((c) => c.lat !== null && c.count).length;

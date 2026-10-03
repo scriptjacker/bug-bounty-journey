@@ -54,6 +54,8 @@ page("gallery.html", (p) => {
   p.count("hof", s.galleryHof);
   p.count("letter", s.galleryLetters);
   p.count("swag", s.gallerySwag);
+  p.count("award", s.galleryAwards);
+  p.count("credential", s.galleryCredentials);
 });
 
 console.log(`prerendered: ${s.listed} organizations, ${s.countries} countries, ${d.prestige.length} top names, ${s.galleryAll} gallery items`);

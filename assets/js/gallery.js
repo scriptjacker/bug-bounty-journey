@@ -1,7 +1,7 @@
 // Proof archive: filters, search, masonry grid and a keyboard friendly lightbox with zoom and
 // a link to the live page the screenshot came from.
 const $ = (s, r = document) => r.querySelector(s);
-const LABEL = { hof: "Hall of Fame", letter: "Letter", cert: "Certificate", swag: "Swag" };
+const LABEL = { hof: "Hall of Fame", letter: "Letter", cert: "Certificate", swag: "Swag", award: "Competition", credential: "Certification" };
 const variant = (src, w) => src.replace(/^assets\/([^/]+)\/(.+)\.[a-z]+$/i, `assets/img/$1/$2-${w}.webp`);
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
@@ -10,7 +10,7 @@ const result = $("[data-result]");
 const search = $("[data-search]");
 const chips = [...document.querySelectorAll("[data-filter]")];
 const params = new URLSearchParams(location.search);
-let filter = ["hof", "letter", "swag"].includes(params.get("category")) ? params.get("category") : "all";
+let filter = ["hof", "letter", "swag", "award", "credential"].includes(params.get("category")) ? params.get("category") : "all";
 let query = params.get("q") || "";
 let items = [], view = [];
 
@@ -35,7 +35,7 @@ function render() {
   result.textContent = view.length === items.length ? `Showing all ${items.length} items` : `Showing ${view.length} of ${items.length} items`;
   grid.removeAttribute("aria-busy");
   if (!view.length) {
-    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Not every organization has a screenshot here. Try the <a class="link" href="recognition.html?q=${encodeURIComponent(query)}">organizations list</a>.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
+    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=ee130414#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Not every organization has a screenshot here. Try the <a class="link" href="recognition.html?q=${encodeURIComponent(query)}">organizations list</a>.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
     grid.style.columns = "auto";
     return;
   }
@@ -95,7 +95,7 @@ function show(i) {
   verify.hidden = !live;
   if (live) {
     verify.href = live;
-    verify.firstChild.textContent = it.verify ? "Verify the certificate" : "Open the live page";
+    verify.firstChild.textContent = it.verify && it.category !== "award" ? "Verify the certificate" : "Open the live page";
   }
   setZoom(false);
   // Warm up the neighbours so arrowing through feels instant.
@@ -143,8 +143,8 @@ box.addEventListener("pointerup", (e) => { if (x0 === null) return; const dx = e
 fetch("data/gallery.json")
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then((data) => {
-    // Hall of Fame first, then letters and certificates, then swag; alphabetical inside each group.
-    const order = { hof: 0, letter: 1, cert: 1, swag: 2 };
+    // Hall of Fame first, then letters, competitions, certifications and swag.
+    const order = { hof: 0, letter: 1, cert: 1, award: 2, credential: 3, swag: 4 };
     items = data.sort((a, b) => order[a.category] - order[b.category] || a.title.localeCompare(b.title));
     const count = (f) => items.filter((it) => f === "all" || it.category === f || (f === "letter" && it.category === "cert")).length;
     document.querySelectorAll("[data-count-for]").forEach((el) => (el.textContent = count(el.dataset.countFor)));

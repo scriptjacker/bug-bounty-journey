@@ -647,6 +647,8 @@ a.role__org:hover { color: var(--red); border-color: var(--red); }
 .wins b { font-family: var(--stencil); font-weight: 800; font-size: 1.5rem; line-height: 1; color: var(--red); white-space: nowrap; }
 .wins li:first-child b { font-size: 1.3rem; }
 .wins span { font-size: 0.95rem; }
+.inline-link { color: var(--text); border-bottom: 1px solid var(--red-line); white-space: nowrap; }
+.inline-link:hover { color: var(--red); border-color: var(--red); }
 .side-note { margin-top: 10px; font-family: var(--mono); font-size: 0.74rem; color: var(--text-3); }
 .certs li { display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line); }
 .certs b { font-family: var(--mono); font-size: 0.82rem; font-weight: 700; }

@@ -10,8 +10,9 @@
     "serve": "npx --yes serve -l 4173 .",
     "assets": "node tools/build-assets.mjs",
     "prerender": "node tools/prerender.mjs",
-    "build": "npm run data && npm run images && npm run globe && npm run prerender && npm run assets",
-    "data": "node tools/sync-data.mjs"
+    "build": "npm run data && npm run images && npm run globe && npm run prerender && npm run assets && npm run stamp",
+    "data": "node tools/sync-data.mjs",
+    "stamp": "node tools/version.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

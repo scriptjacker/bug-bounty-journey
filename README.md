@@ -30,7 +30,7 @@ To preview locally: `npm run serve` (or any static file server) and open http://
 | --- | --- |
 | Text on the homepage | `index.html` |
 | Organizations, sectors, countries, Top 50 | `data/orgs.json` |
-| Proof archive items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert` or `swag`; optional `verify` link for a certificate) |
+| Proof archive items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert`, `swag`, `award` for competition results or `credential` for my certifications; optional `verify` link) |
 | CV content | `tools/templates/cv.html` |
 | Colors, type, spacing | `assets/css/site.css` (tokens at the top) |
 
@@ -49,7 +49,7 @@ Add one line to the `orgs` list in `data/orgs.json`:
 - `url` (optional): the public Hall of Fame page. It shows as a "Public page" link in the directory and on the matching screenshots.
 - `note` (optional): a short line shown under the name, for example `"Sent a Steam gift card"`
 
-Then run `npm run data && npm run globe && npm run prerender`. Every count on the site updates by itself.
+Then run `npm run data && npm run globe && npm run prerender && npm run stamp`. Every count on the site updates by itself.
 
 After changing data or images, run the matching script. `npm install` once first.
 
@@ -59,11 +59,14 @@ npm run globe      # data/orgs.json changed -> globe land dots and country marke
 npm run prerender  # data/orgs.json changed -> rewrites the directory inside recognition.html
 npm run assets     # favicon and app icons, social share image, static globe images and the CV PDF
 npm run vendor     # fonts and the icon sprite (cuts fonts down when pyftsubset is installed)
+npm run stamp      # run last: stamps CSS, JS, icon and CV links with a content version (?v=...)
 npm run data       # validate data/orgs.json and recount countries
 npm run build      # all of the above
 ```
 
-Adding a new proof image: put the file in `assets/hof/` (or `letters`, `certs`, `swag`), add an entry to `data/gallery.json`, run `npm run images`. If you skip the script the gallery still works and shows the original file.
+Adding a new proof image: put the file in `assets/hof/` (or `letters`, `certs`, `swag`, `awards`, `credentials`), add an entry to `data/gallery.json`, run `npm run images`. If you skip the script the archive still works and shows the original file.
+
+Why `npm run stamp` matters: browsers and Hostinger's cache keep old copies of CSS and JS. The stamp gives every changed file a new address, so nobody ever sees new pages with an old stylesheet.
 
 ## How it is built
 

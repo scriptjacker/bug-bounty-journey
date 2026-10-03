@@ -1,5 +1,39 @@
 [
  {
+  "src": "assets/awards/hackwithindia-2026.jpg",
+  "title": "HackWithIndia 2026, rank 21 of 10,000",
+  "domain": "hackwithindia.com",
+  "category": "award",
+  "verify": "https://hackwithindia.com/leaderboard",
+  "w": 1432,
+  "h": 956
+ },
+ {
+  "src": "assets/credentials/apisec-acp.jpg",
+  "title": "APIsec Certified Practitioner (ACP)",
+  "domain": "apisecuniversity.com",
+  "category": "credential",
+  "verify": "https://www.credly.com/badges/c76aac88-699c-4b1f-99c5-0c6c7231a18a",
+  "w": 1121,
+  "h": 856
+ },
+ {
+  "src": "assets/credentials/ceh-v13.jpg",
+  "title": "Certified Ethical Hacker (CEH), ECC7154890236",
+  "domain": "eccouncil.org",
+  "category": "credential",
+  "w": 2000,
+  "h": 1581
+ },
+ {
+  "src": "assets/credentials/ejpt-v2.jpg",
+  "title": "eJPT, certification ID 171442005",
+  "domain": "ine.com",
+  "category": "credential",
+  "w": 600,
+  "h": 464
+ },
+ {
   "src": "assets/certs/neoshare.jpg",
   "title": "Neoshare",
   "domain": "neoshare.de",

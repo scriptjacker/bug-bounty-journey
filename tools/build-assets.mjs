@@ -1,3 +1,4 @@
+// Pass one part to build only that part:  node tools/build-assets.mjs cv   (icons, og, globe or cv)
 // Renders brand assets: favicons, apple touch icon, manifest icons (from tools/templates/icon.svg.mjs),
 // the social share image (assets/og.jpg) and the CV PDF. Run:  npm run assets
 import { createServer } from "node:http";
@@ -20,8 +21,11 @@ const server = createServer(async (req, res) => {
 }).listen(0);
 const base = `http://127.0.0.1:${server.address().port}`;
 
+const only = process.argv[2];
+const want = (part) => !only || only === part;
 const browser = await chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
 
+if (want("icons")) {
 // Icons, all from one SVG drawing so the favicon, app icons and touch icon always match.
 const plain = Buffer.from(iconSVG());
 const full = Buffer.from(iconSVG({ full: true }));
@@ -31,7 +35,9 @@ await sharp(plain, { density: 300 }).resize(192).png().toFile(join(root, "assets
 await sharp(full, { density: 300 }).resize(512).png().toFile(join(root, "assets/icon-maskable-512.png"));
 await sharp(full, { density: 300 }).resize(180).png().toFile(join(root, "apple-touch-icon.png"));
 execFileSync("convert", [join(root, "assets/icon-512.png"), "-define", "icon:auto-resize=48,32,16", join(root, "favicon.ico")]);
+}
 
+if (want("og")) {
 // Social share image
 const og = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1, colorScheme: "dark" });
 await og.goto(`${base}/tools/templates/og.html`, { waitUntil: "networkidle" });
@@ -39,7 +45,9 @@ await og.evaluate(() => document.fonts.ready);
 await og.waitForTimeout(1500);
 await sharp(await og.screenshot()).jpeg({ quality: 86, mozjpeg: true }).toFile(join(root, "assets/og.jpg"));
 await og.close();
+}
 
+if (want("globe")) {
 // Static globe for devices without a usable GPU (WebGL refuses software rendering there).
 for (const theme of ["dark", "light"]) {
   const g = await browser.newPage({ viewport: { width: 1000, height: 1000 }, deviceScaleFactor: 1 });
@@ -49,14 +57,17 @@ for (const theme of ["dark", "light"]) {
   await sharp(png).resize(820).webp({ quality: 82, alphaQuality: 90 }).toFile(join(root, `assets/img/globe-${theme}.webp`));
   await g.close();
 }
+}
 
+if (want("cv")) {
 // CV
 const cv = await browser.newPage();
 await cv.goto(`${base}/tools/templates/cv.html`, { waitUntil: "networkidle" });
 await cv.evaluate(() => document.fonts.ready);
 await cv.pdf({ path: join(root, "Parth-Narula-CV.pdf"), format: "A4", printBackground: true, preferCSSPageSize: true, tagged: true, outline: false });
 await cv.close();
+}
 
 await browser.close();
 server.close();
-console.log("assets: icons, favicon.svg, og.jpg and CV built");
+console.log(`assets built: ${only || "icons, og, globe and cv"}`);
