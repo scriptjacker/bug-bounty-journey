@@ -1,69 +1,68 @@
-# Bug Bounty Journey
+# Parth Narula, security researcher
 
-A public bug bounty portfolio and proof-of-work archive for Parth Narula, also known as ScriptJacker.
+Portfolio of Parth Narula (ScriptJacker). One site that combines the old personal portfolio and the bug bounty proof archive.
 
-Live site: https://bugbounty.scriptjacker.in
+- **Home** (`index.html`): who I am, what I test, highlights, experience, testimonials, writing, contact. Interactive WebGL globe built from the real recognition data.
+- **Proof of work** (`gallery.html`): 201 Hall of Fame screenshots, letters, certificates and swag photos with filters, search and a lightbox.
+- **Organizations** (`recognition.html`): the Top 50 and all 330 publicly listed organizations, filterable and searchable.
+- **CV** (`Parth-Narula-CV.pdf`): one page, text based, readable by applicant tracking systems.
 
-## About This Project
+It is a plain static site. No framework, no server code and no build step is needed to host it.
 
-This website documents my bug bounty and responsible disclosure journey. It brings together my public recognitions, Hall of Fame entries, proof-of-work screenshots, certificates, appreciation letters, swag, and security research milestones in one place.
+## Hosting
 
-I created it so companies, recruiters, founders, CEOs, security teams, collaborators, and fellow bug hunters can quickly understand my work, experience, and credibility as a security researcher.
+Upload the repository contents (everything except `node_modules/`) to any static host.
 
-## What Is Included
+**Hostinger (current host)**
 
-- A public portfolio of my bug bounty journey
-- 335+ listed organization recognitions
-- 400+ total recognized organizations, including private or non-disclosable recognitions
-- 250+ Hall of Fame recognitions
-- 40+ first-researcher Hall of Fame entries
-- Recognitions across 35+ countries
-- Work involving governments, universities, hospitals, finance, media, technology companies, and critical infrastructure
-- A searchable recognition directory
-- A proof-of-work gallery with Hall of Fame screenshots, certificates, letters, and swag
+1. hPanel, Websites, Manage, File Manager, open `public_html` of the domain.
+2. Upload the files and folders, keeping the structure. `.htaccess` must be included: it sets the security headers, caching, compression and the 404 page.
+3. Or connect this GitHub repository under Advanced, Git, so a push deploys the site.
 
-## Purpose
+**Other hosts** (GitHub Pages, Netlify, Cloudflare Pages, Vercel): point them at the repository root with no build command. `.htaccess` only applies to Apache or LiteSpeed; copy the headers from it into the host's own header settings for the same protection.
 
-The purpose of this project is to keep a transparent, organized record of my security research journey.
+To preview locally: `npm run serve` (or any static file server) and open http://localhost:4173. Opening the HTML file directly from disk will not work because the pages load JSON and ES modules.
 
-It also acts as a professional profile for people who want to:
+## Editing content
 
-- hire me for security research or penetration testing
-- collaborate on security work
-- verify my public recognitions
-- understand the types of organizations I have helped secure
-- review my proof of work before contacting me
-- learn from how a bug bounty journey can be documented over time
+| What | Where |
+| --- | --- |
+| Text on the homepage | `index.html` |
+| Organizations, sectors, countries, Top 50 | `data/orgs.json` |
+| Gallery items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert` or `swag`) |
+| CV content | `tools/templates/cv.html` |
+| Colors, type, spacing | `assets/css/site.css` (tokens at the top) |
 
-## Proof Of Work
+After changing data or images, run the matching script. `npm install` once first.
 
-The gallery contains public proof-of-work material such as:
+```bash
+npm run images     # new or changed gallery images -> web sized WebP in assets/img
+npm run globe      # data/orgs.json changed -> globe land dots and country markers
+npm run prerender  # data/orgs.json changed -> rewrites the directory inside recognition.html
+npm run assets     # favicon, social share image, static globe images and the CV PDF
+npm run build      # all of the above
+```
 
-- Hall of Fame screenshots
-- certificates
-- appreciation letters
-- swag photos
+Adding a new proof image: put the file in `assets/hof/` (or `letters`, `certs`, `swag`), add an entry to `data/gallery.json`, run `npm run images`. If you skip the script the gallery still works and shows the original file.
 
-Some recognitions are not listed or are intentionally summarized because of non-disclosure requirements or program policy restrictions.
+## How it is built
+
+- **Type**: Geist and Geist Mono, self hosted (`assets/fonts`).
+- **Icons**: Phosphor Icons (MIT) compiled into one sprite, `assets/icons.svg`.
+- **Globe**: hand written WebGL (`assets/js/globe.js`), about 25 KB of land data from Natural Earth via `world-atlas`. It refuses software rendering, so devices without a real GPU get a pre rendered image instead, and it lowers its own resolution or stops idle spinning if the frame rate drops.
+- **Motion**: CSS transitions and IntersectionObserver only. Everything respects `prefers-reduced-motion`.
+- **Themes**: dark and light, following the system setting with a manual toggle.
+- **Search**: press Ctrl K or Cmd K (or `/`) anywhere to search sections, actions and every listed organization.
+- **Security**: strict Content Security Policy with no inline scripts or styles, HSTS, frame denial and a `/.well-known/security.txt`.
+- **Checked with**: Lighthouse (100 for accessibility, best practices and SEO on every page), axe-core (no violations in either theme), html-validate (no errors).
+
+## Disclosure and privacy
+
+Only public, approved or safe to share material is published here. Private vulnerability details, internal URLs, credentials, customer data and undisclosed reports are never included. Some recognitions are not listed because of non disclosure agreements or program policy.
 
 ## Contact
 
-For security research, collaboration, hiring, or consulting inquiries:
-
-- Website: https://bugbounty.scriptjacker.in
-- Calendly: https://calendly.com/scriptjacker/30min
+- Email: parth.narula@scriptjacker.in
+- Book a call: https://calendly.com/scriptjacker/30min
+- LinkedIn: https://www.linkedin.com/in/parth-narula-86283821a/
 - Medium: https://scriptjacker.medium.com
-
-## Disclosure And Privacy
-
-This repository is intended to contain only public, approved, or safe-to-share material.
-
-Private vulnerability details, sensitive screenshots, internal URLs, credentials, tokens, customer data, and undisclosed reports should not be published here.
-
-All listed work is presented as a record of responsible disclosure and recognition, while respecting each organization's disclosure policy.
-
-## Author
-
-Parth Narula / ScriptJacker
-
-Security researcher focused on responsible disclosure, bug bounty, and helping organizations identify vulnerabilities before they can be abused.

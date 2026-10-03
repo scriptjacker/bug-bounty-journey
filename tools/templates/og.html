@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="dark" class="js is-ready">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body::after { opacity: 0.05; }
+  .og { position: relative; width: 1200px; height: 630px; padding: 64px 72px; display: flex; flex-direction: column; justify-content: space-between;
+        background: radial-gradient(60% 90% at 85% 50%, rgba(63,220,154,0.10), transparent 70%), var(--bg); }
+  .og .brand { font-size: 22px; }
+  .og .brand__mark { width: 40px; height: 40px; font-size: 14px; border-radius: 11px; }
+  .og h1 { font-size: 92px; line-height: 0.95; letter-spacing: -0.055em; font-weight: 600; }
+  .og h1 small { display: block; margin-top: 18px; font-size: 30px; letter-spacing: -0.015em; font-weight: 500; color: var(--text-2); }
+  .og-stats { display: flex; gap: 40px; }
+  .og-stats b { display: block; font-family: var(--mono); font-size: 38px; font-weight: 500; letter-spacing: -0.04em; color: var(--accent); }
+  .og-stats span { font-size: 17px; color: var(--text-2); }
+  .og-url { position: absolute; right: 72px; bottom: 64px; font-family: var(--mono); font-size: 18px; color: var(--text-3); }
+  .og .globe { position: absolute; left: auto; right: -120px; top: 15px; width: 600px; height: 600px; inset: 15px -110px auto auto; }
+</style>
+</head>
+<body>
+  <div class="og">
+    <div class="globe" data-globe data-globe-force><canvas></canvas><div class="globe__labels"></div></div>
+    <p class="brand"><span class="brand__mark">PN</span><span>Parth Narula</span></p>
+    <h1>Parth Narula<small>Security researcher and penetration tester</small></h1>
+    <div class="og-stats">
+      <p><b>425+</b><span>organizations secured</span></p>
+      <p><b>250+</b><span>Halls of Fame</span></p>
+      <p><b>45</b><span>times the first researcher</span></p>
+    </div>
+    <p class="og-url">parthnarula.scriptjacker.in</p>
+  </div>
+  <script type="module">
+    import { mountGlobe } from "/assets/js/globe.js";
+    mountGlobe(document.querySelector("[data-globe]"));
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" data-theme="dark" class="js is-ready">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+  html, body { width: 1000px; height: 1000px; overflow: hidden; background: transparent !important; }
+  body::after { display: none; }
+  .globe { position: absolute; inset: 0; }
+  .globe::before { display: none; }
+</style>
+<script>if (location.search.includes("light")) document.documentElement.dataset.theme = "light";</script>
+</head>
+<body>
+  <div class="globe" data-globe data-globe-force><canvas></canvas><div class="globe__labels"></div></div>
+  <script type="module">
+    import { mountGlobe } from "/assets/js/globe.js";
+    mountGlobe(document.querySelector("[data-globe]"));
+  </script>
+</body>
+</html>

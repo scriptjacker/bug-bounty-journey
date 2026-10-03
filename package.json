@@ -1,0 +1,29 @@
+{
+  "name": "parth-narula-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio of Parth Narula (ScriptJacker). Static site, no build step needed to host it.",
+  "scripts": {
+    "images": "node tools/build-images.mjs",
+    "globe": "node tools/build-globe.mjs",
+    "vendor": "node tools/vendor.mjs",
+    "check": "node tools/check.mjs",
+    "serve": "npx --yes serve -l 4173 .",
+    "assets": "node tools/build-assets.mjs",
+    "prerender": "node tools/prerender.mjs",
+    "build": "npm run images && npm run globe && npm run prerender && npm run assets"
+  },
+  "devDependencies": {
+    "@fontsource-variable/geist": "^5.2.0",
+    "@fontsource-variable/geist-mono": "^5.2.0",
+    "@fontsource/geist": "^5.3.0",
+    "@fontsource/geist-mono": "^5.3.0",
+    "@phosphor-icons/core": "^2.1.1",
+    "d3-geo": "^3.1.1",
+    "opentype.js": "^2.0.0",
+    "playwright": "^1.56.1",
+    "sharp": "^0.34.0",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  }
+}
