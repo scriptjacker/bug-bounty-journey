@@ -9,6 +9,46 @@
   "h": 956
  },
  {
+  "src": "assets/awards/rootbreach-2026.jpg",
+  "title": "Root Breach CTF, first place, UTKANSH 2026, NIT Jalandhar",
+  "domain": "nitj.ac.in",
+  "category": "award",
+  "w": 1216,
+  "h": 854
+ },
+ {
+  "src": "assets/awards/encrypted-ctf-2025.jpg",
+  "title": "Encrypted CTF, rank 1, ThunderCipher, Nov 2025",
+  "domain": "thundercipher",
+  "category": "award",
+  "w": 2000,
+  "h": 1414
+ },
+ {
+  "src": "assets/awards/xploit404-2026.jpg",
+  "title": "Xploit404 CTF, second place, LPU, Apr 2026",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 2000,
+  "h": 1414
+ },
+ {
+  "src": "assets/awards/cyberwar-2026.jpg",
+  "title": "Cyber War 2026 CTF prize ceremony, LPU (Quick Heal and CompTIA)",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 2000,
+  "h": 1126
+ },
+ {
+  "src": "assets/awards/trivarna-2026.jpg",
+  "title": "Trivarna CTF 2026 by Astitwam, certificate TRIVARNA-2026-0015",
+  "domain": "astitwam",
+  "category": "award",
+  "w": 2000,
+  "h": 1414
+ },
+ {
   "src": "assets/credentials/apisec-acp.jpg",
   "title": "APIsec Certified Practitioner (ACP)",
   "domain": "apisecuniversity.com",

@@ -68,6 +68,18 @@ Adding a new proof image: put the file in `assets/hof/` (or `letters`, `certs`, 
 
 Why `npm run stamp` matters: browsers and Hostinger's cache keep old copies of CSS and JS. The stamp gives every changed file a new address, so nobody ever sees new pages with an old stylesheet.
 
+## Verify mode
+
+The homepage has a verify mode (the "Verify my work" button, the floating button, or a link to `/?verify`). It highlights every claim and tags it with its source. To add or change a claim, put these attributes on the element in `index.html`:
+
+```html
+<li data-claim="1st at Root Breach CTF" data-src="gallery.html?q=root%20breach" data-src-label="Certificate">...</li>
+```
+
+- `data-claim`: a short name for the claim, read out in the verify bar
+- `data-src`: where to check it (a page on this site or a public link). Leave it out for something real but private: the tag then offers the proof by email.
+- `data-src-label`: what the source is, shown on the tag
+
 ## How it is built
 
 - **Identity**: the red box. On every Hall of Fame screenshot the name is boxed in red, so the site uses the language of a disclosure report: redaction bars for what can't be published yet, case files, stamps.

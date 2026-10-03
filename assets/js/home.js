@@ -1,7 +1,7 @@
 // Homepage only: the lit wall of Hall of Fame screenshots, the scope panels, the sideways case files,
 // the drifting name lists and the desk of swag you can pick up. Everything here is progressive:
 // without JavaScript the page still reads top to bottom.
-import { WALL } from "./wall-data.js?v=ee130414";
+import { WALL } from "./wall-data.js?v=87fec694";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -240,3 +240,21 @@ if (desk) {
     card.addEventListener("dragstart", (e) => e.preventDefault());
   });
 }
+
+/* ---------- Verify mode: the source behind every claim (verify.js loads on first use) ---------- */
+let verifyMod;
+const loadVerify = async () => (verifyMod ??= await import("./verify.js?v=87fec694"));
+const toggles = $$("[data-verify-toggle]");
+toggles.forEach((t) => {
+  if (t.tagName === "A") t.setAttribute("role", "button");
+  t.setAttribute("aria-pressed", "false");
+  t.addEventListener("click", async (e) => { e.preventDefault(); (await loadVerify()).toggleVerify(); });
+});
+const fab = $(".verify-fab");
+if (fab && hero) {
+  fab.hidden = false;
+  new IntersectionObserver(([e]) => fab.classList.toggle("is-shown", !e.isIntersecting)).observe(hero);
+}
+let verifyAtStart = new URLSearchParams(location.search).has("verify");
+try { verifyAtStart ||= sessionStorage.getItem("verify") === "1"; } catch {}
+if (verifyAtStart) loadVerify().then((m) => m.setVerify(true));

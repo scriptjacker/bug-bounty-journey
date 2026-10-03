@@ -716,6 +716,51 @@ a.role__org:hover { color: var(--red); border-color: var(--red); }
 .footer__base kbd { font-size: 0.72rem; border: 1px solid var(--line-2); border-radius: 2px; padding: 1px 5px; }
 @media (max-width: 899px) { .footer__grid { grid-template-columns: 1fr 1fr; } .footer__grid > div:first-child { grid-column: 1 / -1; } }
 
+/* ---------- Verify mode ----------
+   Claims get highlighted like a marked up document: red for claims with a public source, grey for
+   claims that are private and available on request. The tag sits inline after the claim. */
+.verify-on [data-claim] { position: relative; background-color: var(--red-soft); outline: 1px dashed var(--red-line); outline-offset: 0; transition: outline-color 0.3s; }
+.verify-on [data-claim].claim--private { background-color: color-mix(in srgb, var(--text) 6%, transparent); outline-color: var(--line-2); }
+.verify-on [data-claim].claim--current { outline: 2px solid var(--red); }
+@media (prefers-reduced-motion: no-preference) { .verify-on [data-claim].claim--current { animation: claim-flash 0.9s var(--ease); } }
+@keyframes claim-flash { 0% { outline-offset: 10px; outline-color: transparent; } 100% { outline-offset: 0; } }
+.claim-tag {
+  display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; vertical-align: 0.12em; white-space: nowrap;
+  padding: 2px 7px 1px; background: var(--red-bg); color: var(--red-ink); font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  font-style: normal; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.35; border: 0;
+}
+.claim-tag .ic { width: 11px; height: 11px; }
+.claim-tag:hover { background: color-mix(in srgb, var(--red-bg) 80%, #000); }
+.claim--private .claim-tag { background: var(--surface-2); color: var(--text); outline: 1px solid var(--line-2); }
+.ledger__cell .claim-tag, .reply > .claim-tag { position: absolute; right: 12px; top: 12px; margin: 0; }
+.ledger__src a.claim-tag, .ledger__src a.claim-tag:hover { color: var(--red-ink); border-bottom: 0; }
+.reply > .claim-tag { top: -10px; }
+.verify-bar {
+  position: fixed; left: 50%; bottom: 16px; z-index: var(--z-toast); transform: translateX(-50%); width: min(760px, calc(100vw - 24px));
+  display: flex; align-items: center; gap: 14px; padding: 10px 10px 10px 14px; background: var(--surface); border: 1px solid var(--line-2);
+  border-top: 3px solid var(--red); box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+}
+.verify-bar__mode { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); font-weight: 700; white-space: nowrap; }
+.verify-bar__box, .verify-fab__box { width: 12px; height: 12px; border: 2px solid var(--red); flex: none; }
+.verify-bar__text { flex: 1; min-width: 0; font-size: 0.86rem; color: var(--text-2); line-height: 1.4; }
+.verify-bar__nav { display: flex; gap: 6px; flex: none; }
+.verify-fab {
+  position: fixed; left: 16px; bottom: 16px; z-index: var(--z-nav); display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 14px; background: var(--surface); border: 1px solid var(--line-2); font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); box-shadow: var(--shadow);
+  opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.3s var(--ease), transform 0.4s var(--ease), border-color 0.2s;
+}
+.verify-fab.is-shown { opacity: 1; transform: none; pointer-events: auto; }
+.verify-fab:hover { border-color: var(--red); }
+.verify-on .verify-fab { display: none; }
+.btn[aria-pressed="true"] { border-color: var(--red); color: var(--red); }
+@media (max-width: 639px) {
+  .verify-bar { flex-wrap: wrap; gap: 8px; bottom: 8px; }
+  .verify-bar__text { flex: 1 1 100%; order: 3; font-size: 0.8rem; }
+  .verify-bar__nav { margin-left: auto; }
+}
+@media print { .verify-bar, .verify-fab, .claim-tag { display: none !important; } }
+
 /* ---------- Command palette ---------- */
 .palette { position: fixed; inset: 0; z-index: var(--z-dialog); display: grid; place-items: start center; padding: min(14vh, 120px) 16px 16px; background: rgba(5, 5, 6, 0.6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.2s var(--ease); }
 .palette.is-open { opacity: 1; }
