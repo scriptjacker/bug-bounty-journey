@@ -1,0 +1,10 @@
+# bugbounty.scriptjacker.in now lives at parthnarula.scriptjacker.in.
+# Every path is forwarded as is, so old links such as /gallery.html and /assets/hof/*.jpeg keep working.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^index\.html$ https://parthnarula.scriptjacker.in/ [R=301,L]
+  RewriteRule ^(.*)$ https://parthnarula.scriptjacker.in/$1 [R=301,L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+  RedirectPermanent / https://parthnarula.scriptjacker.in/
+</IfModule>

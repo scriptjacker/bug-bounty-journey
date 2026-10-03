@@ -15,9 +15,10 @@ Upload the repository contents (everything except `node_modules/`) to any static
 
 **Hostinger (current host)**
 
-1. hPanel, Websites, Manage, File Manager, open `public_html` of the domain.
-2. Upload the files and folders, keeping the structure. `.htaccess` must be included: it sets the security headers, caching, compression and the 404 page.
-3. Or connect this GitHub repository under Advanced, Git, so a push deploys the site.
+1. Run `./tools/package-site.sh` to build `site.zip` with only the files the server needs.
+2. hPanel, Websites, Manage, File Manager, open `public_html` of parthnarula.scriptjacker.in, upload `site.zip` and extract it there. `.htaccess` must be included: it sets the security headers, caching, compression and the 404 page.
+3. For bugbounty.scriptjacker.in, replace its `.htaccess` with `tools/hosting/bugbounty-redirect.htaccess`. Every old link (including `/gallery.html` and `/assets/hof/...`) then forwards to the same path on the main domain with a permanent redirect.
+4. Optional: connect this GitHub repository under Advanced, Git, so every push to the chosen branch deploys automatically.
 
 **Other hosts** (GitHub Pages, Netlify, Cloudflare Pages, Vercel): point them at the repository root with no build command. `.htaccess` only applies to Apache or LiteSpeed; copy the headers from it into the host's own header settings for the same protection.
 
