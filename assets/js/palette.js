@@ -9,29 +9,30 @@ const icon = (name) => `<svg class="ic" aria-hidden="true"><use href="${BASE}ass
 const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 const ACTIONS = [
-  { group: "Actions", label: "Book a 30 minute call", icon: "calendar-dots", href: "https://calendly.com/scriptjacker/30min", ext: true, keys: "calendly meeting hire contact" },
+  { group: "Actions", label: "Download CV", icon: "download-simple", href: `${BASE}Parth-Narula-CV.pdf`, keys: "resume pdf hire" },
   { group: "Actions", label: "Copy email address", icon: "copy", run: () => copy(EMAIL, "Email copied to clipboard"), hint: EMAIL, keys: "mail contact" },
-  { group: "Actions", label: "Download CV", icon: "download-simple", href: `${BASE}Parth-Narula-CV.pdf`, keys: "resume pdf" },
+  { group: "Actions", label: "Book a 30 minute call", icon: "calendar-dots", href: "https://calendly.com/scriptjacker/30min", ext: true, keys: "calendly meeting hire contact" },
   { group: "Actions", label: "Switch light or dark theme", icon: "sun", run: toggleTheme, keys: "theme dark light mode" },
-  { group: "Pages", label: "Proof of work gallery", icon: "files", href: `${BASE}gallery.html`, keys: "screenshots hall of fame swag letters" },
-  { group: "Pages", label: "All listed organizations", icon: "globe-hemisphere-west", href: `${BASE}recognition.html`, keys: "directory list hall of fame" },
-  { group: "Pages", label: "About", icon: "identification-card", href: home("#about") },
-  { group: "Pages", label: "Expertise", icon: "shield-check", href: home("#expertise"), keys: "skills idor logic auth api llm" },
-  { group: "Pages", label: "Recognition", icon: "medal", href: home("#recognition") },
-  { group: "Pages", label: "Experience and certifications", icon: "briefcase", href: home("#experience"), keys: "work education ewptx ejpt ceh" },
-  { group: "Pages", label: "Writing", icon: "article", href: home("#writing"), keys: "blog medium writeups" },
+  { group: "Pages", label: "All listed organizations", icon: "globe-hemisphere-west", href: `${BASE}recognition.html`, keys: "directory list hall of fame verify public" },
+  { group: "Pages", label: "Proof archive", icon: "files", href: `${BASE}gallery.html`, keys: "screenshots hall of fame swag letters certificates gallery" },
+  { group: "Pages", label: "First researcher programs", icon: "flag", href: home("#first"), keys: "first hall of fame" },
+  { group: "Pages", label: "Record and numbers", icon: "medal", href: home("#record"), keys: "stats 450 250 cve" },
+  { group: "Pages", label: "What I test", icon: "shield-check", href: home("#scope"), keys: "skills scope web api android llm cloud idor" },
+  { group: "Pages", label: "Case files", icon: "file-text", href: home("#cases"), keys: "writeups findings nokia idor cve" },
+  { group: "Pages", label: "Background", icon: "briefcase", href: home("#background"), keys: "experience work education certifications ewptx ejpt ceh ctf hackwithindia" },
+  { group: "Pages", label: "Writing", icon: "article", href: home("#writing"), keys: "blog medium writeups unihackers" },
   { group: "Pages", label: "Contact", icon: "envelope-simple", href: home("#contact") },
   { group: "Links", label: "LinkedIn", icon: "linkedin-logo", href: "https://www.linkedin.com/in/parth-narula-86283821a/", ext: true },
   { group: "Links", label: "GitHub", icon: "github-logo", href: "https://github.com/scriptjacker", ext: true },
   { group: "Links", label: "Medium", icon: "medium-logo", href: "https://scriptjacker.medium.com/", ext: true },
+  { group: "Links", label: "Unihackers articles", icon: "graduation-cap", href: "https://unihackers.com/authors/parth-narula", ext: true },
   { group: "Links", label: "ScriptJacker blog", icon: "pen-nib", href: "https://blogs.scriptjacker.in/", ext: true },
-  { group: "Links", label: "ScriptJacker LLP", icon: "shield-check", href: "https://scriptjacker.in/", ext: true },
 ];
 
 const TERMINAL = {
   "sudo hire-me": `<span class="a">[sudo]</span> password for recruiter: ********\nAccess granted.\n\nParth Narula, security researcher and pentester.\nPress Enter to copy my email: <span class="a">${EMAIL}</span>`,
   "whoami": `parth <span class="a">// ScriptJacker</span>\nI break things so the people who built them can fix them first.`,
-  "help": `Try typing an organization (boeing, berlin, nykaa), a section (experience)\nor one of these: <span class="a">whoami</span>, <span class="a">sudo hire-me</span>`,
+  "help": `Try typing an organization (boeing, berlin, nokia), a section (case files)\nor one of these: <span class="a">whoami</span>, <span class="a">sudo hire-me</span>`,
 };
 
 let el, input, list, items = [], active = 0, orgs = null, lastFocus = null;
@@ -114,7 +115,7 @@ function render() {
   }
   items = pool;
   if (!items.length) {
-    list.innerHTML = `<div class="palette__empty">Nothing matches “${esc(input.value)}”. Some organizations are under NDA and are not listed here.</div>`;
+    list.innerHTML = `<div class="palette__empty">Nothing matches “${esc(input.value)}”. Some organizations can't be named yet, so they are not listed here.</div>`;
     input.removeAttribute("aria-activedescendant");
     return;
   }

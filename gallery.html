@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Proof of Work | Parth Narula</title>
-<meta name="description" content="Hall of Fame screenshots, letters of appreciation, certificates and swag from organizations that recognized Parth Narula's security reports.">
+<title>Proof Archive | Parth Narula</title>
+<meta name="description" content="Hall of Fame screenshots, letters of appreciation, certificates and swag from organizations that recognized Parth Narula's security reports, linked to the live pages where they exist.">
 <meta name="author" content="Parth Narula">
 <link rel="canonical" href="https://parthnarula.scriptjacker.in/gallery.html">
-<meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f5f6f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2efe8" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Parth Narula">
-<meta property="og:title" content="Proof of Work | Parth Narula">
-<meta property="og:description" content="Hall of Fame screenshots, letters of appreciation, certificates and swag from organizations that recognized Parth Narula's security reports.">
+<meta property="og:title" content="Proof Archive | Parth Narula">
+<meta property="og:description" content="Hall of Fame screenshots, letters of appreciation, certificates and swag from organizations that recognized Parth Narula's security reports, linked to the live pages where they exist.">
 <meta property="og:url" content="https://parthnarula.scriptjacker.in/gallery.html">
 <meta property="og:image" content="https://parthnarula.scriptjacker.in/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <script src="assets/js/theme.js"></script>
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="module" src="assets/js/main.js"></script>
@@ -32,21 +32,20 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="nav" id="top">
+<header class="nav is-solid" id="top">
   <div class="wrap nav__inner">
-    <a class="brand" href="./">
-      <span class="brand__mark" aria-hidden="true">PN</span>
-      <span>Parth Narula</span>
+    <a class="brand" href="./" aria-label="Parth Narula, home">
+      <span class="brand__box">Parth Narula</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="./#about">About</a>
-      <a href="./#expertise">Expertise</a>
-      <a href="./#recognition">Recognition</a>
-      <a href="./#experience">Experience</a>
-      <a href="./#contact">Contact</a>
+      <a href="./#scope">Scope</a>
+      <a href="./#cases">Case files</a>
+      <a href="recognition.html">Organizations</a>
+      <a href="gallery.html" aria-current="page">Proof archive</a>
+      <a href="./#background">Background</a>
     </nav>
     <div class="nav__tools">
-      <button class="icon-btn search-btn" type="button" data-palette-open>
+      <button class="icon-btn search-btn" type="button" data-palette-open aria-label="Search this site">
         <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-magnifying-glass"/></svg>
         <span>Search</span>
         <kbd data-kbd aria-hidden="true">Ctrl K</kbd>
@@ -55,7 +54,9 @@
         <svg class="ic ic-moon" aria-hidden="true"><use href="assets/icons.svg#i-moon"/></svg>
         <svg class="ic ic-sun" aria-hidden="true"><use href="assets/icons.svg#i-sun"/></svg>
       </button>
-      <a class="btn btn--primary btn--sm" href="https://calendly.com/scriptjacker/30min" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn btn--red btn--sm nav__cv" href="Parth-Narula-CV.pdf" download>
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-download-simple"/></svg>CV
+      </a>
       <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-list"/></svg>
       </button>
@@ -64,59 +65,66 @@
 </header>
 
 <div class="mobile-menu" id="mobile-menu" hidden>
-  <a href="./#about">About</a>
-  <a href="./#expertise">Expertise</a>
-  <a href="./#recognition">Recognition</a>
-  <a href="./#experience">Experience</a>
-  <a href="./#writing">Writing</a>
+  <a href="./">Home</a>
+  <a href="./#scope">Scope</a>
+  <a href="./#cases">Case files</a>
+  <a href="recognition.html">Organizations</a>
+  <a href="gallery.html">Proof archive</a>
+  <a href="./#background">Background</a>
   <a href="./#contact">Contact</a>
-  <a class="btn btn--primary" href="https://calendly.com/scriptjacker/30min" target="_blank" rel="noopener">Book a call</a>
+  <a class="btn btn--red" href="Parth-Narula-CV.pdf" download>Download CV</a>
 </div>
 
 <main id="main">
   <div class="wrap">
     <header class="page-head">
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><span>Proof of work</span></nav>
-      <h1>Proof of work</h1>
-      <p class="lede">Hall of Fame pages with my name on them, letters and certificates of appreciation, and photos of the swag programs sent. Select any image to see it full size.</p>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><span>Proof archive</span></nav>
+      <h1>Proof <span class="boxed">archive</span></h1>
+      <p class="lede">Hall of Fame pages with my name boxed in red, letters and certificates of appreciation, and photos of the swag programs sent. Open any item to see it full size and, where one exists, the live page it came from.</p>
     </header>
 
     <div class="toolbar" role="search">
       <div class="filters" role="group" aria-label="Filter by type" data-filters>
-        <button class="chip" type="button" data-filter="all" aria-pressed="true">All <span class="count" data-count-for="all">201</span></button>
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All <span class="count" data-count-for="all">205</span></button>
         <button class="chip" type="button" data-filter="hof" aria-pressed="false">Hall of Fame <span class="count" data-count-for="hof">172</span></button>
-        <button class="chip" type="button" data-filter="letter" aria-pressed="false">Letters and certificates <span class="count" data-count-for="letter">9</span></button>
-        <button class="chip" type="button" data-filter="swag" aria-pressed="false">Swag <span class="count" data-count-for="swag">20</span></button>
+        <button class="chip" type="button" data-filter="letter" aria-pressed="false">Letters and certificates <span class="count" data-count-for="letter">11</span></button>
+        <button class="chip" type="button" data-filter="swag" aria-pressed="false">Swag <span class="count" data-count-for="swag">22</span></button>
       </div>
       <label class="search">
-        <span class="sr-only">Search the gallery</span>
+        <span class="sr-only">Search the archive</span>
         <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-magnifying-glass"/></svg>
         <input type="search" placeholder="Search by organization or domain" data-search autocomplete="off">
       </label>
     </div>
-    <p class="result-line" aria-live="polite" data-result>Loading the gallery</p>
+    <p class="result-line" aria-live="polite" data-result>Loading the archive</p>
 
     <div class="masonry" data-grid aria-busy="true">
       <div class="skeleton sk-a"></div><div class="skeleton sk-b"></div><div class="skeleton sk-c"></div><div class="skeleton sk-d"></div>
       <div class="skeleton sk-b"></div><div class="skeleton sk-c"></div><div class="skeleton sk-d"></div><div class="skeleton sk-a"></div>
     </div>
-    <noscript><p class="empty">The gallery needs JavaScript to load. The images also live in the <a class="link" href="assets/hof/">assets folder</a>.</p></noscript>
+    <noscript><p class="empty">The archive needs JavaScript to load. Every organization is also listed on the <a class="link" href="recognition.html">organizations page</a>.</p></noscript>
   </div>
 </main>
 
 <div class="lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Image viewer">
   <div class="lightbox__bar">
     <span class="lightbox__count" data-lb-count></span>
-    <button class="icon-btn" type="button" data-lb-close aria-label="Close viewer"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-x"/></svg></button>
+    <div class="lightbox__tools">
+      <button class="icon-btn" type="button" data-lb-zoom aria-label="Zoom to full width" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrows-out"/></svg></button>
+      <button class="icon-btn" type="button" data-lb-close aria-label="Close viewer"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-x"/></svg></button>
+    </div>
   </div>
-  <div class="lightbox__stage">
+  <div class="lightbox__stage" data-lb-stage>
     <img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-lb-img>
     <button class="icon-btn lightbox__nav lightbox__nav--prev" type="button" data-lb-step="-1" aria-label="Previous image"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-caret-left"/></svg></button>
     <button class="icon-btn lightbox__nav lightbox__nav--next" type="button" data-lb-step="1" aria-label="Next image"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-caret-right"/></svg></button>
   </div>
   <div class="lightbox__info">
     <p><b data-lb-title></b><span data-lb-domain></span></p>
-    <a href="gallery.html" data-lb-original target="_blank" rel="noopener">Open original<svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"/></svg></a>
+    <div class="lightbox__links">
+      <a class="is-verify" href="recognition.html" data-lb-verify target="_blank" rel="noopener" hidden>Open the live page<svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"/></svg></a>
+      <a href="gallery.html" data-lb-original target="_blank" rel="noopener">Original image<svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"/></svg></a>
+    </div>
   </div>
 </div>
 
@@ -124,33 +132,34 @@
   <div class="wrap">
     <div class="footer__grid">
       <div>
-        <a class="brand" href="./"><span class="brand__mark" aria-hidden="true">PN</span><span>Parth Narula</span></a>
-        <p class="footer__note">Every finding on this site was reported through responsible disclosure. No vulnerability details are published without the owner's permission.</p>
+        <a class="brand" href="./"><span class="brand__box">Parth Narula</span></a>
+        <p class="footer__note">Every finding on this site went through responsible disclosure. Details are only published after the fix, and targets stay redacted unless the program allows naming them.</p>
       </div>
       <div>
         <h2 class="footer__title">Site</h2>
         <ul>
-          <li><a href="./#about">About</a></li>
-          <li><a href="./#expertise">Expertise</a></li>
-          <li><a href="./#experience">Experience</a></li>
-          <li><a href="./#writing">Writing</a></li>
+          <li><a href="./#record">Record</a></li>
+          <li><a href="./#scope">Scope</a></li>
+          <li><a href="./#cases">Case files</a></li>
+          <li><a href="./#contact">Contact</a></li>
         </ul>
       </div>
       <div>
         <h2 class="footer__title">Proof</h2>
         <ul>
-          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="gallery.html">Proof archive</a></li>
           <li><a href="recognition.html">All organizations</a></li>
           <li><a href="Parth-Narula-CV.pdf" download>CV (PDF)</a></li>
+          <li><a href=".well-known/security.txt">security.txt</a></li>
         </ul>
       </div>
       <div>
         <h2 class="footer__title">Elsewhere</h2>
         <ul>
-          <li><a href="https://scriptjacker.in/" target="_blank" rel="noopener">ScriptJacker LLP</a></li>
-          <li><a href="https://blogs.scriptjacker.in/" target="_blank" rel="noopener">Blog</a></li>
           <li><a href="https://www.linkedin.com/in/parth-narula-86283821a/" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="https://github.com/scriptjacker" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://blogs.scriptjacker.in/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://scriptjacker.in/" target="_blank" rel="noopener">ScriptJacker LLP</a></li>
         </ul>
       </div>
     </div>

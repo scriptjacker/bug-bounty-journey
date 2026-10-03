@@ -1,4 +1,5 @@
 // Shared behaviour for every page. Heavier pieces (globe, search palette) load on demand.
+// Homepage only effects live in home.js.
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
@@ -66,6 +67,7 @@ if (menu && menuBtn) {
   menu.inert = true;
   const setMenu = (open) => {
     menu.classList.toggle("is-open", open);
+    nav?.classList.toggle("is-solid", open);
     menu.inert = !open;
     menuBtn.setAttribute("aria-expanded", String(open));
     menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
@@ -142,85 +144,7 @@ document.addEventListener("click", (e) => {
   if (b) copy(b.dataset.copy, "Email copied to clipboard");
 });
 
-/* ---------- Expertise tabs (roving focus, arrow keys) ---------- */
-$$("[data-tabs]").forEach((wrap) => {
-  const tabs = $$('[role="tab"]', wrap);
-  const select = (tab, focus = false) => {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute("aria-selected", String(on));
-      t.tabIndex = on ? 0 : -1;
-      const panel = document.getElementById(t.getAttribute("aria-controls"));
-      panel.hidden = !on;
-      if (on) { panel.classList.remove("is-entering"); void panel.offsetWidth; panel.classList.add("is-entering"); }
-    });
-    if (focus) tab.focus();
-  };
-  tabs.forEach((t, i) => {
-    t.addEventListener("click", () => select(t));
-    t.addEventListener("keydown", (e) => {
-      const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
-      if (e.key in keys) { e.preventDefault(); select(tabs[(i + keys[e.key] + tabs.length) % tabs.length], true); }
-      if (e.key === "Home") { e.preventDefault(); select(tabs[0], true); }
-      if (e.key === "End") { e.preventDefault(); select(tabs[tabs.length - 1], true); }
-    });
-  });
-});
-
-/* ---------- Testimonials ---------- */
-$$("[data-quotes]").forEach((wrap) => {
-  const items = $$(".quote", wrap);
-  const count = $("[data-quote-count]", wrap);
-  let index = 0;
-  const show = (i) => {
-    index = (i + items.length) % items.length;
-    items.forEach((q, k) => { q.classList.toggle("is-active", k === index); q.setAttribute("aria-hidden", String(k !== index)); });
-    count.textContent = `${index + 1} / ${items.length}`;
-  };
-  $$("[data-quote]", wrap).forEach((b) => b.addEventListener("click", () => show(index + +b.dataset.quote)));
-  let x0 = null;
-  wrap.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") x0 = e.clientX; });
-  wrap.addEventListener("pointerup", (e) => {
-    if (x0 === null) return;
-    const dx = e.clientX - x0;
-    x0 = null;
-    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
-  });
-  show(0);
-});
-
-/* ---------- Certification rail ---------- */
-$$("[data-rail]").forEach((b) => b.addEventListener("click", () => {
-  const track = b.closest(".certs").querySelector("[data-rail-track]");
-  const card = track.firstElementChild;
-  track.scrollBy({ left: (+b.dataset.rail) * (card.offsetWidth + 14), behavior: reduceMotion.matches ? "auto" : "smooth" });
-}));
-
-/* ---------- Floating proof wall ---------- */
-const WALL = [
-  ["who", 720, 1457], ["bbc", 698, 1280], ["boeing", 643, 1280], ["unesco", 720, 1271], ["michelin", 703, 1280], ["berlin", 720, 1343],
-  ["basf", 720, 1297], ["aldi", 720, 1359], ["mediatek", 720, 1460], ["lloyds", 720, 1298], ["deutscheborse", 720, 1384], ["tu-delft", 720, 1449],
-  ["sheffield", 720, 1384], ["eu-union", 720, 1363], ["philips", 720, 1457], ["commerzbank", 720, 1436], ["au-home", 720, 1223], ["visma", 720, 1300],
-  ["nordnet", 720, 1199], ["EMBL", 720, 1349], ["evri", 720, 1360], ["tresorit", 720, 1428], ["gea", 720, 1450], ["zepto", 720, 1130],
-];
-const wall = $("[data-wall]");
-if (wall) {
-  let filled = false;
-  const fill = () => {
-    if (filled) return;
-    filled = true;
-    $$(".wall__col", wall).forEach((col, c) => {
-      const set = WALL.filter((_, i) => i % 4 === c);
-      // Two copies so the drift animation can loop without a seam.
-      const html = set.map(([n, w, h]) => `<img src="assets/img/hof/${n}-480.webp" width="${Math.round(480)}" height="${Math.round((480 * h) / w)}" alt="" loading="lazy" decoding="async">`).join("");
-      col.innerHTML = html + html;
-    });
-  };
-  new IntersectionObserver(([e]) => { if (e.isIntersecting) fill(); }, { rootMargin: "800px 0px" }).observe(wall);
-  new IntersectionObserver(([e]) => wall.classList.toggle("is-visible", e.isIntersecting)).observe(wall);
-}
-
-/* ---------- Globe (loads after first paint, only when it exists) ---------- */
+/* ---------- Globe (loads only when it gets close to the viewport) ---------- */
 const globe = $("[data-globe]");
 if (globe) {
   // Static image fallback, matched to the theme, for browsers that cannot run the WebGL globe well.
@@ -233,7 +157,12 @@ if (globe) {
     console.warn("Globe unavailable:", err);
     globe.classList.add("no-webgl");
   });
-  ("requestIdleCallback" in window ? requestIdleCallback : (f) => setTimeout(f, 120))(start, { timeout: 800 });
+  const io = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    io.disconnect();
+    ("requestIdleCallback" in window ? requestIdleCallback : (f) => setTimeout(f, 120))(start, { timeout: 800 });
+  }, { rootMargin: "600px 0px" });
+  io.observe(globe);
 }
 
 /* ---------- Command palette ---------- */

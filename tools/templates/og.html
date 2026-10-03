@@ -4,26 +4,36 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="/assets/css/site.css">
 <style>
-  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; padding: 0; }
   body::after { opacity: 0.05; }
-  .og { position: relative; width: 1200px; height: 630px; padding: 64px 72px; display: flex; flex-direction: column; justify-content: space-between;
-        background: radial-gradient(60% 90% at 85% 50%, rgba(63,220,154,0.10), transparent 70%), var(--bg); }
-  .og .brand { font-size: 22px; }
-  .og .brand__mark { width: 40px; height: 40px; font-size: 14px; border-radius: 11px; }
-  .og h1 { font-size: 92px; line-height: 0.95; letter-spacing: -0.055em; font-weight: 600; }
-  .og h1 small { display: block; margin-top: 18px; font-size: 30px; letter-spacing: -0.015em; font-weight: 500; color: var(--text-2); }
-  .og-stats { display: flex; gap: 40px; }
-  .og-stats b { display: block; font-family: var(--mono); font-size: 38px; font-weight: 500; letter-spacing: -0.04em; color: var(--accent); }
+  .og { position: relative; width: 1200px; height: 630px; padding: 58px 64px; overflow: hidden; isolation: isolate; background: var(--bg); }
+  .og .hero__wall { z-index: -2; }
+  .og .hero__plane { left: 74%; width: 1500px; }
+  .og .hero__col img { opacity: 1; }
+  .og-shade { position: absolute; inset: 0; z-index: -1; background:
+    linear-gradient(90deg, rgba(var(--bg-rgb), 0.97) 0%, rgba(var(--bg-rgb), 0.9) 46%, rgba(var(--bg-rgb), 0.35) 72%, rgba(var(--bg-rgb), 0.55) 100%); }
+  .og .hero__status { font-size: 15px; }
+  .og .hero__name { margin-top: 64px; font-size: 150px; }
+  .og .redbox__tag { font-size: 15px; }
+  .og-role { margin-top: 22px; font-size: 30px; font-weight: 500; }
+  .og-stats { position: absolute; left: 64px; bottom: 54px; display: flex; gap: 44px; }
+  .og-stats b { display: block; font-family: var(--stencil); font-weight: 800; font-size: 54px; line-height: 0.95; }
+  .og-stats p:nth-child(3) b { color: var(--red); }
   .og-stats span { font-size: 17px; color: var(--text-2); }
-  .og-url { position: absolute; right: 72px; bottom: 64px; font-family: var(--mono); font-size: 18px; color: var(--text-3); }
-  .og .globe { position: absolute; left: auto; right: -120px; top: 15px; width: 600px; height: 600px; inset: 15px -110px auto auto; }
+  .og-url { position: absolute; right: 64px; bottom: 58px; font-family: var(--mono); font-size: 17px; color: var(--text-2); background: rgba(var(--bg-rgb), 0.8); padding: 6px 10px; }
 </style>
 </head>
 <body>
   <div class="og">
-    <div class="globe" data-globe data-globe-force><canvas></canvas><div class="globe__labels"></div></div>
-    <p class="brand"><span class="brand__mark">PN</span><span>Parth Narula</span></p>
-    <h1>Parth Narula<small>Security researcher and penetration tester</small></h1>
+    <div class="hero__wall"><div class="hero__plane" id="plane">
+      <div class="hero__col"></div><div class="hero__col"></div><div class="hero__col"></div><div class="hero__col"></div><div class="hero__col"></div><div class="hero__col"></div>
+    </div></div>
+    <div class="og-shade"></div>
+    <p class="hero__status"><span class="live-dot"></span>Open to security roles and pentest work</p>
+    <h1 class="hero__title" style="margin-top:0">
+      <span class="hero__name"><span class="hero__line">Parth Narula</span><span class="redbox"><i></i><i></i><i></i><i></i></span><span class="redbox__tag">On 250+ Halls of Fame</span></span>
+    </h1>
+    <p class="og-role">Security researcher and penetration tester</p>
     <div class="og-stats">
       <p><b>450+</b><span>organizations secured</span></p>
       <p><b>250+</b><span>Halls of Fame</span></p>
@@ -32,8 +42,12 @@
     <p class="og-url">parthnarula.scriptjacker.in</p>
   </div>
   <script type="module">
-    import { mountGlobe } from "/assets/js/globe.js";
-    mountGlobe(document.querySelector("[data-globe]"));
+    import { WALL } from "/assets/js/wall-data.js";
+    const cols = document.querySelectorAll("#plane .hero__col");
+    cols.forEach((col, c) => {
+      col.style.animation = "none";
+      col.innerHTML = WALL.filter((_, i) => i % 6 === c).map(([n, h]) => `<img src="/assets/img/wall/${n}.webp" width="240" height="${h}" alt="">`).join("");
+    });
   </script>
 </body>
 </html>

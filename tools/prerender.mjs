@@ -1,10 +1,10 @@
 // Writes data driven HTML into the pages so they work without JavaScript, search engines see
 // every name and nothing shifts on load. Run after editing data/*.json:  npm run prerender
 //   recognition.html  the top names, filters and the full directory table
-//   index.html        every count (organizations, sectors, countries, swag, letters, gallery)
+//   index.html        every count, the sector tiles, top countries and the "First in" cards
 //   gallery.html      the filter counts
 import { readFileSync, writeFileSync } from "node:fs";
-import { prepare, filtersHTML, rowHTML, top50HTML, resultText, siteStats, sectorTilesHTML, topCountriesHTML } from "../assets/js/directory-render.js";
+import { prepare, filtersHTML, rowHTML, top50HTML, resultText, siteStats, sectorTilesHTML, topCountriesHTML, firstsHTML, sortOrgs } from "../assets/js/directory-render.js";
 
 const root = new URL("..", import.meta.url).pathname;
 const gallery = JSON.parse(readFileSync(root + "data/gallery.json", "utf8"));
@@ -38,14 +38,15 @@ page("recognition.html", (p) => {
   p.block("top50", top50HTML(d));
   p.block("filters", filtersHTML(d, "all"));
   p.block("result", resultText(d.orgs.length, d.orgs.length));
-  p.block("rows", d.orgs.map((o) => rowHTML(o, d)).join("\n"));
-  p.stat("listed", s.listed);
+  p.block("rows", sortOrgs(d.orgs, "first").map((o) => rowHTML(o, d)).join("\n"));
+  for (const key of ["listed", "public", "proofed", "first"]) p.stat(key, s[key]);
 });
 
 page("index.html", (p) => {
-  for (const key of ["listed", "countries", "first", "firstMore", "swag", "letters", "galleryHof", "galleryLetters", "gallerySwag"]) p.stat(key, s[key]);
+  for (const key of ["listed", "countries", "first", "public", "proofed", "swag", "galleryHof", "galleryLetters", "gallerySwag"]) p.stat(key, s[key]);
   p.block("sectors", sectorTilesHTML(s));
   p.block("countries", topCountriesHTML(s));
+  p.block("firsts", firstsHTML(d));
 });
 
 page("gallery.html", (p) => {

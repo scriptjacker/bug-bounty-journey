@@ -36,8 +36,8 @@ AddType font/woff2 .woff2
 AddType text/javascript .js .mjs
 
 # ---------- Caching ----------
-# HTML and data change when content is edited, so browsers revalidate them.
-# Fonts, images and icons are stable and cached for a long time.
+# HTML, data, CSS, JS and SVG are revalidated on every visit (see the headers block below).
+# Fonts and WebP images are stable and cached for a long time.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 hour"
@@ -57,7 +57,9 @@ AddType text/javascript .js .mjs
   <FilesMatch "\.(woff2|webp)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "\.(html|json)$">
+  # Pages, data, styles, scripts and the icon sprite change together on every deploy, so the
+  # browser always revalidates them (a quick 304 when nothing changed) and never mixes versions.
+  <FilesMatch "\.(html|json|css|js|svg)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>

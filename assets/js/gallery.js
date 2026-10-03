@@ -1,4 +1,5 @@
-// Proof of work gallery: filters, search, masonry grid and a keyboard friendly lightbox.
+// Proof archive: filters, search, masonry grid and a keyboard friendly lightbox with zoom and
+// a link to the live page the screenshot came from.
 const $ = (s, r = document) => r.querySelector(s);
 const LABEL = { hof: "Hall of Fame", letter: "Letter", cert: "Certificate", swag: "Swag" };
 const variant = (src, w) => src.replace(/^assets\/([^/]+)\/(.+)\.[a-z]+$/i, `assets/img/$1/$2-${w}.webp`);
@@ -34,7 +35,7 @@ function render() {
   result.textContent = view.length === items.length ? `Showing all ${items.length} items` : `Showing ${view.length} of ${items.length} items`;
   grid.removeAttribute("aria-busy");
   if (!view.length) {
-    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Some programs are under NDA, so not every organization has a public screenshot.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
+    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Not every organization has a screenshot here. Try the <a class="link" href="recognition.html?q=${encodeURIComponent(query)}">organizations list</a>.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
     grid.style.columns = "auto";
     return;
   }
@@ -63,7 +64,20 @@ grid.addEventListener("click", (e) => {
 /* ---------- Lightbox ---------- */
 const box = $("[data-lightbox]");
 const img = $("[data-lb-img]", box);
+const stage = $("[data-lb-stage]", box);
+const zoomBtn = $("[data-lb-zoom]", box);
+const verify = $("[data-lb-verify]", box);
 let index = 0, opener = null;
+
+// Zoom shows the image at full width and lets you scroll it, which helps with tall screenshots.
+function setZoom(on) {
+  box.classList.toggle("is-zoomed", on);
+  zoomBtn.setAttribute("aria-pressed", String(on));
+  zoomBtn.setAttribute("aria-label", on ? "Fit to screen" : "Zoom to full width");
+  stage.scrollTop = 0;
+}
+zoomBtn.addEventListener("click", () => setZoom(!box.classList.contains("is-zoomed")));
+img.addEventListener("click", () => setZoom(!box.classList.contains("is-zoomed")));
 
 function show(i) {
   index = (i + view.length) % view.length;
@@ -77,6 +91,13 @@ function show(i) {
   $("[data-lb-domain]", box).textContent = it.domain;
   $("[data-lb-count]", box).textContent = `${index + 1} / ${view.length}`;
   $("[data-lb-original]", box).href = it.src;
+  const live = it.url || it.verify;
+  verify.hidden = !live;
+  if (live) {
+    verify.href = live;
+    verify.firstChild.textContent = it.verify ? "Verify the certificate" : "Open the live page";
+  }
+  setZoom(false);
   // Warm up the neighbours so arrowing through feels instant.
   for (const d of [1, -1]) { const n = view[(index + d + view.length) % view.length]; if (n?.w) new Image().src = variant(n.src, 1400); }
 }
@@ -90,6 +111,7 @@ function openBox(i, from) {
   $("[data-lb-close]", box).focus();
 }
 function closeBox() {
+  setZoom(false);
   box.classList.remove("is-open");
   document.body.style.overflow = "";
   setTimeout(() => { box.hidden = true; img.removeAttribute("src"); }, 200);
@@ -97,15 +119,15 @@ function closeBox() {
 }
 
 box.addEventListener("click", (e) => {
-  if (e.target.closest("[data-lb-close]") || e.target === box || e.target.classList.contains("lightbox__stage")) closeBox();
+  if (e.target.closest("[data-lb-close]") || e.target === box || (e.target === stage && !box.classList.contains("is-zoomed"))) closeBox();
   const s = e.target.closest("[data-lb-step]");
   if (s) show(index + +s.dataset.lbStep);
 });
 document.addEventListener("keydown", (e) => {
   if (box.hidden) return;
   if (e.key === "Escape") closeBox();
-  else if (e.key === "ArrowRight") show(index + 1);
-  else if (e.key === "ArrowLeft") show(index - 1);
+  else if (e.key === "ArrowRight" && !box.classList.contains("is-zoomed")) show(index + 1);
+  else if (e.key === "ArrowLeft" && !box.classList.contains("is-zoomed")) show(index - 1);
   else if (e.key === "Tab") {
     const f = [...box.querySelectorAll("button, a[href]")];
     const first = f[0], last = f[f.length - 1];
@@ -114,7 +136,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 let x0 = null;
-box.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") x0 = e.clientX; });
+box.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse" && !box.classList.contains("is-zoomed")) x0 = e.clientX; });
 box.addEventListener("pointerup", (e) => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1)); });
 
 /* ---------- Load ---------- */
