@@ -2,7 +2,7 @@
  {
   "src": "assets/certs/neoshare.jpg",
   "title": "Neoshare",
-  "domain": "neoshare.io",
+  "domain": "neoshare.de",
   "category": "cert",
   "w": 1653,
   "h": 2339
@@ -14,6 +14,23 @@
   "category": "cert",
   "w": 1653,
   "h": 2339
+ },
+ {
+  "src": "assets/certs/geeksforgeeks.jpg",
+  "title": "GeeksforGeeks",
+  "domain": "geeksforgeeks.org",
+  "category": "cert",
+  "verify": "https://media.geeksforgeeks.org/certificates/1785135489/018f69912c9f7b494337e37329f4fdf0.pdf",
+  "w": 2200,
+  "h": 1556
+ },
+ {
+  "src": "assets/letters/drexel.jpg",
+  "title": "Drexel University",
+  "domain": "drexel.edu",
+  "category": "letter",
+  "w": 1700,
+  "h": 2200
  },
  {
   "src": "assets/letters/avans.jpg",
@@ -70,6 +87,22 @@
   "category": "letter",
   "w": 1200,
   "h": 1600
+ },
+ {
+  "src": "assets/swag/nwo.jpg",
+  "title": "NWO (Dutch Research Council)",
+  "domain": "nwo.nl",
+  "category": "swag",
+  "w": 1500,
+  "h": 2000
+ },
+ {
+  "src": "assets/swag/kinde.jpg",
+  "title": "Kinde",
+  "domain": "kinde.com",
+  "category": "swag",
+  "w": 1566,
+  "h": 1536
  },
  {
   "src": "assets/swag/l1.jpg",
@@ -194,7 +227,7 @@
  {
   "src": "assets/swag/l16.jpg",
   "title": "DeHaat",
-  "domain": "dehaat.com",
+  "domain": "agrevolution.in",
   "category": "swag",
   "w": 1165,
   "h": 1492
@@ -269,7 +302,8 @@
   "domain": "achmea.nl",
   "category": "hof",
   "w": 720,
-  "h": 1075
+  "h": 1075,
+  "url": "https://www.achmea.nl/en/responsible-disclosure/hall-of-fame"
  },
  {
   "src": "assets/hof/aihw.jpeg",
@@ -277,7 +311,8 @@
   "domain": "aihw.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1285
+  "h": 1285,
+  "url": "https://www.aihw.gov.au/about-our-data/vulnerability-and-disclosure-policy"
  },
  {
   "src": "assets/hof/airmeet.jpeg",
@@ -285,7 +320,8 @@
   "domain": "airmeet.com",
   "category": "hof",
   "w": 503,
-  "h": 1007
+  "h": 1007,
+  "url": "https://bugbase.ai/programs/airmeet"
  },
  {
   "src": "assets/hof/aldi.jpeg",
@@ -317,7 +353,8 @@
   "domain": "afsa.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1307
+  "h": 1307,
+  "url": "https://www.afsa.gov.au/about-us/about-our-site/online-security/afsas-security-vulnerability-disclosure-policy"
  },
  {
   "src": "assets/hof/au-ag.jpeg",
@@ -325,7 +362,8 @@
   "domain": "ag.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1384
+  "h": 1384,
+  "url": "https://www.ag.gov.au/security"
  },
  {
   "src": "assets/hof/au-arc.jpeg",
@@ -333,7 +371,8 @@
   "domain": "arc.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 807
+  "h": 807,
+  "url": "https://www.arc.gov.au/engage-us/security-vulnerability-disclosure-policy"
  },
  {
   "src": "assets/hof/audinate.jpeg",
@@ -357,7 +396,8 @@
   "domain": "industry.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1363
+  "h": 1363,
+  "url": "https://www.industry.gov.au/site-notices/vulnerability-disclosure-policy"
  },
  {
   "src": "assets/hof/au-ip.jpeg",
@@ -381,7 +421,8 @@
   "domain": "ppsr.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1269
+  "h": 1269,
+  "url": "https://www.ppsr.gov.au/about-us/technical-information/your-privacy-and-security/afsas-security-vulnerability-disclosure-policy"
  },
  {
   "src": "assets/hof/au-tax.jpeg",
@@ -389,7 +430,8 @@
   "domain": "igt.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1360
+  "h": 1360,
+  "url": "https://www.igt.gov.au/vulnerability-disclosure-program/"
  },
  {
   "src": "assets/hof/au-wa.jpeg",
@@ -397,7 +439,8 @@
   "domain": "wa.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1392
+  "h": 1392,
+  "url": "https://www.wa.gov.au/government/publications/vulnerability-disclosure-policy"
  },
  {
   "src": "assets/hof/avm.jpeg",
@@ -405,7 +448,8 @@
   "domain": "avm99963.com",
   "category": "hof",
   "w": 720,
-  "h": 1425
+  "h": 1425,
+  "url": "https://www.avm99963.com/hof/"
  },
  {
   "src": "assets/hof/bankaxept.jpeg",
@@ -413,7 +457,8 @@
   "domain": "bankaxept.no",
   "category": "hof",
   "w": 1400,
-  "h": 670
+  "h": 670,
+  "url": "https://bankaxept.no/.well-known/hall-of-fame.html"
  },
  {
   "src": "assets/hof/basf.jpeg",
@@ -421,7 +466,8 @@
   "domain": "basf.com",
   "category": "hof",
   "w": 720,
-  "h": 1297
+  "h": 1297,
+  "url": "https://www.basf.com/global/en/legal/responsible-disclosure-statement.html"
  },
  {
   "src": "assets/hof/bbc.jpeg",
@@ -445,7 +491,8 @@
   "domain": "berlin.de",
   "category": "hof",
   "w": 720,
-  "h": 1343
+  "h": 1343,
+  "url": "https://www.berlin.de/wir-ueber-uns/acknowledgments"
  },
  {
   "src": "assets/hof/blackarrow.jpeg",
@@ -469,7 +516,8 @@
   "domain": "bokadirekt.se",
   "category": "hof",
   "w": 720,
-  "h": 1346
+  "h": 1346,
+  "url": "https://www.bokadirekt.se/articles/security-acknowledgements"
  },
  {
   "src": "assets/hof/braunschweig-uni.jpeg",
@@ -485,7 +533,8 @@
   "domain": "bringme.com",
   "category": "hof",
   "w": 720,
-  "h": 1177
+  "h": 1177,
+  "url": "https://help.bringme.com/hc/en-us/articles/13139943916690-Hall-Of-Fame"
  },
  {
   "src": "assets/hof/byteblogger.jpeg",
@@ -517,7 +566,8 @@
   "domain": "chillforceltd.co.uk",
   "category": "hof",
   "w": 720,
-  "h": 1456
+  "h": 1456,
+  "url": "https://www.chillforceltd.co.uk/responsible-disclosure/security-hall-of-fame/"
  },
  {
   "src": "assets/hof/chromatic.jpeg",
@@ -533,7 +583,8 @@
   "domain": "clayhr.com",
   "category": "hof",
   "w": 720,
-  "h": 1332
+  "h": 1332,
+  "url": "https://www.clayhr.com/policies/security-hall-of-fame"
  },
  {
   "src": "assets/hof/clearbio.jpeg",
@@ -541,7 +592,8 @@
   "domain": "clear.bio",
   "category": "hof",
   "w": 720,
-  "h": 1218
+  "h": 1218,
+  "url": "https://www.clear.bio/nl/privacy-verklaring/hall-of-fame/"
  },
  {
   "src": "assets/hof/club-burgge.jpeg",
@@ -549,7 +601,8 @@
   "domain": "clubbrugge.be",
   "category": "hof",
   "w": 720,
-  "h": 1362
+  "h": 1362,
+  "url": "https://www.clubbrugge.be/nl/hall-of-fame"
  },
  {
   "src": "assets/hof/cm.jpeg",
@@ -565,7 +618,8 @@
   "domain": "coinswitch.co",
   "category": "hof",
   "w": 720,
-  "h": 1284
+  "h": 1284,
+  "url": "https://coinswitch.co/bug-bounty"
  },
  {
   "src": "assets/hof/coloop.jpeg",
@@ -581,7 +635,8 @@
   "domain": "commerzbank.de",
   "category": "hof",
   "w": 720,
-  "h": 1436
+  "h": 1436,
+  "url": "https://www.commerzbank.de/konzern/sec/index.html"
  },
  {
   "src": "assets/hof/commune-di-preganziol.jpeg",
@@ -589,7 +644,8 @@
   "domain": "comune.preganziol.tv.it",
   "category": "hof",
   "w": 720,
-  "h": 1458
+  "h": 1458,
+  "url": "https://www.comune.preganziol.tv.it/hall-of-fame/"
  },
  {
   "src": "assets/hof/danacita.jpeg",
@@ -597,7 +653,8 @@
   "domain": "danacita.co.id",
   "category": "hof",
   "w": 1457,
-  "h": 665
+  "h": 665,
+  "url": "https://danacita.co.id/acknowledgments.txt"
  },
  {
   "src": "assets/hof/deutscheborse.jpeg",
@@ -621,7 +678,8 @@
   "domain": "ts.ee",
   "category": "hof",
   "w": 1444,
-  "h": 668
+  "h": 668,
+  "url": "https://www.ts.ee/acknowledgements.txt"
  },
  {
   "src": "assets/hof/ee-port.jpeg",
@@ -629,7 +687,8 @@
   "domain": "ts.ee",
   "category": "hof",
   "w": 1600,
-  "h": 701
+  "h": 701,
+  "url": "https://www.ts.ee/acknowledgements.txt"
  },
  {
   "src": "assets/hof/elfster.jpeg",
@@ -637,7 +696,8 @@
   "domain": "elfster.com",
   "category": "hof",
   "w": 720,
-  "h": 1324
+  "h": 1324,
+  "url": "https://www.elfster.com/content/vulnerability-hall-of-fame/"
  },
  {
   "src": "assets/hof/EMBL.jpeg",
@@ -653,7 +713,8 @@
   "domain": "escanav.com",
   "category": "hof",
   "w": 720,
-  "h": 1241
+  "h": 1241,
+  "url": "https://www.escanav.com/en/support/eScan-hall-of-fame.asp"
  },
  {
   "src": "assets/hof/eterna.jpeg",
@@ -669,7 +730,8 @@
   "domain": "europa.eu",
   "category": "hof",
   "w": 720,
-  "h": 1363
+  "h": 1363,
+  "url": "https://cert.europa.eu/hall-of-fame"
  },
  {
   "src": "assets/hof/evri.jpeg",
@@ -677,7 +739,8 @@
   "domain": "evri.com",
   "category": "hof",
   "w": 720,
-  "h": 1360
+  "h": 1360,
+  "url": "https://www.evri.com/responsible-disclosure-policy"
  },
  {
   "src": "assets/hof/exirio.jpeg",
@@ -717,7 +780,8 @@
   "domain": "fh-muenster.de",
   "category": "hof",
   "w": 720,
-  "h": 1428
+  "h": 1428,
+  "url": "https://www.fh-muenster.de/de/ueber-uns/organisation/praesidium/stabsstellen/informationssicherheit/cert/hall-of-fame"
  },
  {
   "src": "assets/hof/freedom.jpeg",
@@ -733,7 +797,8 @@
   "domain": "fyr.io",
   "category": "hof",
   "w": 720,
-  "h": 1217
+  "h": 1217,
+  "url": "https://fyr.io/vulns/"
  },
  {
   "src": "assets/hof/gaji-gesa.jpeg",
@@ -757,7 +822,8 @@
   "domain": "gmx.net",
   "category": "hof",
   "w": 720,
-  "h": 1118
+  "h": 1118,
+  "url": "https://bugbounty.gmx.net/halloffame-index.html"
  },
  {
   "src": "assets/hof/gooisemeren.jpeg",
@@ -765,7 +831,8 @@
   "domain": "gooisemeren.nl",
   "category": "hof",
   "w": 720,
-  "h": 1448
+  "h": 1448,
+  "url": "https://gooisemeren.nl/kwetsbaarheid-melden/"
  },
  {
   "src": "assets/hof/hebcal.jpeg",
@@ -781,7 +848,8 @@
   "domain": "hippovideo.io",
   "category": "hof",
   "w": 720,
-  "h": 1328
+  "h": 1328,
+  "url": "https://www.hippovideo.io/responsible-disclosure-policy.html"
  },
  {
   "src": "assets/hof/hsb.jpeg",
@@ -813,7 +881,8 @@
   "domain": "intuiface.com",
   "category": "hof",
   "w": 720,
-  "h": 1422
+  "h": 1422,
+  "url": "https://www.intuiface.com/info/intuiface-vulnerability-disclosure-policy"
  },
  {
   "src": "assets/hof/irfu.jpeg",
@@ -821,7 +890,8 @@
   "domain": "irfu.se",
   "category": "hof",
   "w": 720,
-  "h": 1019
+  "h": 1019,
+  "url": "https://www.irfu.se/security-acknowledgments.txt"
  },
  {
   "src": "assets/hof/javascriptfortoday.jpeg",
@@ -837,7 +907,8 @@
   "domain": "ama.ne.jp",
   "category": "hof",
   "w": 720,
-  "h": 1446
+  "h": 1446,
+  "url": "https://ama.ne.jp/post/hall-of-security-txt/"
  },
  {
   "src": "assets/hof/julieandjoy.jpeg",
@@ -845,7 +916,8 @@
   "domain": "julieandjoy.fr",
   "category": "hof",
   "w": 720,
-  "h": 1344
+  "h": 1344,
+  "url": "https://www.julieandjoy.fr/hall-of-fame/"
  },
  {
   "src": "assets/hof/kdo.jpeg",
@@ -853,7 +925,8 @@
   "domain": "kdo.de",
   "category": "hof",
   "w": 1431,
-  "h": 648
+  "h": 648,
+  "url": "https://kdo.de/security/danksagung"
  },
  {
   "src": "assets/hof/kliksafe.jpeg",
@@ -861,7 +934,8 @@
   "domain": "kliksafe.nl",
   "category": "hof",
   "w": 720,
-  "h": 771
+  "h": 771,
+  "url": "https://www.kliksafe.nl/coordinated-vulnerability-disclosure/hall-of-fame/"
  },
  {
   "src": "assets/hof/kommunicate.jpeg",
@@ -893,7 +967,8 @@
   "domain": "looka.com",
   "category": "hof",
   "w": 720,
-  "h": 1251
+  "h": 1251,
+  "url": "https://looka.com/vulnerability-disclosure-program/"
  },
  {
   "src": "assets/hof/loopcloud.jpeg",
@@ -917,7 +992,8 @@
   "domain": "lumc.nl",
   "category": "hof",
   "w": 720,
-  "h": 1272
+  "h": 1272,
+  "url": "https://www.lumc.nl/coordinated-vulnerability-disclosure-cvd/"
  },
  {
   "src": "assets/hof/marel.jpeg",
@@ -925,7 +1001,8 @@
   "domain": "marel.com",
   "category": "hof",
   "w": 720,
-  "h": 1366
+  "h": 1366,
+  "url": "https://marel.com/en/responsible-disclosure/"
  },
  {
   "src": "assets/hof/marseille.jpeg",
@@ -949,7 +1026,8 @@
   "domain": "matchis.nl",
   "category": "hof",
   "w": 720,
-  "h": 1452
+  "h": 1452,
+  "url": "https://www.matchis.nl/en/disclaimer/coordinated-vulnerability-disclosure/hall-of-fame"
  },
  {
   "src": "assets/hof/mbodigitaal.jpeg",
@@ -957,7 +1035,8 @@
   "domain": "mbodigitaal.nl",
   "category": "hof",
   "w": 720,
-  "h": 1274
+  "h": 1274,
+  "url": "https://rd.mbodigitaal.nl/hall-of-fame/"
  },
  {
   "src": "assets/hof/mediatek.jpeg",
@@ -973,7 +1052,8 @@
   "domain": "michelin.com",
   "category": "hof",
   "w": 703,
-  "h": 1280
+  "h": 1280,
+  "url": "https://cert.michelin.com/halloffame"
  },
  {
   "src": "assets/hof/modalku.jpeg",
@@ -981,7 +1061,8 @@
   "domain": "modalku.co.id",
   "category": "hof",
   "w": 591,
-  "h": 1143
+  "h": 1143,
+  "url": "https://modalku.co.id/vdp"
  },
  {
   "src": "assets/hof/muenster.jpeg",
@@ -989,7 +1070,8 @@
   "domain": "fh-muenster.de",
   "category": "hof",
   "w": 720,
-  "h": 1155
+  "h": 1155,
+  "url": "https://www.fh-muenster.de/de/ueber-uns/organisation/praesidium/stabsstellen/informationssicherheit/cert/hall-of-fame"
  },
  {
   "src": "assets/hof/nelogica.jpeg",
@@ -1029,7 +1111,8 @@
   "domain": "nexxwave.be",
   "category": "hof",
   "w": 720,
-  "h": 1393
+  "h": 1393,
+  "url": "https://www.nexxwave.be/legal/responsible-disclosure#halloffame"
  },
  {
   "src": "assets/hof/nhn.jpeg",
@@ -1037,7 +1120,8 @@
   "domain": "nhn.no",
   "category": "hof",
   "w": 1487,
-  "h": 720
+  "h": 720,
+  "url": "https://nhn.no/.well-known/hall-of-fame.html"
  },
  {
   "src": "assets/hof/nordnet.jpeg",
@@ -1045,7 +1129,8 @@
   "domain": "nordnet.se",
   "category": "hof",
   "w": 720,
-  "h": 1199
+  "h": 1199,
+  "url": "https://www.nordnet.se/security-disclosure/hall-of-fame"
  },
  {
   "src": "assets/hof/norkart.jpeg",
@@ -1061,7 +1146,8 @@
   "domain": "ntucenterprise.sg",
   "category": "hof",
   "w": 720,
-  "h": 1121
+  "h": 1121,
+  "url": "https://www.ntucenterprise.sg/contactus/vulnerability-disclosure-programme/"
  },
  {
   "src": "assets/hof/onlinetri.jpeg",
@@ -1077,7 +1163,8 @@
   "domain": "otterbox.com",
   "category": "hof",
   "w": 720,
-  "h": 1155
+  "h": 1155,
+  "url": "https://www.otterbox.com/en-us/vulnerability-disclosure-policy.html"
  },
  {
   "src": "assets/hof/paddle.jpeg",
@@ -1085,7 +1172,8 @@
   "domain": "paddle.com",
   "category": "hof",
   "w": 720,
-  "h": 1397
+  "h": 1397,
+  "url": "https://www.paddle.com/security/acknowledgments"
  },
  {
   "src": "assets/hof/philips.jpeg",
@@ -1117,7 +1205,8 @@
   "domain": "pmgnet.de",
   "category": "hof",
   "w": 720,
-  "h": 1353
+  "h": 1353,
+  "url": "https://pmgnet.de/en/pmg-vulnerability-disclosure-policy/"
  },
  {
   "src": "assets/hof/polarity.jpeg",
@@ -1125,7 +1214,8 @@
   "domain": "polarity.io",
   "category": "hof",
   "w": 1439,
-  "h": 664
+  "h": 664,
+  "url": "https://polarity.io/.well-known/security-hall-of-fame.txt"
  },
  {
   "src": "assets/hof/praamid.jpeg",
@@ -1133,7 +1223,8 @@
   "domain": "praamid.ee",
   "category": "hof",
   "w": 1444,
-  "h": 672
+  "h": 672,
+  "url": "https://www.praamid.ee/acknowledgements.txt"
  },
  {
   "src": "assets/hof/projectadmission.jpeg",
@@ -1173,7 +1264,8 @@
   "domain": "redgames.co",
   "category": "hof",
   "w": 720,
-  "h": 1446
+  "h": 1446,
+  "url": "https://www.redgames.co/security"
  },
  {
   "src": "assets/hof/redvilla.jpeg",
@@ -1181,7 +1273,8 @@
   "domain": "redvilla.tech",
   "category": "hof",
   "w": 720,
-  "h": 1361
+  "h": 1361,
+  "url": "https://redvilla.tech/bug-bounty/"
  },
  {
   "src": "assets/hof/rently.jpeg",
@@ -1189,7 +1282,8 @@
   "domain": "rently.com",
   "category": "hof",
   "w": 720,
-  "h": 1337
+  "h": 1337,
+  "url": "https://use.rently.com/responsible-disclosure/"
  },
  {
   "src": "assets/hof/resideo.jpeg",
@@ -1197,7 +1291,8 @@
   "domain": "resideo.com",
   "category": "hof",
   "w": 720,
-  "h": 1383
+  "h": 1383,
+  "url": "https://www.resideo.com/us/en/responsible-disclosure/hall-of-fame/"
  },
  {
   "src": "assets/hof/safeconnect.jpeg",
@@ -1205,7 +1300,8 @@
   "domain": "safe-connect.com",
   "category": "hof",
   "w": 720,
-  "h": 1315
+  "h": 1315,
+  "url": "https://safe-connect.com/wall-of-fame-safe-connect/"
  },
  {
   "src": "assets/hof/sbab.jpeg",
@@ -1213,7 +1309,8 @@
   "domain": "sbab.se",
   "category": "hof",
   "w": 720,
-  "h": 1458
+  "h": 1458,
+  "url": "https://www.sbab.se/1/sidfotsmeny_2/sakerhet/responsible_disclosure/thanks.html"
  },
  {
   "src": "assets/hof/seantis.jpeg",
@@ -1237,7 +1334,8 @@
   "domain": "sheffield.ac.uk",
   "category": "hof",
   "w": 720,
-  "h": 1384
+  "h": 1384,
+  "url": "https://www.sheffield.ac.uk/it-services/security-vulnerability-disclosure"
  },
  {
   "src": "assets/hof/shippit.jpeg",
@@ -1245,7 +1343,8 @@
   "domain": "shippit.com",
   "category": "hof",
   "w": 720,
-  "h": 1161
+  "h": 1161,
+  "url": "https://www.shippit.com/responsible-security-disclosure/"
  },
  {
   "src": "assets/hof/silfo.jpeg",
@@ -1253,7 +1352,8 @@
   "domain": "silfo.nl",
   "category": "hof",
   "w": 720,
-  "h": 1327
+  "h": 1327,
+  "url": "https://www.silfo.nl/responsible-disclosure-2/"
  },
  {
   "src": "assets/hof/skipr.jpeg",
@@ -1261,7 +1361,8 @@
   "domain": "skipr.co",
   "category": "hof",
   "w": 720,
-  "h": 1009
+  "h": 1009,
+  "url": "https://www.skipr.co/resources/responsible-disclosure#Fame"
  },
  {
   "src": "assets/hof/sol1.jpeg",
@@ -1277,7 +1378,8 @@
   "domain": "sudwestfryslan.nl",
   "category": "hof",
   "w": 720,
-  "h": 1446
+  "h": 1446,
+  "url": "https://sudwestfryslan.nl/responsible-disclosure/hall-of-fame/"
  },
  {
   "src": "assets/hof/sutty.jpeg",
@@ -1293,7 +1395,8 @@
   "domain": "swile.co",
   "category": "hof",
   "w": 720,
-  "h": 696
+  "h": 696,
+  "url": "https://www.swile.co/security/hall-of-fame.txt"
  },
  {
   "src": "assets/hof/sword.jpeg",
@@ -1301,7 +1404,8 @@
   "domain": "swordhealth.com",
   "category": "hof",
   "w": 720,
-  "h": 1065
+  "h": 1065,
+  "url": "https://swordhealth.com/security/hall-of-fame"
  },
  {
   "src": "assets/hof/thws.jpeg",
@@ -1317,7 +1421,8 @@
   "domain": "ticketcounter.nl",
   "category": "hof",
   "w": 720,
-  "h": 1275
+  "h": 1275,
+  "url": "https://www.ticketcounter.nl/responsible-disclosure/"
  },
  {
   "src": "assets/hof/touchbistro.jpeg",
@@ -1325,7 +1430,8 @@
   "domain": "touchbistro.com",
   "category": "hof",
   "w": 720,
-  "h": 1408
+  "h": 1408,
+  "url": "https://www.touchbistro.com/security-hall-of-fame/"
  },
  {
   "src": "assets/hof/tresorit.jpeg",
@@ -1429,7 +1535,8 @@
   "domain": "valg.no",
   "category": "hof",
   "w": 1384,
-  "h": 587
+  "h": 587,
+  "url": "https://www.valg.no/.well-known/acknowledgements.txt"
  },
  {
   "src": "assets/hof/vector.jpeg",
@@ -1445,7 +1552,8 @@
   "domain": "vicus.nl",
   "category": "hof",
   "w": 720,
-  "h": 1457
+  "h": 1457,
+  "url": "https://www.vicus.nl/voorwaarden/responsible-disclosure-melding/"
  },
  {
   "src": "assets/hof/videodock.jpeg",
@@ -1461,7 +1569,8 @@
   "domain": "visma.com",
   "category": "hof",
   "w": 720,
-  "h": 1300
+  "h": 1300,
+  "url": "https://www.visma.com/trust-centre/security/hall-of-fame"
  },
  {
   "src": "assets/hof/volkerwessels.jpeg",
@@ -1477,7 +1586,8 @@
   "domain": "westerkwartier.nl",
   "category": "hof",
   "w": 720,
-  "h": 1352
+  "h": 1352,
+  "url": "https://westerkwartier.nl"
  },
  {
   "src": "assets/hof/wetri.jpeg",
@@ -1485,7 +1595,8 @@
   "domain": "we-tri.nl",
   "category": "hof",
   "w": 720,
-  "h": 1265
+  "h": 1265,
+  "url": "https://www.we-tri.nl/responsible-disclosure"
  },
  {
   "src": "assets/hof/whatfix.jpeg",
@@ -1493,7 +1604,8 @@
   "domain": "whatfix.com",
   "category": "hof",
   "w": 720,
-  "h": 898
+  "h": 898,
+  "url": "https://whatfix.com/trust/vulnerability-disclosure-program/"
  },
  {
   "src": "assets/hof/who.jpeg",
@@ -1517,7 +1629,8 @@
   "domain": "zazzle.com",
   "category": "hof",
   "w": 720,
-  "h": 941
+  "h": 941,
+  "url": "https://www.zazzle.com/hackers.txt"
  },
  {
   "src": "assets/hof/zepto.jpeg",
@@ -1525,7 +1638,8 @@
   "domain": "zeptonow.com",
   "category": "hof",
   "w": 720,
-  "h": 1130
+  "h": 1130,
+  "url": "https://www.zeptonow.com/security-hall-of-fame"
  },
  {
   "src": "assets/hof/zetes.jpeg",
@@ -1549,7 +1663,8 @@
   "domain": "ziekenhuisamstelland.nl",
   "category": "hof",
   "w": 720,
-  "h": 1305
+  "h": 1305,
+  "url": "https://www.ziekenhuisamstelland.nl/over-ons/kwaliteit-veiligheid/responsible-disclosure/"
  },
  {
   "src": "assets/hof/zonecollege.jpeg",
@@ -1577,8 +1692,8 @@
  },
  {
   "src": "assets/hof/dehaat.jpeg",
-  "title": "Dehaat",
-  "domain": "dehaat.in",
+  "title": "DeHaat",
+  "domain": "agrevolution.in",
   "category": "hof",
   "w": 720,
   "h": 1385
@@ -1597,7 +1712,8 @@
   "domain": "informatiebeveiligingsdienst.nl",
   "category": "hof",
   "w": 658,
-  "h": 1280
+  "h": 1280,
+  "url": "https://www.informatiebeveiligingsdienst.nl/2024-coordinated-vulnerability-disclosure-hall-of-fame/"
  },
  {
   "src": "assets/hof/simpleinout.jpeg",

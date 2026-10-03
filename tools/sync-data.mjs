@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 const root = new URL("..", import.meta.url).pathname;
 const file = root + "data/orgs.json";
 const d = JSON.parse(readFileSync(file, "utf8"));
-const RECOGNITION = ["hof", "swag", "cert", "letter", "cve", "ack"];
+const RECOGNITION = ["hof", "swag", "cert", "letter", "cve", "ack", "gift"];
 const errors = [];
 
 const seen = new Set();
@@ -18,7 +18,8 @@ for (const o of d.orgs) {
   if (!d.sectors[o.sector]) errors.push(`${where}: unknown sector "${o.sector}" (use one of ${Object.keys(d.sectors).join(", ")})`);
   if (!d.countries.some((c) => c.code === o.country)) errors.push(`${where}: unknown country "${o.country}", add it to "countries" first`);
   for (const r of o.recognition) if (!RECOGNITION.includes(r)) errors.push(`${where}: unknown recognition "${r}" (use ${RECOGNITION.join(", ")})`);
-  if (/[–—]/.test(o.name)) errors.push(`${where}: contains a long dash`);
+  if (/[\u2013\u2014]/.test(o.name + (o.note || ""))) errors.push(`${where}: contains a long dash`);
+  if (o.url && !/^https:\/\//.test(o.url)) errors.push(`${where}: url must start with https://`);
   o.first = !!o.first;
   o.top = d.prestige.some((p) => p.domain === o.domain);
 }
@@ -40,10 +41,22 @@ ${d.countries.map(line).join(",\n")}
 ${d.prestige.map(line).join(",\n")}
 ],
 "orgs": [
-${d.orgs.map(({ domain, name, sector, country, first, top, recognition }) => line({ domain, name, sector, country, first, top, recognition })).join(",\n")}
+${d.orgs.map(({ domain, name, sector, country, first, top, recognition, url, note }) => line({ domain, name, sector, country, first, top, recognition, url, note })).join(",\n")}
 ]
 }
 `;
 writeFileSync(file, out);
+
+// Hall of Fame screenshots in the gallery inherit the public page link of their organization,
+// so every screenshot can be checked against the live source.
+const galleryFile = root + "data/gallery.json";
+const gallery = JSON.parse(readFileSync(galleryFile, "utf8"));
+const urlOf = new Map(d.orgs.filter((o) => o.url).map((o) => [o.domain, o.url]));
+for (const g of gallery) {
+  if (g.category === "hof" && urlOf.has(g.domain)) g.url = urlOf.get(g.domain);
+  else delete g.url;
+  if (!d.orgs.some((o) => o.domain === g.domain)) console.warn(`gallery: ${g.src} points to ${g.domain}, which is not in orgs`);
+}
+writeFileSync(galleryFile, JSON.stringify(gallery, null, 1));
 const mapped = d.countries.filter((c) => c.lat !== null && c.count).length;
-console.log(`data: ${d.orgs.length} organizations, ${mapped} countries on the map, ${d.orgs.filter((o) => o.first).length} first researcher, ${d.prestige.length} top names`);
+console.log(`data: ${d.orgs.length} organizations, ${mapped} countries on the map, ${d.orgs.filter((o) => o.first).length} first researcher, ${d.prestige.length} top names, ${urlOf.size} public pages`);
