@@ -3,8 +3,8 @@
 Portfolio of Parth Narula (ScriptJacker). One site that combines the old personal portfolio and the bug bounty proof archive.
 
 - **Home** (`index.html`): who I am, what I test, highlights, experience, testimonials, writing, contact. Interactive WebGL globe built from the real recognition data.
-- **Proof of work** (`gallery.html`): 201 Hall of Fame screenshots, letters, certificates and swag photos with filters, search and a lightbox.
-- **Organizations** (`recognition.html`): the Top 50 and all 330 publicly listed organizations, filterable and searchable.
+- **Proof of work** (`gallery.html`): Hall of Fame screenshots, letters, certificates and swag photos with filters, search and a lightbox.
+- **Organizations** (`recognition.html`): the most recognizable names and every publicly listed organization, filterable and searchable.
 - **CV** (`Parth-Narula-CV.pdf`): one page, text based, readable by applicant tracking systems.
 
 It is a plain static site. No framework, no server code and no build step is needed to host it.
@@ -34,6 +34,21 @@ To preview locally: `npm run serve` (or any static file server) and open http://
 | CV content | `tools/templates/cv.html` |
 | Colors, type, spacing | `assets/css/site.css` (tokens at the top) |
 
+### Adding an organization
+
+Add one line to the `orgs` list in `data/orgs.json`:
+
+```json
+{"domain":"example.com","name":"Example","sector":"company","country":"NL","first":false,"top":false,"recognition":["hof","swag"]}
+```
+
+- `sector`: one of the keys in `sectors` (company, enterprise, government, education, finance, media, nonprofit, independent, sports, healthcare)
+- `country`: a code from `countries`. For a new country add `{"code":"XY","name":"...","lat":..,"lon":..,"count":0}` there first. `XX` means not specified.
+- `recognition`: any of `hof`, `swag`, `cert`, `letter`, `cve`, `ack`
+- `first`: `true` if you were the first researcher in that Hall of Fame
+
+Then run `npm run data && npm run globe && npm run prerender`. Every count on the site updates by itself.
+
 After changing data or images, run the matching script. `npm install` once first.
 
 ```bash
@@ -41,6 +56,7 @@ npm run images     # new or changed gallery images -> web sized WebP in assets/i
 npm run globe      # data/orgs.json changed -> globe land dots and country markers
 npm run prerender  # data/orgs.json changed -> rewrites the directory inside recognition.html
 npm run assets     # favicon, social share image, static globe images and the CV PDF
+npm run data       # validate data/orgs.json and recount countries
 npm run build      # all of the above
 ```
 
