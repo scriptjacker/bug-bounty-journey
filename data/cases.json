@@ -1,0 +1,134 @@
+{
+ "note": "Case files for the homepage. Every case was reported, fixed and then written up publicly. Targets stay redacted unless the program allows naming them (Nokia, Kashipara). Requests are trimmed copies of what is already published in the writeups: no live tokens, no customer data.",
+ "cases": [
+  {
+   "id": "nokia",
+   "class": "Exposed remote access",
+   "title": "Recon to shell access at Nokia",
+   "meta": [["Target", "nokia.com subdomains"], ["Found with", "Google dorks"], ["Outcome", "Nokia Hall of Fame, June 2026"]],
+   "story": "Dorking turned up an Apache Guacamole remote access gateway on a Nokia subdomain that was never meant to face the internet. From there, shell access. Reported, closed, credited.",
+   "link": "https://scriptjacker.medium.com/recon-to-shell-access-nokia-hall-of-fame-5a7995595631",
+   "stamp": "Resolved",
+   "steps": [
+    {"label": "Dork for the panel", "body": "I was hunting a private program and searched for exposed Apache Guacamole instances. A few queries later a live login panel answered on a Nokia subdomain, on a non standard port.", "code": "https://sub.sub.nokia.com:port/guacamole", "lang": "Target"},
+    {"label": "Try the default pair", "body": "Nothing about the page looked vulnerable. It never does. Guacamole ships with one well known account, and on a production instance it still worked.", "code": "Username: guacadmin\nPassword: guacadmin", "lang": "Login"},
+    {"label": "Read the connection list", "body": "The dashboard opened as the admin account. No MFA, no rate limiting. Two folders held the whole internal map: SSH and RDP connections, backend and frontend systems, jumphosts.", "code": "NonProd/\nPROD/\n  jumphost, backend, frontend, RDP hosts", "lang": "Connections"},
+    {"label": "Measure the blast radius", "body": "History held real usernames, session lengths, internal IP addresses and timestamps. The user list ran to dozens of nokia.com accounts, and the groups were split by Dev, non_prod and infra_access with per connection read, update and delete rights."},
+    {"label": "Open a production shell", "body": "Clicking a PROD jumphost opened a terminal in the browser, already logged in. A single command confirmed it was a real production filesystem. That turned an admin panel takeover into remote shell access on internal infrastructure.", "code": "$ ls", "lang": "Browser terminal"},
+    {"label": "Report and close", "body": "Everything stopped there and went into the report: how it was found, what it reached, and the fix. One unchanged default credential pair was the whole chain. Nokia fixed it and credited me in their Hall of Fame."}
+   ]
+  },
+  {
+   "id": "idor-85k",
+   "class": "IDOR, PII exposure",
+   "title": "85,000+ emails, one URL away",
+   "meta": [["Target", "redacted"], ["Found with", "URL manipulation"], ["Outcome", "Fixed after report"]],
+   "story": "Two platforms, the same mistake. Changing one number in a URL returned other people's records. Followed through, the exposure passed 85,000 email addresses.",
+   "link": "https://scriptjacker.medium.com/double-door-idor-exposing-85k-emails-182309af98be",
+   "stamp": "Resolved",
+   "steps": [
+    {"label": "Sign up and look at the URL", "body": "Signing up redirected me to the usual confirm your email page. The address carried a plain numeric user ID.", "code": "/user/checkEmail/61250", "lang": "URL"},
+    {"label": "Subtract one", "body": "I changed the ID by one. The page did not break. It rendered another user's confirmation page, with their email address on it.", "code": "/user/checkEmail/61249", "lang": "URL"},
+    {"label": "Measure it", "body": "The IDs were sequential, no login was needed, and nothing rate limited the requests. Administrative addresses showed up in the same range. That alone reached past 60,000 users."},
+    {"label": "Find the same bug wearing a different hat", "body": "On an unrelated platform a profile link led to a printable page that answered page not found. The breadcrumb above the error still printed the account's email address.", "code": "Home > myemail@example.com > Page not found", "lang": "404 page"},
+    {"label": "Walk the range again", "body": "Decrementing that ID leaked addresses the same way, about 25,000 more. An error page is still a page: the template rendered the record before deciding it had nothing to show.", "code": "/user/26720/printable  ->  /user/26719/printable", "lang": "URL"},
+    {"label": "Report both", "body": "Both went to their owners with the steps, the ranges I touched and nothing kept. Both were fixed. Authentication is not authorization, and a 404 can still hand over the data."}
+   ]
+  },
+  {
+   "id": "graphql-invite",
+   "class": "IDOR, account takeover",
+   "title": "The invite token that came back in the response",
+   "meta": [["Target", "redacted"], ["Found with", "GraphQL mutation"], ["Outcome", "Fixed after report"]],
+   "story": "A chat support platform let me invite teammates. The API answered with the activation token for the invited address, so I could finish the signup myself, for an inbox I never had.",
+   "link": "https://scriptjacker.medium.com/account-takeover-via-idor-in-graphql-invitation-flow-546b9a120c53",
+   "stamp": "Resolved",
+   "steps": [
+    {"label": "Use the feature as intended", "body": "As the owner of a team I could invite agents by email. One endpoint handled everything, so the whole flow was a single mutation.", "code": "POST /graphql\n\n{\"operationName\":\"InviteAgents\",\n \"variables\":{\"emails\":[\"victim@example.com\"]}}", "lang": "Request"},
+    {"label": "Read the response, not the screen", "body": "The invite succeeded, as expected. The response also carried an id for the invitation, which is where it stopped being routine.", "code": "{\"inviteAgents\":{\"success\":true,\n  \"invitations\":[{\"id\":\"4ffacc07...\",\n    \"email\":\"victim@example.com\"}]}}", "lang": "Response"},
+    {"label": "Recognize the shape", "body": "I had invited myself earlier, so I knew what an activation link looked like. Everything before the token was fixed. Only the token changed.", "code": "/signup/activate/<token>", "lang": "Known URL"},
+    {"label": "Paste the token from the API", "body": "Dropping the id from the response into that path opened the activation page for an address I did not control. No mailbox, no link, no second check.", "code": "/signup/activate/4ffacc07...", "lang": "URL"},
+    {"label": "Finish someone else's signup", "body": "The form asked for a name and a password. I set both and submitted. The account was created and appeared as an active agent on the team, under the name I chose."},
+    {"label": "Report it", "body": "The chain was short: an identifier that could change account state was returned to whoever asked, and every step downstream trusted it. Reported with the mutation and the response, and fixed."}
+   ]
+  },
+  {
+   "id": "mass-assignment",
+   "class": "Mass assignment",
+   "title": "One extra field, a whole account",
+   "meta": [["Target", "redacted"], ["Found with", "Request tampering"], ["Outcome", "Fixed after report"]],
+   "story": "The profile form let me edit my name and address. The API behind it accepted more than the form ever sent, including the one field the interface refused to show.",
+   "link": "https://scriptjacker.medium.com/from-profile-update-to-account-takeover-a-mass-assignment-story-60c6e8de4abc",
+   "stamp": "Resolved",
+   "steps": [
+    {"label": "Save the profile, watch the request", "body": "Updating my profile sent a plain PUT with the fields the form owns: name, address, phone. Changing the account email was disabled in the interface.", "code": "PUT /api/users/profile\n\n{\"about\":{\"givenName\":\"...\"},\n \"contact\":{\"postalCode\":\"...\",\n   \"mobile\":\"...\"}}", "lang": "Request"},
+    {"label": "Read what comes back", "body": "The response returned the whole user object, including fields I never touched. The account email sat inside the same contact object I was allowed to edit, next to a confirmed flag.", "code": "201 Created\n\n{\"contact\":{\"email\":\"me@example.com\",\n   \"confirmed\":true, ...}}", "lang": "Response"},
+    {"label": "Send the field the form will not", "body": "So I added email to the object I was already permitted to change, and left everything else identical.", "code": "PUT /api/users/profile\n\n{\"contact\":{ ...,\n   \"email\":\"attacker@example.com\"}}", "lang": "Request"},
+    {"label": "Watch it stick", "body": "201 again. The response carried the new address, still marked confirmed. No verification mail, no OTP, no link. Reloading the profile showed the swap had really happened.", "code": "{\"contact\":{\"email\":\"attacker@example.com\",\n   \"confirmed\":true}}", "lang": "Response"},
+    {"label": "Push on the impact", "body": "Pointing the field at an address that already had an account corrupted that account instead: the owner was locked out, and a password reset did not bring them back. That moved it from a settings bug to account takeover."},
+    {"label": "Report it", "body": "Reported with both requests and the lockout case. The interface saying a field is read only means nothing; the API is what decides."}
+   ]
+  },
+  {
+   "id": "otp-idor",
+   "class": "Logic flaw, OTP",
+   "title": "One code verified the wrong phone number",
+   "meta": [["Target", "redacted"], ["Found with", "Two chained flaws"], ["Outcome", "Flow removed after report"]],
+   "story": "Onboarding demanded phone verification and blocked my country in the dropdown. The backend had never heard of either rule, and treated a one time code as valid for any number on the account.",
+   "link": "https://scriptjacker.medium.com/otp-idor-when-one-code-verifies-the-wrong-phone-number-df0d2b6475f8",
+   "stamp": "Resolved",
+   "steps": [
+    {"label": "Meet the gate", "body": "No dashboard until a phone number was verified, and the country dropdown did not list mine. The interface was stating a rule.", "code": "POST /api/customer/phone_numbers\n\n{\"number\":\"+54...\"}", "lang": "Request"},
+    {"label": "Ask who enforces it", "body": "I filled the form with an allowed country, then changed only that one value in the request to a number in the blocked country. Same token, same headers, same method.", "code": "{\"number\":\"+91...\"}", "lang": "Edited request"},
+    {"label": "The backend never knew", "body": "201 Created. A second verification resource with its own id, and the code arrived on the blocked number. The restriction existed only in the dropdown."},
+    {"label": "Swap the resource", "body": "Now two resources existed, each with its own id. I sent the code that belonged to the second one, against the id of the first.", "code": "Code issued for resource B\nsubmitted against resource A", "lang": "Verification"},
+    {"label": "Watch it pass", "body": "200 OK. The server never checked that the code belonged to the resource in the URL, only that it was a valid code for my account. Onboarding moved to the next step, satisfied by a number that was never verified.", "code": "HTTP/2 200 OK", "lang": "Response"},
+    {"label": "Report it", "body": "Two weaknesses, neither critical alone: client side rules with nothing behind them, and a one time code treated as an account wide token. The program did not patch the endpoint. They removed phone verification from onboarding and rebuilt sign in around email."}
+   ]
+  },
+  {
+   "id": "self-xss",
+   "class": "XSS chain",
+   "title": "The self XSS everyone closes",
+   "meta": [["Target", "redacted"], ["Found with", "Chaining a feature"], ["Outcome", "Fixed after report"]],
+   "story": "A payload in my own profile field only ever fired at me, which is where most people stop. One unrelated setting put the same field on a public page.",
+   "link": "https://scriptjacker.medium.com/how-a-simple-self-xss-became-stored-xss-307d30281a66",
+   "stamp": "Resolved",
+   "steps": [
+    {"label": "Test the name field", "body": "Signup had an artist name field. Names get reused everywhere, so it is always worth a probe. A basic HTML payload went in.", "code": "\"'<h1>test</h1>", "lang": "Input"},
+    {"label": "Find the first crack", "body": "The confirmation email rendered the HTML instead of escaping it. Only HTML injection in an email, but it proved the value was being trusted in at least one template."},
+    {"label": "Escalate in place", "body": "In profile settings I replaced it with a script payload. It executed when I opened my own settings page. Stored, but firing only at me. Self XSS, low impact, usually closed.", "code": "<img/src/x onerror=...>", "lang": "Input"},
+    {"label": "Check the public view", "body": "The public profile did not execute it. That is the point where the finding looks finished and most reports get written up as low severity."},
+    {"label": "Turn on a feature", "body": "Settings had an Open to Collaboration option, off by default. Switching it on changed what the public profile renders.", "code": "{\"changeType\":\"PROFILE\",\n \"fullname\":\"<payload>\",\n \"collaborationStatusId\":\"REMOTE_OR_IN_PERSON\"}", "lang": "Request"},
+    {"label": "Fire it at everyone else", "body": "A new icon appeared on the public profile, and clicking it ran the payload. Anyone visiting the profile could trigger it. Same payload, same field, new reach: stored XSS. Reported with both states and fixed."}
+   ]
+  },
+  {
+   "id": "api-keys",
+   "class": "Credential exposure",
+   "title": "Live API keys in the web archive",
+   "meta": [["Target", "redacted"], ["Found with", "Archived URLs"], ["Outcome", "Fixed after report"]],
+   "story": "The live API was well built. Its history was not. Archived URLs carried API keys in the query string, and some of them still worked.",
+   "link": "https://scriptjacker.medium.com/from-exposed-api-keys-to-account-takeovers-7ac2a73d7113",
+   "stamp": "Resolved",
+   "steps": [
+    {"label": "Read the documentation first", "body": "A Swagger interface laid out endpoints for deployments, logs and more. The implementation itself looked solid, so the attack surface had to come from somewhere else."},
+    {"label": "Search the archive", "body": "I went through archived URLs looking for the usual markers. Several of them carried credentials directly in the query string.", "code": "...?api_key=...", "lang": "Archived URL"},
+    {"label": "Separate dead from live", "body": "Most answered 401, 403, trial expired or invalid key, which is what you expect from old credentials. A few answered normally, which is not."},
+    {"label": "Confirm read access", "body": "Authorizing Swagger with a working key and calling a read endpoint returned real account data. At that point it stopped being historical disclosure and became an active credential.", "code": "GET /v3/logs?api_key=<redacted>", "lang": "Request"},
+    {"label": "Check what else it allows", "body": "A write endpoint answered 201 Created, and reading back showed the new entry. The key was not read only.", "code": "POST /v3/logs?api_key=<redacted>", "lang": "Request"},
+    {"label": "Report it", "body": "Reported with the archived sources and the exact permissions proven, so the keys could be rotated rather than just removed from the index. A secret that leaked years ago is still a secret that works until someone revokes it."}
+   ]
+  },
+  {
+   "id": "cve",
+   "class": "Stored XSS, CWE-79",
+   "title": "CVE-2025-56697",
+   "meta": [["Product", "Kashipara Computer Based Test 1.0"], ["Credit", "Parth Narula"], ["Outcome", "Published CVE"]],
+   "story": "Input saved by one user ran in the browser of everyone who opened the page. My first published CVE. More findings are confirmed and waiting on their IDs.",
+   "link": "https://www.cve.org/CVERecord?id=CVE-2025-56697",
+   "stamp": "Published",
+   "steps": []
+  }
+ ]
+}

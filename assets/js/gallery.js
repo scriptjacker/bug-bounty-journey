@@ -1,7 +1,7 @@
 // Proof archive: filters, search, masonry grid and a keyboard friendly lightbox with zoom and
 // a link to the live page the screenshot came from.
 const $ = (s, r = document) => r.querySelector(s);
-const LABEL = { hof: "Hall of Fame", letter: "Letter", cert: "Certificate", swag: "Swag", award: "Competition", credential: "Certification" };
+const LABEL = { hof: "Hall of Fame", letter: "Letter", cert: "Certificate", swag: "Swag", award: "Competition", credential: "Certification", talk: "Talk" };
 const variant = (src, w) => src.replace(/^assets\/([^/]+)\/(.+)\.[a-z]+$/i, `assets/img/$1/$2-${w}.webp`);
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
@@ -10,7 +10,7 @@ const result = $("[data-result]");
 const search = $("[data-search]");
 const chips = [...document.querySelectorAll("[data-filter]")];
 const params = new URLSearchParams(location.search);
-let filter = ["hof", "letter", "swag", "award", "credential"].includes(params.get("category")) ? params.get("category") : "all";
+let filter = ["hof", "letter", "swag", "award", "credential", "talk"].includes(params.get("category")) ? params.get("category") : "all";
 let query = params.get("q") || "";
 let items = [], view = [];
 
@@ -35,7 +35,7 @@ function render() {
   result.textContent = view.length === items.length ? `Showing all ${items.length} items` : `Showing ${view.length} of ${items.length} items`;
   grid.removeAttribute("aria-busy");
   if (!view.length) {
-    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=87fec694#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Not every organization has a screenshot here. Try the <a class="link" href="recognition.html?q=${encodeURIComponent(query)}">organizations list</a>.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
+    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=bf1747b4#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Not every organization has a screenshot here. Try the <a class="link" href="recognition.html?q=${encodeURIComponent(query)}">organizations list</a>.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
     grid.style.columns = "auto";
     return;
   }
@@ -144,7 +144,7 @@ fetch("data/gallery.json")
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then((data) => {
     // Hall of Fame first, then letters, competitions, certifications and swag.
-    const order = { hof: 0, letter: 1, cert: 1, award: 2, credential: 3, swag: 4 };
+    const order = { hof: 0, letter: 1, cert: 1, award: 2, talk: 3, credential: 4, swag: 5 };
     items = data.sort((a, b) => order[a.category] - order[b.category] || a.title.localeCompare(b.title));
     const count = (f) => items.filter((it) => f === "all" || it.category === f || (f === "letter" && it.category === "cert")).length;
     document.querySelectorAll("[data-count-for]").forEach((el) => (el.textContent = count(el.dataset.countFor)));

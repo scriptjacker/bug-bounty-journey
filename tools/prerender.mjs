@@ -5,10 +5,12 @@
 //   gallery.html      the filter counts
 import { readFileSync, writeFileSync } from "node:fs";
 import { prepare, filtersHTML, rowHTML, top50HTML, resultText, siteStats, sectorTilesHTML, topCountriesHTML, firstsHTML, sortOrgs } from "../assets/js/directory-render.js";
+import { casesHTML, caseStepsHTML, namedHTML } from "../assets/js/case-render.js";
 
 const root = new URL("..", import.meta.url).pathname;
 const gallery = JSON.parse(readFileSync(root + "data/gallery.json", "utf8"));
 const d = prepare(JSON.parse(readFileSync(root + "data/orgs.json", "utf8")), gallery);
+const cases = JSON.parse(readFileSync(root + "data/cases.json", "utf8"));
 const s = siteStats(d, gallery);
 
 function page(name, fn) {
@@ -47,6 +49,9 @@ page("index.html", (p) => {
   p.block("sectors", sectorTilesHTML(s));
   p.block("countries", topCountriesHTML(s));
   p.block("firsts", firstsHTML(d));
+  p.block("cases", casesHTML(cases));
+  p.block("steps", caseStepsHTML(cases));
+  p.block("named", namedHTML(d));
 });
 
 page("gallery.html", (p) => {
@@ -56,6 +61,7 @@ page("gallery.html", (p) => {
   p.count("swag", s.gallerySwag);
   p.count("award", s.galleryAwards);
   p.count("credential", s.galleryCredentials);
+  p.count("talk", s.galleryTalks);
 });
 
-console.log(`prerendered: ${s.listed} organizations, ${s.countries} countries, ${d.prestige.length} top names, ${s.galleryAll} gallery items`);
+console.log(`prerendered: ${s.listed} organizations, ${s.countries} countries, ${d.prestige.length} top names, ${s.galleryAll} archive items, ${cases.cases.length} cases, ${d.orgs.filter((o) => o.bug).length} named findings`);

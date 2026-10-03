@@ -18,7 +18,7 @@ for (const o of d.orgs) {
   if (!d.sectors[o.sector]) errors.push(`${where}: unknown sector "${o.sector}" (use one of ${Object.keys(d.sectors).join(", ")})`);
   if (!d.countries.some((c) => c.code === o.country)) errors.push(`${where}: unknown country "${o.country}", add it to "countries" first`);
   for (const r of o.recognition) if (!RECOGNITION.includes(r)) errors.push(`${where}: unknown recognition "${r}" (use ${RECOGNITION.join(", ")})`);
-  if (/[\u2013\u2014]/.test(o.name + (o.note || ""))) errors.push(`${where}: contains a long dash`);
+  if (/[\u2013\u2014]/.test(o.name + (o.note || "") + (o.bug || ""))) errors.push(`${where}: contains a long dash`);
   if (o.url && !/^https:\/\//.test(o.url)) errors.push(`${where}: url must start with https://`);
   o.first = !!o.first;
   o.top = d.prestige.some((p) => p.domain === o.domain);
@@ -41,7 +41,7 @@ ${d.countries.map(line).join(",\n")}
 ${d.prestige.map(line).join(",\n")}
 ],
 "orgs": [
-${d.orgs.map(({ domain, name, sector, country, first, top, recognition, url, note }) => line({ domain, name, sector, country, first, top, recognition, url, note })).join(",\n")}
+${d.orgs.map(({ domain, name, sector, country, first, top, recognition, url, note, bug }) => line({ domain, name, sector, country, first, top, recognition, url, note, bug })).join(",\n")}
 ]
 }
 `;
@@ -55,7 +55,7 @@ const urlOf = new Map(d.orgs.filter((o) => o.url).map((o) => [o.domain, o.url]))
 for (const g of gallery) {
   if (g.category === "hof" && urlOf.has(g.domain)) g.url = urlOf.get(g.domain);
   else delete g.url;
-  const fromOrg = ["hof", "letter", "cert", "swag"].includes(g.category); // "award" and "credential" are my own records
+  const fromOrg = ["hof", "letter", "cert", "swag"].includes(g.category); // "award", "credential" and "talk" are my own records
   if (fromOrg && !d.orgs.some((o) => o.domain === g.domain)) console.warn(`gallery: ${g.src} points to ${g.domain}, which is not in orgs`);
 }
 writeFileSync(galleryFile, JSON.stringify(gallery, null, 1));

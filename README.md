@@ -29,8 +29,9 @@ To preview locally: `npm run serve` (or any static file server) and open http://
 | What | Where |
 | --- | --- |
 | Text on the homepage | `index.html` |
+| Case files and their replays | `data/cases.json` |
 | Organizations, sectors, countries, Top 50 | `data/orgs.json` |
-| Proof archive items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert`, `swag`, `award` for competition results or `credential` for my certifications; optional `verify` link) |
+| Proof archive items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert`, `swag`, `award` for competition results, `credential` for my certifications or `talk` for workshops; optional `verify` link) |
 | CV content | `tools/templates/cv.html` |
 | Colors, type, spacing | `assets/css/site.css` (tokens at the top) |
 
@@ -47,6 +48,7 @@ Add one line to the `orgs` list in `data/orgs.json`:
 - `recognition`: any of `hof`, `swag`, `cert`, `letter`, `cve`, `ack`, `gift`
 - `first`: `true` if you were the first researcher in that Hall of Fame
 - `url` (optional): the public Hall of Fame page. It shows as a "Public page" link in the directory and on the matching screenshots.
+- `bug` (optional): what the organization itself published next to my name. Only use their wording, taken from their own page, because it is shown in the "In their words" section.
 - `note` (optional): a short line shown under the name, for example `"Sent a Steam gift card"`
 
 Then run `npm run data && npm run globe && npm run prerender && npm run stamp`. Every count on the site updates by itself.
@@ -67,6 +69,14 @@ npm run build      # all of the above
 Adding a new proof image: put the file in `assets/hof/` (or `letters`, `certs`, `swag`, `awards`, `credentials`), add an entry to `data/gallery.json`, run `npm run images`. If you skip the script the archive still works and shows the original file.
 
 Why `npm run stamp` matters: browsers and Hostinger's cache keep old copies of CSS and JS. The stamp gives every changed file a new address, so nobody ever sees new pages with an old stylesheet.
+
+## Case files and replays
+
+`data/cases.json` holds every case. Each one has the meta rows, the story, a link to the published writeup, and `steps`: an ordered list of `{label, body, code, lang}`. The steps are rendered twice: into the page as `<details>` so they work without JavaScript, and into the replay overlay that steps through them one at a time.
+
+Rules for a new case: it must be fixed and already written up publicly, the target stays `redacted` unless the program allows naming it, and nothing in `code` may contain a live token, a real customer address or anything not already in the public writeup.
+
+Run `npm run prerender && npm run stamp` after editing.
 
 ## Verify mode
 
