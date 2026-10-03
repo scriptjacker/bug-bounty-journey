@@ -1,7 +1,7 @@
 // Pure render helpers for the organizations directory. Shared by the browser (recognition.js)
 // and by tools/prerender.mjs, so the prerendered HTML and the live HTML are identical.
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-const REC = { hof: "Hall of Fame", swag: "Swag", cert: "Certificate", letter: "Letter", ack: "Acknowledged" };
+const REC = { hof: "Hall of Fame", swag: "Swag", cert: "Certificate", letter: "Letter of appreciation", cve: "CVEs", ack: "Acknowledged" };
 const showCountry = (code) => code !== "EU" && code !== "INT";
 
 export function prepare(data, gallery = []) {
@@ -42,3 +42,32 @@ export function top50HTML(d) {
 }
 
 export const resultText = (shown, total) => (shown === total ? `Showing all ${total} organizations` : `Showing ${shown} of ${total} organizations`);
+
+// Numbers shown on the homepage, derived from the data so they never drift.
+export function siteStats(d, gallery = []) {
+  const count = (fn) => d.orgs.filter(fn).length;
+  const mapped = d.countries.filter((c) => c.lat !== null && c.count > 0);
+  return {
+    listed: d.orgs.length,
+    countries: mapped.length,
+    first: count((o) => o.first),
+    firstMore: count((o) => o.first) - 8, // eight names are printed on the homepage tile
+    swag: count((o) => o.recognition.includes("swag")),
+    letters: count((o) => o.recognition.includes("letter") || o.recognition.includes("cert")),
+    galleryAll: gallery.length,
+    galleryHof: gallery.filter((g) => g.category === "hof").length,
+    galleryLetters: gallery.filter((g) => g.category === "letter" || g.category === "cert").length,
+    gallerySwag: gallery.filter((g) => g.category === "swag").length,
+    sector: Object.fromEntries(Object.keys(d.sectors).map((k) => [k, count((o) => o.sector === k)])),
+    topCountries: mapped.slice().sort((a, b) => b.count - a.count).slice(0, 7),
+  };
+}
+
+const SECTOR_TILES = [
+  ["company", "Companies, from startups to SaaS platforms"], ["government", "Government bodies"], ["education", "Universities and research"],
+  ["enterprise", "Global enterprises"], ["finance", "Banks and finance"], ["nonprofit", "Nonprofit and civic"], ["media", "Media"],
+];
+export const sectorTilesHTML = (s) => SECTOR_TILES.map(([k, label], i) =>
+  `<a class="sector${i === 0 ? " sector--lead" : ""}" href="recognition.html?filter=${k}"><b>${s.sector[k]}</b><span>${label}</span></a>`).join("");
+export const topCountriesHTML = (s) => s.topCountries.map((c) =>
+  `<li><span class="cc">${c.code}</span>${esc(c.name)}<span class="n">${c.count}</span></li>`).join("");

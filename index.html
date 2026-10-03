@@ -134,7 +134,7 @@
 
       <div class="hero__visual">
         <div class="globe" data-globe>
-          <canvas aria-label="Interactive globe showing the 32 countries where organizations recognized Parth's security reports, with arcs drawn from India" role="img"></canvas>
+          <canvas aria-label="Interactive globe showing the countries where organizations recognized Parth's security reports, with arcs drawn from India" role="img"></canvas>
           <div class="globe__labels" aria-hidden="true"></div>
           <div class="globe__fallback"><img src="assets/img/globe-dark.webp" data-light-src="assets/img/globe-light.webp" width="820" height="820" alt="" loading="lazy" decoding="async"></div>
         </div>
@@ -150,7 +150,7 @@
           <span class="float-card__icon"><svg class="ic"><use href="assets/icons.svg#i-bug"/></svg></span>
           <span><small>CVE assigned</small><strong class="mono">CVE-2025-56697</strong></span>
         </div>
-        <p class="globe__legend"><i aria-hidden="true"></i>32 countries on record, reported from India</p>
+        <p class="globe__legend"><i aria-hidden="true"></i><span data-stat="countries">34</span> countries on record, reported from India</p>
       </div>
     </div>
   </section>
@@ -160,7 +160,7 @@
     <div class="stats">
       <div class="stat" data-reveal><p class="stat__num"><span data-count="450">450</span>+</p><p class="stat__label">organizations secured</p></div>
       <div class="stat" data-reveal><p class="stat__num"><span data-count="250">250</span>+</p><p class="stat__label">Halls of Fame</p></div>
-      <div class="stat" data-reveal><p class="stat__num"><span data-count="45">45</span></p><p class="stat__label">programs where I was the first researcher</p></div>
+      <div class="stat" data-reveal><p class="stat__num"><span data-count="45" data-stat="first">45</span></p><p class="stat__label">programs where I was the first researcher</p></div>
       <div class="stat" data-reveal><p class="stat__num"><span data-count="2500">2,500</span>+</p><p class="stat__label">bugs reported and resolved</p></div>
       <div class="stat" data-reveal><p class="stat__num"><span data-count="7">7</span>+</p><p class="stat__label">first place CTF finishes</p></div>
     </div>
@@ -170,14 +170,14 @@
         <div class="marquee__track">
           <ul>
             <li>World Health Organization</li><li>UNESCO</li><li>European Union</li><li>Boeing</li><li>BBC</li><li>BASF</li>
-            <li>Philips</li><li>Michelin</li><li>MediaTek</li><li>ALDI Süd</li><li>Pirelli</li><li>Lloyd's of London</li>
+            <li>Philips</li><li>Nokia</li><li>Thales</li><li>Red Hat</li><li>TP-Link</li><li>Michelin</li><li>MediaTek</li><li>ALDI Süd</li><li>Pirelli</li><li>Lloyd's of London</li>
             <li>Commerzbank</li><li>Deutsche Börse</li><li>Proton</li><li>Wiz</li><li>Swedish Police Authority</li><li>City of Berlin</li>
             <li>Australian Department of Home Affairs</li><li>Norwegian Directorate of Elections</li><li>Cambridge University Press</li>
             <li>TU Delft</li><li>University of Sheffield</li><li>Visma</li>
           </ul>
           <ul aria-hidden="true">
             <li>World Health Organization</li><li>UNESCO</li><li>European Union</li><li>Boeing</li><li>BBC</li><li>BASF</li>
-            <li>Philips</li><li>Michelin</li><li>MediaTek</li><li>ALDI Süd</li><li>Pirelli</li><li>Lloyd's of London</li>
+            <li>Philips</li><li>Nokia</li><li>Thales</li><li>Red Hat</li><li>TP-Link</li><li>Michelin</li><li>MediaTek</li><li>ALDI Süd</li><li>Pirelli</li><li>Lloyd's of London</li>
             <li>Commerzbank</li><li>Deutsche Börse</li><li>Proton</li><li>Wiz</li><li>Swedish Police Authority</li><li>City of Berlin</li>
             <li>Australian Department of Home Affairs</li><li>Norwegian Directorate of Elections</li><li>Cambridge University Press</li>
             <li>TU Delft</li><li>University of Sheffield</li><li>Visma</li>
@@ -310,19 +310,19 @@
         </article>
 
         <article class="tile tile--first" data-reveal>
-          <p class="big-num">45<small>programs</small></p>
+          <p class="big-num"><span data-stat="first">45</span><small>programs</small></p>
           <h3>Where I was the very first name in the Hall of Fame</h3>
           <div class="name-cloud">
             <span>City of Berlin</span><span>Commerzbank</span><span>University of St Andrews</span><span>BankAxept</span>
-            <span>Government of Western Australia</span><span>Port of Tallinn</span><span>Zepto</span><span>Whatfix</span><span>+37 more</span>
+            <span>Government of Western Australia</span><span>Port of Tallinn</span><span>Zepto</span><span>Whatfix</span><span>+<span data-stat="firstMore">37</span> more</span>
           </div>
-          <a class="link" href="recognition.html?filter=first">See all 45<svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"/></svg></a>
+          <a class="link" href="recognition.html?filter=first">See all <span data-stat="first">45</span><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"/></svg></a>
         </article>
 
         <figure class="tile tile--swag" data-reveal>
           <img src="assets/img/swag/l19-480.webp" srcset="assets/img/swag/l19-480.webp 480w, assets/img/swag/l19-1400.webp 1200w" sizes="(max-width: 1023px) 100vw, 400px" width="480" height="640" alt="A teddy bear in a Swedish Police uniform, sent as a thank you for a security report" loading="lazy" decoding="async">
           <figcaption>
-            <h3>29 programs sent swag</h3>
+            <h3><span data-stat="swag">30</span> programs sent swag</h3>
             <p>Shirts, hoodies, a Pirelli cap and a cryptex. The Swedish Police sent this bear.</p>
           </figcaption>
         </figure>
@@ -338,9 +338,9 @@
 
         <article class="tile tile--letters" data-reveal>
           <div class="tile__text">
-            <p class="big-num">9<small>letters and certificates</small></p>
+            <p class="big-num"><span data-stat="letters">14</span><small>letters and certificates</small></p>
             <h3>Written thanks from universities and companies</h3>
-            <p>Maastricht University, Avans, Windesheim, Nykaa, Neoshare, CTW and more.</p>
+            <p>Drexel University, TP-Link, Maastricht University, Avans, Windesheim, Nykaa and more.</p>
             <a class="link" href="gallery.html?category=letter">Read them<svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"/></svg></a>
           </div>
           <div class="paper-stack" aria-hidden="true">
@@ -358,37 +358,22 @@
     <div class="wrap">
       <div class="section__head">
         <h2 class="h2" id="recognition-title" data-reveal>Who I've reported to</h2>
-        <p class="lede" data-reveal>330 organizations are listed publicly. Over 120 more recognized my reports under NDA or private programs, so they stay off this page.</p>
+        <p class="lede" data-reveal><span data-stat="listed">353</span> organizations are listed publicly. The rest of the 450+ recognized my reports under NDA or through private programs, so they stay off this page.</p>
       </div>
       <div class="reco">
         <div class="reco__sectors" data-reveal>
           <h3>By sector</h3>
-          <div class="sector-grid">
-            <a class="sector sector--lead" href="recognition.html?filter=company"><b>183</b><span>Companies, from startups to SaaS platforms</span></a>
-            <a class="sector" href="recognition.html?filter=government"><b>41</b><span>Government bodies</span></a>
-            <a class="sector" href="recognition.html?filter=education"><b>38</b><span>Universities and research</span></a>
-            <a class="sector" href="recognition.html?filter=enterprise"><b>22</b><span>Global enterprises</span></a>
-            <a class="sector" href="recognition.html?filter=finance"><b>17</b><span>Banks and finance</span></a>
-            <a class="sector" href="recognition.html?filter=nonprofit"><b>10</b><span>Nonprofit and civic</span></a>
-            <a class="sector" href="recognition.html?filter=media"><b>5</b><span>Media</span></a>
+          <div class="sector-grid"><!-- sectors:start --><a class="sector sector--lead" href="recognition.html?filter=company"><b>195</b><span>Companies, from startups to SaaS platforms</span></a><a class="sector" href="recognition.html?filter=government"><b>42</b><span>Government bodies</span></a><a class="sector" href="recognition.html?filter=education"><b>40</b><span>Universities and research</span></a><a class="sector" href="recognition.html?filter=enterprise"><b>28</b><span>Global enterprises</span></a><a class="sector" href="recognition.html?filter=finance"><b>18</b><span>Banks and finance</span></a><a class="sector" href="recognition.html?filter=nonprofit"><b>10</b><span>Nonprofit and civic</span></a><a class="sector" href="recognition.html?filter=media"><b>6</b><span>Media</span></a><!-- sectors:end -->
           </div>
         </div>
         <div class="reco__countries" data-reveal>
           <h3>Top countries</h3>
-          <ol class="country-list">
-            <li><span class="cc">NL</span>Netherlands<span class="n">63</span></li>
-            <li><span class="cc">DE</span>Germany<span class="n">44</span></li>
-            <li><span class="cc">US</span>United States<span class="n">44</span></li>
-            <li><span class="cc">AU</span>Australia<span class="n">25</span></li>
-            <li><span class="cc">GB</span>United Kingdom<span class="n">19</span></li>
-            <li><span class="cc">SE</span>Sweden<span class="n">14</span></li>
-            <li><span class="cc">IN</span>India<span class="n">14</span></li>
-          </ol>
+          <ol class="country-list"><!-- countries:start --><li><span class="cc">NL</span>Netherlands<span class="n">65</span></li><li><span class="cc">US</span>United States<span class="n">48</span></li><li><span class="cc">DE</span>Germany<span class="n">46</span></li><li><span class="cc">AU</span>Australia<span class="n">27</span></li><li><span class="cc">GB</span>United Kingdom<span class="n">19</span></li><li><span class="cc">IN</span>India<span class="n">16</span></li><li><span class="cc">SE</span>Sweden<span class="n">14</span></li><!-- countries:end --></ol>
         </div>
         <div class="reco__foot" data-reveal>
           <p>Every entry links to a public Hall of Fame, a letter or a photo.</p>
           <div>
-            <a class="btn btn--ghost" href="recognition.html">Browse all 330</a>
+            <a class="btn btn--ghost" href="recognition.html">Browse all <span data-stat="listed">353</span></a>
           </div>
         </div>
       </div>
@@ -409,9 +394,9 @@
         <h2 class="h2" id="proof-title" data-reveal>Every claim here has a screenshot behind it.</h2>
         <p class="lede" data-reveal>Hall of Fame pages with my name on them, letters on university letterhead and photos of the swag that showed up at my door.</p>
         <div class="wall__counts" data-reveal>
-          <span class="chip"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-medal"/></svg>172 Hall of Fame pages</span>
-          <span class="chip"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-certificate"/></svg>9 letters and certificates</span>
-          <span class="chip"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-gift"/></svg>20 swag photos</span>
+          <span class="chip"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-medal"/></svg><span data-stat="galleryHof">172</span> Hall of Fame screenshots</span>
+          <span class="chip"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-certificate"/></svg><span data-stat="galleryLetters">9</span> letter and certificate scans</span>
+          <span class="chip"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-gift"/></svg><span data-stat="gallerySwag">20</span> swag photos</span>
         </div>
         <div class="wall__cta" data-reveal>
           <a class="btn btn--primary" href="gallery.html">Open the gallery<svg class="ic ic--move" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"/></svg></a>

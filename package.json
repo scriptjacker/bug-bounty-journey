@@ -11,7 +11,8 @@
     "serve": "npx --yes serve -l 4173 .",
     "assets": "node tools/build-assets.mjs",
     "prerender": "node tools/prerender.mjs",
-    "build": "npm run images && npm run globe && npm run prerender && npm run assets"
+    "build": "npm run data && npm run images && npm run globe && npm run prerender && npm run assets",
+    "data": "node tools/sync-data.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/geist": "^5.2.0",

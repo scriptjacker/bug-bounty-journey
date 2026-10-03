@@ -14,7 +14,7 @@ const ACTIONS = [
   { group: "Actions", label: "Download CV", icon: "download-simple", href: `${BASE}Parth-Narula-CV.pdf`, keys: "resume pdf" },
   { group: "Actions", label: "Switch light or dark theme", icon: "sun", run: toggleTheme, keys: "theme dark light mode" },
   { group: "Pages", label: "Proof of work gallery", icon: "files", href: `${BASE}gallery.html`, keys: "screenshots hall of fame swag letters" },
-  { group: "Pages", label: "All 330 organizations", icon: "globe-hemisphere-west", href: `${BASE}recognition.html`, keys: "directory list hall of fame" },
+  { group: "Pages", label: "All listed organizations", icon: "globe-hemisphere-west", href: `${BASE}recognition.html`, keys: "directory list hall of fame" },
   { group: "Pages", label: "About", icon: "identification-card", href: home("#about") },
   { group: "Pages", label: "Expertise", icon: "shield-check", href: home("#expertise"), keys: "skills idor logic auth api llm" },
   { group: "Pages", label: "Recognition", icon: "medal", href: home("#recognition") },
@@ -45,7 +45,7 @@ function build() {
       <div class="palette__search">
         ${icon("magnifying-glass")}
         <input type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list"
-          placeholder="Search sections, actions or 330 organizations" spellcheck="false" autocomplete="off">
+          placeholder="Search sections, actions or organizations" spellcheck="false" autocomplete="off">
         <kbd>Esc</kbd>
       </div>
       <div class="palette__list" id="palette-list" role="listbox" aria-label="Results"></div>
