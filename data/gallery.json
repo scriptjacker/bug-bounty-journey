@@ -34,7 +34,7 @@
  },
  {
   "src": "assets/awards/rootbreach-2026.jpg",
-  "title": "Root Breach CTF, first place, UTKANSH 2026, NIT Jalandhar",
+  "title": "Rootbreach CTF, first place, UTKANSH 2026, NIT Jalandhar",
   "domain": "nitj.ac.in",
   "category": "award",
   "w": 1216,
@@ -50,7 +50,7 @@
  },
  {
   "src": "assets/awards/xploit404-2026.jpg",
-  "title": "Xploit404 CTF, second place, LPU, Apr 2026",
+  "title": "Xploit404 CTF, second place, Apr 2026",
   "domain": "lpu.in",
   "category": "award",
   "w": 2000,
@@ -58,7 +58,7 @@
  },
  {
   "src": "assets/awards/cyberwar-2026.jpg",
-  "title": "Cyber War 2026 CTF prize ceremony, LPU (Quick Heal and CompTIA)",
+  "title": "Cyber War 2026 national CTF prize ceremony, Quick Heal and CompTIA",
   "domain": "lpu.in",
   "category": "award",
   "w": 2000,
@@ -423,7 +423,7 @@
  },
  {
   "src": "assets/hof/aldi.jpeg",
-  "title": "ALDI Süd",
+  "title": "ALDI S\u00fcd",
   "domain": "aldi-sued.com",
   "category": "hof",
   "w": 720,
@@ -577,7 +577,7 @@
  },
  {
   "src": "assets/hof/belwu.jpeg",
-  "title": "BelWü (Academic Network)",
+  "title": "BelW\u00fc (Academic Network)",
   "domain": "belwue.de",
   "category": "hof",
   "w": 720,
@@ -756,7 +756,7 @@
  },
  {
   "src": "assets/hof/deutscheborse.jpeg",
-  "title": "Deutsche Börse",
+  "title": "Deutsche B\u00f6rse",
   "domain": "deutsche-boerse.com",
   "category": "hof",
   "w": 720,
@@ -874,7 +874,7 @@
  },
  {
   "src": "assets/hof/fhmunster.jpeg",
-  "title": "Münster Univ. of Applied Sciences",
+  "title": "M\u00fcnster Univ. of Applied Sciences",
   "domain": "fh-muenster.de",
   "category": "hof",
   "w": 720,
@@ -1164,7 +1164,7 @@
  },
  {
   "src": "assets/hof/muenster.jpeg",
-  "title": "Münster Univ. of Applied Sciences",
+  "title": "M\u00fcnster Univ. of Applied Sciences",
   "domain": "fh-muenster.de",
   "category": "hof",
   "w": 720,
@@ -1472,7 +1472,7 @@
  },
  {
   "src": "assets/hof/sudwest.jpeg",
-  "title": "Municipality of Súdwest-Fryslân",
+  "title": "Municipality of S\u00fadwest-Frysl\u00e2n",
   "domain": "sudwestfryslan.nl",
   "category": "hof",
   "w": 720,
@@ -1507,7 +1507,7 @@
  },
  {
   "src": "assets/hof/thws.jpeg",
-  "title": "THWS Würzburg-Schweinfurt",
+  "title": "THWS W\u00fcrzburg-Schweinfurt",
   "domain": "thws.de",
   "category": "hof",
   "w": 720,
@@ -1541,7 +1541,7 @@
  },
  {
   "src": "assets/hof/tubingen.jpeg",
-  "title": "Tübingen AI Center",
+  "title": "T\u00fcbingen AI Center",
   "domain": "tuebingen.ai",
   "category": "hof",
   "w": 720,
@@ -1820,5 +1820,128 @@
   "category": "hof",
   "w": 720,
   "h": 1455
+ },
+ {
+  "src": "assets/awards/cyberwar-2026-scoreboard.jpg",
+  "title": "Cyber War 2026 national CTF scoreboard, ScriptJackers first with 5,650",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 1693,
+  "h": 914
+ },
+ {
+  "src": "assets/awards/cyberthon-2026.jpg",
+  "title": "Cyberthon 2026 CTF, winner certificate, Play2Unite and Qubicsquare",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 929,
+  "h": 1316
+ },
+ {
+  "src": "assets/awards/cyberthon-2026-trophy.jpg",
+  "title": "Cyberthon 2026 CTF winner trophy and team medals",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 1600,
+  "h": 900
+ },
+ {
+  "src": "assets/awards/rcs-2026.jpg",
+  "title": "RCS 2026 National CTF, Republic of Cyber Sentinels at LPU",
+  "domain": "lpu.in",
+  "category": "award",
+  "verify": "https://happenings.lpu.in/lpu-hosts-national-level-rcs-ctf-2026-to-promote-cybersecurity-skills/",
+  "w": 2200,
+  "h": 1467
+ },
+ {
+  "src": "assets/awards/rootbreach-2026-utkansh.jpg",
+  "title": "Rootbreach CTF, Certificate of Excellence, UTKANSH 2026, NIT Jalandhar",
+  "domain": "nitj.ac.in",
+  "category": "award",
+  "w": 1800,
+  "h": 2400
+ },
+ {
+  "src": "assets/awards/nitj-2026.jpg",
+  "title": "Rootbreach CTF at Dr B R Ambedkar NIT Jalandhar, UTKANSH 2026",
+  "domain": "nitj.ac.in",
+  "category": "award",
+  "w": 2200,
+  "h": 1650
+ },
+ {
+  "src": "assets/awards/hackwithindia-2026-cert.jpg",
+  "title": "HackWithIndia 2026, valid vulnerability reported, certificate C2026-Q018",
+  "domain": "hackwithindia.com",
+  "category": "award",
+  "verify": "https://hackwithindia.com/leaderboard",
+  "w": 2000,
+  "h": 1414
+ },
+ {
+  "src": "assets/credentials/cisco-ethical-hacker.jpg",
+  "title": "Ethical Hacker, Cisco Networking Academy",
+  "domain": "netacad.com",
+  "category": "credential",
+  "verify": "https://www.credly.com/badges/b96dc267-b713-4846-ab49-d8a42939855a/public_url",
+  "w": 856,
+  "h": 656
+ },
+ {
+  "src": "assets/credentials/ehe.jpg",
+  "title": "Ethical Hacking Essentials (EHE), EC-Council, no. 152849",
+  "domain": "eccouncil.org",
+  "category": "credential",
+  "w": 1080,
+  "h": 816
+ },
+ {
+  "src": "assets/credentials/forensic-academy-internship.jpg",
+  "title": "Penetration testing internship, graded A+, Forensic Academy",
+  "domain": "forensicacademy.in",
+  "category": "credential",
+  "w": 570,
+  "h": 800
+ },
+ {
+  "src": "assets/credentials/hackdefence-summit-2026.jpg",
+  "title": "Hack Defence Summit 2026, Sohang Education",
+  "domain": "sohangeducation.com",
+  "category": "credential",
+  "w": 1024,
+  "h": 1024
+ },
+ {
+  "src": "assets/talks/gjust-2025-stage.jpg",
+  "title": "Web application pentesting masterclass, GJUST Hisar",
+  "domain": "gjust.ac.in",
+  "category": "talk",
+  "w": 1280,
+  "h": 960
+ },
+ {
+  "src": "assets/talks/bsides-ahmedabad-2025.jpg",
+  "title": "BSides Ahmedabad 2025",
+  "domain": "bsidesahmedabad.in",
+  "category": "talk",
+  "w": 800,
+  "h": 1066
+ },
+ {
+  "src": "assets/talks/forensic-academy-webinar-2023.jpg",
+  "title": "Guest speaker, web application penetration testing webinar, Forensic Academy",
+  "domain": "forensicacademy.in",
+  "category": "talk",
+  "w": 764,
+  "h": 531
+ },
+ {
+  "src": "assets/talks/gcs-council-mentor.jpg",
+  "title": "Mentor and bash scripting instructor, Ginius Cyber Security Council",
+  "domain": "gcscouncil.com",
+  "category": "talk",
+  "w": 1280,
+  "h": 904
  }
 ]

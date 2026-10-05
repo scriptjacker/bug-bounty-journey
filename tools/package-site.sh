@@ -9,6 +9,6 @@ zip -qr -X "$out" \
   index.html gallery.html recognition.html 404.html \
   .htaccess robots.txt sitemap.xml site.webmanifest .well-known \
   favicon.svg favicon.ico apple-touch-icon.png Parth-Narula-CV.pdf \
-  assets data \
+  assets data talks \
   -x "*.md" "*/.DS_Store" "assets/*/test.md"
 echo "built $out ($(du -h "$out" | cut -f1))"

@@ -1,5 +1,5 @@
 // Organizations directory. The page ships prerendered (tools/prerender.mjs); this adds filtering, sorting and search.
-import { prepare, filtersHTML, rowHTML, top50HTML, resultText, matchFilter, sortOrgs, SORTS } from "./directory-render.js?v=ef862c19";
+import { prepare, filtersHTML, rowHTML, top50HTML, resultText, matchFilter, sortOrgs, SORTS } from "./directory-render.js?v=2a2b831c";
 
 const $ = (s, r = document) => r.querySelector(s);
 const rows = $("[data-rows]");

@@ -5,6 +5,7 @@ Portfolio of Parth Narula (ScriptJacker). One site that combines the old persona
 - **Home** (`index.html`): the record with links to check every number, what I test (web, API, Android, LLM, cloud), case files, the Halls of Fame where I was the first researcher, a WebGL globe built from the real data, proof, background, writing and contact.
 - **Proof archive** (`gallery.html`): Hall of Fame screenshots, letters, certificates and swag photos with filters, search and a lightbox that links to the live page where one exists.
 - **Organizations** (`recognition.html`): the most recognizable names and every publicly listed organization, first researcher programs first, with links to public Halls of Fame.
+- **AI security talk** (`talks/ai-security/`): the 57 slide deck I wrote and delivered, hosted as it was presented.
 - **CV** (`Parth-Narula-CV.pdf`): one page, text based, readable by applicant tracking systems.
 
 It is a plain static site. No framework, no server code and no build step is needed to host it.
@@ -31,7 +32,7 @@ To preview locally: `npm run serve` (or any static file server) and open http://
 | Text on the homepage | `index.html` |
 | Case files and their replays | `data/cases.json` |
 | Organizations, sectors, countries, Top 50 | `data/orgs.json` |
-| Proof archive items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert`, `swag`, `award` for competition results, `credential` for my certifications or `talk` for workshops; optional `verify` link) |
+| Proof archive items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert`, `swag`, `award` for competition results, `credential` for my certifications or `talk` for talks and workshops; optional `verify` link) |
 | CV content | `tools/templates/cv.html` |
 | Colors, type, spacing | `assets/css/site.css` (tokens at the top) |
 
@@ -72,7 +73,7 @@ Why `npm run stamp` matters: browsers and Hostinger's cache keep old copies of C
 
 ## Case files and replays
 
-`data/cases.json` holds every case. Each one has the meta rows, the story, a link to the published writeup, and `steps`: an ordered list of `{label, body, code, lang}`. The steps are rendered twice: into the page as `<details>` so they work without JavaScript, and into the replay overlay that steps through them one at a time.
+`data/cases.json` holds every case. Each one has the meta rows, the story, a link to the published writeup, an optional `more` list of `[label, url]` pairs for further records of the same finding, and `steps`: an ordered list of `{label, body, code, lang}`. The steps are rendered twice: into the page as `<details>` so they work without JavaScript, and into the replay overlay that steps through them one at a time.
 
 Rules for a new case: it must be fixed and already written up publicly, the target stays `redacted` unless the program allows naming it, and nothing in `code` may contain a live token, a real customer address or anything not already in the public writeup.
 
@@ -99,7 +100,7 @@ The homepage has a verify mode (the "Verify my work" button, the floating button
 - **Motion**: CSS animations, IntersectionObserver and one scroll listener for the sideways case files. The hero wall and drifting rows pause when off screen. Everything respects `prefers-reduced-motion`.
 - **Themes**: dark and light, following the system setting with a manual toggle.
 - **Search**: press Ctrl K or Cmd K (or `/`) anywhere to search sections, actions and every listed organization.
-- **Security**: strict Content Security Policy with no inline scripts or styles, HSTS, frame denial and a `/.well-known/security.txt`.
+- **Security**: strict Content Security Policy with no inline scripts or styles, HSTS, frame denial and a `/.well-known/security.txt`. The slide deck under `talks/` carries its own `.htaccess` that loosens `style-src` alone, because the deck positions things through the style attribute; scripts there still have to come from this origin.
 - **Checked with**: Lighthouse (100 for accessibility, best practices and SEO on every page), axe-core (no violations in either theme), html-validate (no errors).
 
 ## Disclosure and privacy

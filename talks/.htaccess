@@ -1,0 +1,7 @@
+# The AI security deck is a self contained slide deck: its script sets positions and
+# progress widths through the style attribute, which the site wide style-src 'self'
+# blocks. Only style-src is loosened here, and only for this folder. Scripts still
+# have to come from this origin, so nothing inline can run.
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+</IfModule>

@@ -18,7 +18,7 @@ function build() {
           <p class="replay__case" data-r-class></p>
           <h2 class="replay__title" id="replay-title" data-r-title></h2>
         </div>
-        <button class="icon-btn" type="button" data-r-close aria-label="Close the replay"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=ef862c19#i-x"/></svg></button>
+        <button class="icon-btn" type="button" data-r-close aria-label="Close the replay"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=2a2b831c#i-x"/></svg></button>
       </header>
       <div class="replay__track" data-r-track aria-hidden="true"></div>
       <div class="replay__body">
@@ -30,7 +30,7 @@ function build() {
           <button class="btn btn--ghost btn--sm" type="button" data-r-step="-1">Back</button>
           <button class="btn btn--red btn--sm" type="button" data-r-step="1">Next step</button>
         </div>
-        <a class="replay__link" data-r-link target="_blank" rel="noopener">Full writeup<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=ef862c19#i-arrow-up-right"/></svg></a>
+        <a class="replay__link" data-r-link target="_blank" rel="noopener">Full writeup<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=2a2b831c#i-arrow-up-right"/></svg></a>
       </footer>
     </div>`;
   document.body.appendChild(box);

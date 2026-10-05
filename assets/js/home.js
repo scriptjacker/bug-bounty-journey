@@ -1,7 +1,7 @@
 // Homepage only: the lit wall of Hall of Fame screenshots, the scope panels, the sideways case files,
 // the drifting name lists and the desk of swag you can pick up. Everything here is progressive:
 // without JavaScript the page still reads top to bottom.
-import { WALL } from "./wall-data.js?v=ef862c19";
+import { WALL } from "./wall-data.js?v=2a2b831c";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -146,9 +146,14 @@ if (cases) {
     if (!active) return;
     const top = cases.getBoundingClientRect().top;
     const p = distance ? clamp(-top / distance, 0, 1) : 0;
-    track.style.transform = `translate3d(${(-p * distance).toFixed(1)}px, 0, 0)`;
+    const shift = p * distance;
+    track.style.transform = `translate3d(${(-shift).toFixed(1)}px, 0, 0)`;
     bar.style.transform = `scaleX(${p.toFixed(3)})`;
-    count.textContent = `${pad(Math.round(p * (cards.length - 1)) + 1)} / ${pad(cards.length)}`;
+    // Count how many cards are fully on screen, not a share of the scroll: several are visible at
+    // once on a wide screen, so a share of the scroll names a card that is nowhere near the viewport.
+    const base = cards[0].offsetLeft;
+    const seen = cards.filter((c) => c.offsetLeft - base + c.offsetWidth <= shift + viewport.clientWidth + 8).length;
+    count.textContent = `${pad(Math.max(1, seen))} / ${pad(cards.length)}`;
   };
   const measure = () => {
     if (!active) return;
@@ -243,7 +248,7 @@ if (desk) {
 
 /* ---------- Verify mode: the source behind every claim (verify.js loads on first use) ---------- */
 let verifyMod;
-const loadVerify = async () => (verifyMod ??= await import("./verify.js?v=ef862c19"));
+const loadVerify = async () => (verifyMod ??= await import("./verify.js?v=2a2b831c"));
 const toggles = $$("[data-verify-toggle]");
 toggles.forEach((t) => {
   if (t.tagName === "A") t.setAttribute("role", "button");
@@ -264,6 +269,6 @@ let replayMod;
 document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-replay]");
   if (!b) return;
-  replayMod ??= await import("./replay.js?v=ef862c19");
+  replayMod ??= await import("./replay.js?v=2a2b831c");
   replayMod.open(b.dataset.replay, b);
 });
