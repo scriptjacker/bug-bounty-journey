@@ -6,7 +6,10 @@ import { readFileSync, writeFileSync } from "node:fs";
 const root = new URL("..", import.meta.url).pathname;
 const file = root + "data/orgs.json";
 const d = JSON.parse(readFileSync(file, "utf8"));
-const RECOGNITION = ["hof", "swag", "cert", "letter", "cve", "ack", "gift"];
+const RECOGNITION = ["hof", "swag", "cert", "letter", "cve", "ack", "gift", "bounty"];
+// A bounty amount must never reach the site. The badge says a program paid and nothing more,
+// so anything that looks like money in a field a visitor can read fails the build.
+const MONEY = /[$\u20ac\u20b9\u00a3\u00a5]\s?\d|\d[\d,.]*\s?(?:EUR|USD|GBP|INR|CHF|rs)\b|\b(?:EUR|USD|GBP|INR|CHF)\s?\d/i;
 const errors = [];
 
 const seen = new Set();
@@ -19,6 +22,8 @@ for (const o of d.orgs) {
   if (!d.countries.some((c) => c.code === o.country)) errors.push(`${where}: unknown country "${o.country}", add it to "countries" first`);
   for (const r of o.recognition) if (!RECOGNITION.includes(r)) errors.push(`${where}: unknown recognition "${r}" (use ${RECOGNITION.join(", ")})`);
   if (/[\u2013\u2014]/.test(o.name + (o.note || "") + (o.bug || ""))) errors.push(`${where}: contains a long dash`);
+  for (const [field, v] of Object.entries({ name: o.name, note: o.note, bug: o.bug, url: o.url }))
+    if (v && MONEY.test(v)) errors.push(`${where}: ${field} looks like it contains a bounty amount. The site never publishes amounts.`);
   if (o.url && !/^https:\/\//.test(o.url)) errors.push(`${where}: url must start with https://`);
   o.first = !!o.first;
   o.top = d.prestige.some((p) => p.domain === o.domain);

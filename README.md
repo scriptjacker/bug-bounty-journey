@@ -46,7 +46,7 @@ Add one line to the `orgs` list in `data/orgs.json`:
 
 - `sector`: one of the keys in `sectors` (company, enterprise, government, education, finance, media, nonprofit, independent, sports, healthcare)
 - `country`: a code from `countries`. For a new country add `{"code":"XY","name":"...","lat":..,"lon":..,"count":0}` there first. `XX` means not specified.
-- `recognition`: any of `hof`, `swag`, `cert`, `letter`, `cve`, `ack`, `gift`
+- `recognition`: any of `hof`, `swag`, `cert`, `letter`, `cve`, `ack`, `gift`, `bounty`. Read the rule below before adding `bounty`.
 - `first`: `true` if you were the first researcher in that Hall of Fame
 - `url` (optional): the public Hall of Fame page. It shows as a "Public page" link in the directory and on the matching screenshots.
 - `bug` (optional): what the organization itself published next to my name. Only use their wording, taken from their own page, because it is shown in the "In their words" section.
@@ -70,6 +70,20 @@ npm run build      # all of the above
 Adding a new proof image: put the file in `assets/hof/` (or `letters`, `certs`, `swag`, `awards`, `credentials`), add an entry to `data/gallery.json`, run `npm run images`. If you skip the script the archive still works and shows the original file.
 
 Why `npm run stamp` matters: browsers and Hostinger's cache keep old copies of CSS and JS. The stamp gives every changed file a new address, so nobody ever sees new pages with an old stylesheet.
+
+## The bounty badge
+
+`bounty` renders as a plain **Bounty** badge in the directory. It says a program paid, and nothing else.
+
+Two rules, and neither is a style preference:
+
+1. **No amounts, ever.** Not in a note, not in a name, nowhere. `npm run data` fails the build if anything
+   that looks like money reaches a field a visitor can read, so an amount cannot slip through by accident.
+2. **Only on programs that are already known to pay.** Marking a small company, a municipality, a school or
+   an individual researcher tells other hunters exactly where the money is, which is a target list nobody
+   asked me to publish. Most organizations that paid carry no badge, and that is deliberate.
+
+The directory says as much under its heading, so a missing badge is never read as "this one did not pay".
 
 ## Case files and replays
 

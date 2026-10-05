@@ -2,9 +2,9 @@
 // Shared by the browser (recognition.js) and by tools/prerender.mjs, so the prerendered HTML and
 // the live HTML are identical.
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-const REC = { hof: "Hall of Fame", swag: "Swag", cert: "Certificate", letter: "Letter of appreciation", cve: "CVEs", ack: "Acknowledged", gift: "Gift card" };
+const REC = { hof: "Hall of Fame", swag: "Swag", cert: "Certificate", letter: "Letter of appreciation", cve: "CVEs", ack: "Acknowledged", gift: "Gift card", bounty: "Bounty" };
 const showCountry = (code) => code !== "EU" && code !== "INT";
-const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=2a2b831c#i-arrow-up-right"/></svg>`;
+const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=e9097403#i-arrow-up-right"/></svg>`;
 
 export function prepare(data, gallery = []) {
   const countryName = Object.fromEntries(data.countries.map((c) => [c.code, c.name]));
