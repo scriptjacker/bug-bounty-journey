@@ -392,7 +392,8 @@
   "domain": "accodeing.com",
   "category": "hof",
   "w": 720,
-  "h": 1211
+  "h": 1211,
+  "url": "https://accodeing.com/security"
  },
  {
   "src": "assets/hof/achema.jpeg",
@@ -427,7 +428,8 @@
   "domain": "aldi-sued.com",
   "category": "hof",
   "w": 720,
-  "h": 1359
+  "h": 1359,
+  "url": "https://security.aldi-sued.com/hall-of-fame"
  },
  {
   "src": "assets/hof/amtrust.jpeg",
@@ -486,7 +488,8 @@
   "domain": "homeaffairs.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1223
+  "h": 1223,
+  "url": "https://www.homeaffairs.gov.au/about-us/our-portfolios/cyber-security/vulnerability-disclosure-program"
  },
  {
   "src": "assets/hof/au-industry.jpeg",
@@ -503,7 +506,8 @@
   "domain": "ipaustralia.gov.au",
   "category": "hof",
   "w": 720,
-  "h": 1386
+  "h": 1386,
+  "url": "https://www.ipaustralia.gov.au/about-us/about-this-site/vulnerability-disclosure-policy"
  },
  {
   "src": "assets/hof/au-ndiscommission.jpeg",
@@ -573,7 +577,8 @@
   "domain": "bbc.com",
   "category": "hof",
   "w": 698,
-  "h": 1280
+  "h": 1280,
+  "url": "https://www.bbc.com/backstage/security-disclosure-policy/acknowledgements"
  },
  {
   "src": "assets/hof/belwu.jpeg",
@@ -606,7 +611,8 @@
   "domain": "boeing.com",
   "category": "hof",
   "w": 643,
-  "h": 1280
+  "h": 1280,
+  "url": "https://www.boeing.com/vulnerabilitydisclosure"
  },
  {
   "src": "assets/hof/bokadirekt.jpeg",
@@ -725,7 +731,8 @@
   "domain": "coloop.ai",
   "category": "hof",
   "w": 720,
-  "h": 1358
+  "h": 1358,
+  "url": "https://www.coloop.ai/hall-of-fame"
  },
  {
   "src": "assets/hof/commerzbank.jpeg",
@@ -760,7 +767,8 @@
   "domain": "deutsche-boerse.com",
   "category": "hof",
   "w": 720,
-  "h": 1384
+  "h": 1384,
+  "url": "https://www.deutsche-boerse.com/dbg-en/about-us/contact/report-vulnerabilities"
  },
  {
   "src": "assets/hof/dfrnt.jpeg",
@@ -912,7 +920,8 @@
   "domain": "gea.com",
   "category": "hof",
   "w": 720,
-  "h": 1450
+  "h": 1450,
+  "url": "https://www.gea.com/en/about-us/information-security/products/responsible-disclosure-of-security-issues/hall-of-fame/"
  },
  {
   "src": "assets/hof/gmx.jpeg",
@@ -1057,7 +1066,8 @@
   "domain": "lloyds.com",
   "category": "hof",
   "w": 720,
-  "h": 1298
+  "h": 1298,
+  "url": "https://www.lloyds.com/hall-of-fame"
  },
  {
   "src": "assets/hof/looka.jpeg",
@@ -1142,7 +1152,8 @@
   "domain": "mediatek.com",
   "category": "hof",
   "w": 720,
-  "h": 1460
+  "h": 1460,
+  "url": "https://corp.mediatek.com/it-security-acknowledgements"
  },
  {
   "src": "assets/hof/michelin.jpeg",
@@ -1279,7 +1290,8 @@
   "domain": "philips.com",
   "category": "hof",
   "w": 720,
-  "h": 1457
+  "h": 1457,
+  "url": "https://www.philips.com/a-w/security/coordinated-vulnerability-disclosure/hall-of-honors.html"
  },
  {
   "src": "assets/hof/pluginboutique.jpeg",
@@ -1354,7 +1366,8 @@
   "domain": "redeia.com",
   "category": "hof",
   "w": 1400,
-  "h": 720
+  "h": 720,
+  "url": "https://www.redeia.com/.well-known/acknowledgments.txt"
  },
  {
   "src": "assets/hof/redgames.jpeg",
@@ -1416,7 +1429,8 @@
   "domain": "seantis.ch",
   "category": "hof",
   "w": 720,
-  "h": 1445
+  "h": 1445,
+  "url": "https://www.seantis.ch/security/"
  },
  {
   "src": "assets/hof/sef.jpeg",
@@ -1553,7 +1567,8 @@
   "domain": "tudelft.nl",
   "category": "hof",
   "w": 720,
-  "h": 1449
+  "h": 1449,
+  "url": "https://www.tudelft.nl/hall-of-fame"
  },
  {
   "src": "assets/hof/tv4.jpeg",
@@ -1561,7 +1576,8 @@
   "domain": "tv4.se",
   "category": "hof",
   "w": 720,
-  "h": 847
+  "h": 847,
+  "url": "https://responsible-disclosure.tv4.se/70-hall-of-fame.html"
  },
  {
   "src": "assets/hof/twingate.jpeg",
@@ -1593,7 +1609,8 @@
   "domain": "unesco.org",
   "category": "hof",
   "w": 720,
-  "h": 1271
+  "h": 1271,
+  "url": "https://www.unesco.org/en/vulnerability-disclosure"
  },
  {
   "src": "assets/hof/uriports.jpeg",
@@ -1625,7 +1642,8 @@
   "domain": "uwv.nl",
   "category": "hof",
   "w": 720,
-  "h": 1437
+  "h": 1437,
+  "url": "https://www.uwv.nl/en/about-this-site/vulnerability-disclosure-policy/hall-of-fame"
  },
  {
   "src": "assets/hof/valg.jpeg",
@@ -1676,7 +1694,8 @@
   "domain": "volkerwessels.com",
   "category": "hof",
   "w": 720,
-  "h": 1431
+  "h": 1431,
+  "url": "https://www.volkerwessels.com/en/hall-fame"
  },
  {
   "src": "assets/hof/westerkwartier.jpeg",
@@ -1711,7 +1730,8 @@
   "domain": "who.int",
   "category": "hof",
   "w": 720,
-  "h": 1457
+  "h": 1457,
+  "url": "https://www.who.int/about/cybersecurity/vulnerability-hall-of-fame"
  },
  {
   "src": "assets/hof/xasecase.jpeg",
@@ -1737,7 +1757,7 @@
   "category": "hof",
   "w": 720,
   "h": 1130,
-  "url": "https://www.zeptonow.com/security-hall-of-fame"
+  "url": "https://www.zepto.com/s/security-hall-of-fame"
  },
  {
   "src": "assets/hof/zetes.jpeg",
