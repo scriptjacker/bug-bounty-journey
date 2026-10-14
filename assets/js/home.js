@@ -1,7 +1,7 @@
 // Homepage only: the lit wall of Hall of Fame screenshots, the scope panels, the sideways case files,
 // the drifting name lists and the desk of swag you can pick up. Everything here is progressive:
 // without JavaScript the page still reads top to bottom.
-import { WALL } from "./wall-data.js?v=fb5d6da1";
+import { WALL } from "./wall-data.js?v=eef1dafd";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -166,7 +166,14 @@ if (cases) {
   const setMode = () => {
     active = mq.matches;
     cases.classList.toggle("is-pinned", active);
-    if (active) { measure(); addEventListener("scroll", onScroll, { passive: true }); }
+    if (active) {
+      // Pinned, the cards travel sideways inside the panel, so the vertical reveal is the wrong
+      // trigger: scroll through quickly and you land on an empty panel while eight staggered
+      // fades catch up. Show them outright and let the section heading do the entrance.
+      cards.forEach((c) => { c.classList.add("is-in"); c.style.removeProperty("--i"); });
+      measure();
+      addEventListener("scroll", onScroll, { passive: true });
+    }
     else {
       removeEventListener("scroll", onScroll);
       cases.style.removeProperty("height");
@@ -248,7 +255,7 @@ if (desk) {
 
 /* ---------- Verify mode: the source behind every claim (verify.js loads on first use) ---------- */
 let verifyMod;
-const loadVerify = async () => (verifyMod ??= await import("./verify.js?v=fb5d6da1"));
+const loadVerify = async () => (verifyMod ??= await import("./verify.js?v=eef1dafd"));
 const toggles = $$("[data-verify-toggle]");
 toggles.forEach((t) => {
   if (t.tagName === "A") t.setAttribute("role", "button");
@@ -269,6 +276,6 @@ let replayMod;
 document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-replay]");
   if (!b) return;
-  replayMod ??= await import("./replay.js?v=fb5d6da1");
+  replayMod ??= await import("./replay.js?v=eef1dafd");
   replayMod.open(b.dataset.replay, b);
 });
