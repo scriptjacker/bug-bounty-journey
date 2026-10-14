@@ -4,7 +4,7 @@
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const REC = { hof: "Hall of Fame", swag: "Swag", cert: "Certificate", letter: "Letter of appreciation", cve: "CVEs", ack: "Acknowledged", gift: "Gift card", bounty: "Bounty" };
 const showCountry = (code) => code !== "EU" && code !== "INT";
-const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=eef1dafd#i-arrow-up-right"/></svg>`;
+const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=f66c5705#i-arrow-up-right"/></svg>`;
 
 export function prepare(data, gallery = []) {
   const countryName = Object.fromEntries(data.countries.map((c) => [c.code, c.name]));
@@ -53,7 +53,9 @@ export function rowHTML(o, d) {
     d.proof.has(o.domain) ? `<a class="verify verify--soft" href="gallery.html?q=${encodeURIComponent(o.domain)}" aria-label="Screenshots for ${esc(o.name)}">Screenshot</a>` : "",
   ].join("");
   const note = o.note ? `<em>${esc(o.note)}</em>` : "";
-  return `<tr${o.first ? ` class="is-first"` : ""}><td class="org"><b>${esc(o.name)}</b><span>${esc(o.domain)}</span>${note}</td><td class="sec">${esc(d.sectors[o.sector])}</td><td class="ctry">${esc(d.countryName[o.country] || o.country)}</td><td class="badges-cell"><div class="badges">${badges}</div></td><td class="proof-cell"><div class="proofs">${links}</div></td></tr>`;
+  // What I reported to them, strongest first. Nothing here says valid, accepted or duplicate.
+  const found = (o.reported || []).length ? `<span class="found">${o.reported.map(esc).join(" \u00b7 ")}</span>` : "";
+  return `<tr${o.first ? ` class="is-first"` : ""}><td class="org"><b>${esc(o.name)}</b><span>${esc(o.domain)}</span>${note}${found}</td><td class="sec">${esc(d.sectors[o.sector])}</td><td class="ctry">${esc(d.countryName[o.country] || o.country)}</td><td class="badges-cell"><div class="badges">${badges}</div></td><td class="proof-cell"><div class="proofs">${links}</div></td></tr>`;
 }
 
 export function top50HTML(d) {

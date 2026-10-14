@@ -51,6 +51,11 @@ Add one line to the `orgs` list in `data/orgs.json`:
 - `url` (optional): the public Hall of Fame page. It shows as a "Public page" link in the directory and on the matching screenshots.
 - `bug` (optional): what the organization itself published next to my name. Only use their wording, taken from their own page, because it is shown in the "In their words" section.
 - `note` (optional): a short line shown under the name, for example `"Sent a Steam gift card"`
+- `reported` (optional): up to three bug classes I reported to them, strongest first, shown in red
+  under the name. This is my claim about what I sent, never theirs, and it never records whether a
+  report was valid, accepted or a duplicate. `npm run data` rejects a class outside the fixed list
+  in `tools/sync-data.mjs` and rejects more than three. Keep it to findings worth reading: a
+  clickjacking or a missing rate limit next to a household name undersells everything around it.
 
 Then run `npm run data && npm run globe && npm run prerender && npm run stamp`. Every count on the site updates by itself.
 

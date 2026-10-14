@@ -1020,6 +1020,10 @@ a.role__org:hover { color: var(--red); border-color: var(--red); }
 .dir .org b { font-weight: 650; display: block; line-height: 1.3; }
 .dir .org span { font-family: var(--mono); font-size: 0.74rem; color: var(--text-3); }
 .dir .org em { display: block; font-style: normal; font-size: 0.8rem; color: var(--text-2); margin-top: 2px; }
+/* What I reported to the organization, under its name. Red because it is the finding,
+   not the recognition: the badges in the next column are what they gave back. */
+.dir .org .found { display: block; margin-top: 4px; font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.02em; color: var(--red); }
 .dir .sec, .dir .ctry { color: var(--text-2); white-space: nowrap; }
 .badges, .proofs { display: flex; flex-wrap: wrap; gap: 6px; }
 .badge { font-size: 0.72rem; padding: 2px 8px; border: 1px solid var(--line-2); color: var(--text-2); white-space: nowrap; border-radius: 2px; }

@@ -10,6 +10,10 @@ const RECOGNITION = ["hof", "swag", "cert", "letter", "cve", "ack", "gift", "bou
 // A bounty amount must never reach the site. The badge says a program paid and nothing more,
 // so anything that looks like money in a field a visitor can read fails the build.
 const MONEY = /[$\u20ac\u20b9\u00a3\u00a5]\s?\d|\d[\d,.]*\s?(?:EUR|USD|GBP|INR|CHF|rs)\b|\b(?:EUR|USD|GBP|INR|CHF)\s?\d/i;
+const REPORTED = ["Remote code execution", "Account takeover", "IDOR", "Broken access control", "SSRF",
+  "SQL injection", "XSS", "Mass assignment", "PII exposure", "Credential exposure", "Subdomain takeover",
+  "Race condition", "OAuth flaw", "Business logic flaw", "Authentication flaw", "Exposed service",
+  "CORS misconfiguration", "File upload", "Memory corruption", "CSRF", "Session handling"];
 const errors = [];
 
 const seen = new Set();
@@ -24,6 +28,8 @@ for (const o of d.orgs) {
   if (/[\u2013\u2014]/.test(o.name + (o.note || "") + (o.bug || ""))) errors.push(`${where}: contains a long dash`);
   for (const [field, v] of Object.entries({ name: o.name, note: o.note, bug: o.bug, url: o.url }))
     if (v && MONEY.test(v)) errors.push(`${where}: ${field} looks like it contains a bounty amount. The site never publishes amounts.`);
+  for (const r of o.reported || []) if (!REPORTED.includes(r)) errors.push(`${where}: unknown reported class "${r}"`);
+  if ((o.reported || []).length > 3) errors.push(`${where}: at most three reported classes, keep the strongest`);
   if (o.url && !/^https:\/\//.test(o.url)) errors.push(`${where}: url must start with https://`);
   o.first = !!o.first;
   o.top = d.prestige.some((p) => p.domain === o.domain);
@@ -46,7 +52,7 @@ ${d.countries.map(line).join(",\n")}
 ${d.prestige.map(line).join(",\n")}
 ],
 "orgs": [
-${d.orgs.map(({ domain, name, sector, country, first, top, recognition, url, note, bug }) => line({ domain, name, sector, country, first, top, recognition, url, note, bug })).join(",\n")}
+${d.orgs.map(({ domain, name, sector, country, first, top, recognition, url, note, bug, reported }) => line({ domain, name, sector, country, first, top, recognition, url, note, bug, reported })).join(",\n")}
 ]
 }
 `;
