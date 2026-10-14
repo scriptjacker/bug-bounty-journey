@@ -4,6 +4,7 @@
   {
    "id": "nokia",
    "class": "Exposed remote access",
+   "severity": "Critical",
    "title": "Recon to shell access at Nokia",
    "meta": [
     [
@@ -60,6 +61,7 @@
   {
    "id": "idor-85k",
    "class": "IDOR, PII exposure",
+   "severity": "High",
    "title": "85,000+ emails, one URL away",
    "meta": [
     [
@@ -116,6 +118,7 @@
   {
    "id": "graphql-invite",
    "class": "IDOR, account takeover",
+   "severity": "High",
    "title": "The invite token that came back in the response",
    "meta": [
     [
@@ -172,6 +175,7 @@
   {
    "id": "mass-assignment",
    "class": "Mass assignment",
+   "severity": "High",
    "title": "One extra field, a whole account",
    "meta": [
     [
@@ -228,6 +232,7 @@
   {
    "id": "otp-idor",
    "class": "Logic flaw, OTP",
+   "severity": "Medium",
    "title": "One code verified the wrong phone number",
    "meta": [
     [
@@ -284,6 +289,7 @@
   {
    "id": "self-xss",
    "class": "XSS chain",
+   "severity": "High",
    "title": "The self XSS everyone closes",
    "meta": [
     [
@@ -338,6 +344,7 @@
   {
    "id": "api-keys",
    "class": "Credential exposure",
+   "severity": "High",
    "title": "Live API keys in the web archive",
    "meta": [
     [
@@ -392,6 +399,7 @@
   {
    "id": "cve",
    "class": "Stored XSS, CWE-79",
+   "severity": "Medium",
    "title": "CVE-2025-56697",
    "meta": [
     [
