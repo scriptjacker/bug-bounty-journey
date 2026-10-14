@@ -13,7 +13,8 @@ const MONEY = /[$\u20ac\u20b9\u00a3\u00a5]\s?\d|\d[\d,.]*\s?(?:EUR|USD|GBP|INR|C
 const REPORTED = ["Remote code execution", "Account takeover", "IDOR", "Broken access control", "SSRF",
   "SQL injection", "XSS", "Mass assignment", "PII exposure", "Credential exposure", "Subdomain takeover",
   "Race condition", "OAuth flaw", "Business logic flaw", "Authentication flaw", "Exposed service",
-  "CORS misconfiguration", "File upload", "Memory corruption", "CSRF", "Session handling"];
+  "CORS misconfiguration", "File upload", "Memory corruption", "CSRF", "Session handling",
+  "HTML injection", "Information disclosure"];
 const errors = [];
 
 const seen = new Set();
