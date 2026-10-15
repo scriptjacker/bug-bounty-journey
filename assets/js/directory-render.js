@@ -4,7 +4,7 @@
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const REC = { hof: "Hall of Fame", swag: "Swag", cert: "Certificate", letter: "Letter of appreciation", cve: "CVEs", ack: "Acknowledged", gift: "Gift card", bounty: "Bounty" };
 const showCountry = (code) => code !== "EU" && code !== "INT";
-const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=f66c5705#i-arrow-up-right"/></svg>`;
+const ARROW = `<svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=0e11a8ea#i-arrow-up-right"/></svg>`;
 
 export function prepare(data, gallery = []) {
   const countryName = Object.fromEntries(data.countries.map((c) => [c.code, c.name]));
@@ -50,7 +50,7 @@ export function rowHTML(o, d) {
   ].join("");
   const links = [
     o.url ? `<a class="verify" href="${esc(o.url)}" target="_blank" rel="noopener" aria-label="Public page for ${esc(o.name)}">Public page${ARROW}</a>` : "",
-    d.proof.has(o.domain) ? `<a class="verify verify--soft" href="gallery.html?q=${encodeURIComponent(o.domain)}" aria-label="Screenshots for ${esc(o.name)}">Screenshot</a>` : "",
+    d.proof.has(o.domain) ? `<a class="verify verify--soft" href="gallery.html?q=${encodeURIComponent(o.domain)}" aria-label="Screenshot for ${esc(o.name)}">Screenshot</a>` : "",
   ].join("");
   const note = o.note ? `<em>${esc(o.note)}</em>` : "";
   // What I reported to them, strongest first. Nothing here says valid, accepted or duplicate.
@@ -115,12 +115,12 @@ export function firstsHTML(d) {
     const go = o.url ? "Open the public page" : d.proof.has(o.domain) ? "See the screenshot" : "In the directory";
     const ext = o.url ? ` target="_blank" rel="noopener"` : "";
     const where = showCountry(o.country) ? o.country : "EU";
-    return `<li><a class="hof" href="${esc(href)}"${ext}${hidden ? ` tabindex="-1"` : ""} aria-label="${esc(o.name)}, first researcher. ${go}">` +
+    return `<li><a class="hof" href="${esc(href)}"${ext}${hidden ? ` tabindex="-1"` : ""}>` +
       `<span class="hof__bar"><span>${esc(o.domain)}</span><span>${where}</span></span>` +
-      `<span class="hof__org">${esc(o.name)}</span>` +
+      `<span class="hof__org">${esc(o.name)}</span><span class="sr-only">first researcher</span>` +
       `<span class="hof__label">Hall of Fame</span>` +
       `<span class="hof__entry hof__entry--me"><i>01</i>Parth Narula</span>` +
-      `<span class="hof__entry"><i>02</i><s></s></span><span class="hof__entry"><i>03</i><s></s></span>` +
+      `<span class="hof__entry" aria-hidden="true"><i>02</i><s></s></span><span class="hof__entry" aria-hidden="true"><i>03</i><s></s></span>` +
       `<span class="hof__go">${go}${o.url ? ARROW : ""}</span></a></li>`;
   };
   const rows = [list.filter((_, i) => i % 2 === 0), list.filter((_, i) => i % 2 === 1)];

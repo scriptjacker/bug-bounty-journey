@@ -35,7 +35,7 @@ function render() {
   result.textContent = view.length === items.length ? `Showing all ${items.length} items` : `Showing ${view.length} of ${items.length} items`;
   grid.removeAttribute("aria-busy");
   if (!view.length) {
-    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=f66c5705#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Not every organization has a screenshot here. Try the <a class="link" href="recognition.html?q=${encodeURIComponent(query)}">organizations list</a>.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
+    grid.innerHTML = `<div class="empty"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg?v=0e11a8ea#i-magnifying-glass"/></svg><p>Nothing matches “${esc(query)}”.<br>Not every organization has a screenshot here. Try the <a class="link" href="recognition.html?q=${encodeURIComponent(query)}">organizations list</a>.</p><button class="btn btn--ghost btn--sm" type="button" data-reset>Clear search</button></div>`;
     grid.style.columns = "auto";
     return;
   }
@@ -44,9 +44,9 @@ function render() {
     const sized = it.w && it.h;
     const src = sized ? variant(it.src, 480) : it.src;
     const h = sized ? Math.round((480 * it.h) / it.w) : 640;
-    return `<button class="shot" type="button" data-open="${i}" aria-label="Open ${esc(it.title)} ${LABEL[it.category]} image">
+    return `<button class="shot" type="button" data-open="${i}" aria-label="${esc(it.title)} ${esc(it.domain)} ${LABEL[it.category]}, open the image">
       <img src="${src}" width="480" height="${h}" alt="${esc(LABEL[it.category])} for ${esc(it.title)}" loading="${i < 8 ? "eager" : "lazy"}" decoding="async">
-      <span class="shot__cap"><b>${esc(it.title)}<span class="shot__domain">${esc(it.domain)}</span></b><span>${LABEL[it.category]}</span></span>
+      <span class="shot__cap"><b>${esc(it.title)} <span class="shot__domain">${esc(it.domain)}</span></b> <span>${LABEL[it.category]}</span></span>
     </button>`;
   }).join("");
 }

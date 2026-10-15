@@ -1,15 +1,15 @@
 // Search palette: sections, actions and every listed organization. Opens with Ctrl/Cmd K or "/".
-import { copy, toggleTheme } from "./main.js?v=f66c5705";
+import { copy, toggleTheme } from "./main.js?v=0e11a8ea";
 
 const EMAIL = "parth.narula@scriptjacker.in";
 const BASE = new URL("../../", import.meta.url).pathname; // site root, works from any page depth
 const onHome = !!document.querySelector("[data-globe]");
 const home = (hash) => (onHome ? hash : `${BASE}${hash}`);
-const icon = (name) => `<svg class="ic" aria-hidden="true"><use href="${BASE}assets/icons.svg?v=f66c5705#i-${name}"/></svg>`;
+const icon = (name) => `<svg class="ic" aria-hidden="true"><use href="${BASE}assets/icons.svg?v=0e11a8ea#i-${name}"/></svg>`;
 const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 const ACTIONS = [
-  { group: "Actions", label: "Download CV", icon: "download-simple", href: `${BASE}Parth-Narula-CV.pdf?v=f66c5705`, keys: "resume pdf hire" },
+  { group: "Actions", label: "Download CV", icon: "download-simple", href: `${BASE}Parth-Narula-CV.pdf?v=0e11a8ea`, keys: "resume pdf hire" },
   { group: "Actions", label: "Copy email address", icon: "copy", run: () => copy(EMAIL, "Email copied to clipboard"), hint: EMAIL, keys: "mail contact" },
   { group: "Actions", label: "Book a 30 minute call", icon: "calendar-dots", href: "https://calendly.com/scriptjacker/30min", ext: true, keys: "calendly meeting hire contact" },
   { group: "Actions", label: "Switch light or dark theme", icon: "sun", run: toggleTheme, keys: "theme dark light mode" },
