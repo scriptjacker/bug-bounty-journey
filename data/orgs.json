@@ -444,7 +444,7 @@
 {"domain":"ticketbahia.com","name":"TicketBahia","sector":"company","country":"AR","first":false,"top":false,"recognition":[],"reported":["Account takeover","Business logic flaw","Session handling"]},
 {"domain":"ticketcounter.nl","name":"TicketCounter","sector":"company","country":"NL","first":true,"top":false,"recognition":["hof","bounty"],"url":"https://www.ticketcounter.nl/responsible-disclosure/","reported":["Information disclosure"]},
 {"domain":"timeblndr.com","name":"Timeblndr","sector":"company","country":"EU","first":false,"top":false,"recognition":["hof"]},
-{"domain":"tngtech.com","name":"TNG Technology Consulting","sector":"company","country":"DE","first":false,"top":false,"recognition":["hof"],"reported":["XSS","File upload","Information disclosure"]},
+{"domain":"tngtech.com","name":"TNG Technology Consulting","sector":"company","country":"DE","first":false,"top":false,"recognition":["hof"],"reported":["XSS","OAuth flaw","File upload"]},
 {"domain":"todyl.com","name":"Todyl","sector":"company","country":"US","first":false,"top":false,"recognition":["swag"]},
 {"domain":"tolvyn.io","name":"Tolvyn","sector":"company","country":"IN","first":false,"top":false,"recognition":["hof"],"reported":["Business logic flaw","Race condition"]},
 {"domain":"tosibox.com","name":"Tosibox","sector":"company","country":"FI","first":false,"top":false,"recognition":["ack"],"reported":["Information disclosure","Broken access control"]},

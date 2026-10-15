@@ -1,7 +1,7 @@
 // Homepage only: the lit wall of Hall of Fame screenshots, the scope panels, the sideways case files,
 // the drifting name lists and the desk of swag you can pick up. Everything here is progressive:
 // without JavaScript the page still reads top to bottom.
-import { WALL } from "./wall-data.js?v=94bd9b22";
+import { WALL } from "./wall-data.js?v=0ebaefb1";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -255,7 +255,7 @@ if (desk) {
 
 /* ---------- Verify mode: the source behind every claim (verify.js loads on first use) ---------- */
 let verifyMod;
-const loadVerify = async () => (verifyMod ??= await import("./verify.js?v=94bd9b22"));
+const loadVerify = async () => (verifyMod ??= await import("./verify.js?v=0ebaefb1"));
 const toggles = $$("[data-verify-toggle]");
 toggles.forEach((t) => {
   if (t.tagName === "A") t.setAttribute("role", "button");
@@ -276,6 +276,6 @@ let replayMod;
 document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-replay]");
   if (!b) return;
-  replayMod ??= await import("./replay.js?v=94bd9b22");
+  replayMod ??= await import("./replay.js?v=0ebaefb1");
   replayMod.open(b.dataset.replay, b);
 });

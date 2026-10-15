@@ -54,12 +54,12 @@
 
   <h2>Core Competencies</h2>
   <p class="kv"><b>Offensive security:</b> Vulnerability Assessment and Penetration Testing (VAPT), Web Application Penetration Testing (WAPT), dynamic application security testing (DAST), API security testing (REST and GraphQL), Android and mobile penetration testing, network penetration testing, red teaming, reconnaissance, OSINT and Google dorking, subdomain enumeration</p>
-  <p class="kv"><b>Vulnerability classes:</b> broken access control, IDOR and BOLA, business logic flaws, authentication and session handling, SSRF, SQL injection, XSS, CSRF, server side template injection, race conditions, mass assignment, CORS misconfiguration, credential and PII exposure, subdomain takeover</p>
-  <p class="kv"><b>Standards and process:</b> OWASP Top 10, OWASP API Security Top 10, OWASP LLM Top 10, CVSS severity rating, coordinated and responsible disclosure, vulnerability management from triage to retest, proof of concept development, report writing, remediation guidance</p>
-  <p class="kv"><b>AI and cloud security:</b> LLM, agentic and RAG application testing, prompt injection, AI red teaming, cloud security and IAM across AWS, Azure and GCP</p>
+  <p class="kv"><b>Vulnerability classes:</b> broken access control, IDOR and BOLA, business logic flaws, authentication and session handling, OAuth 2.0 and OpenID Connect flaws (redirect URI validation, missing PKCE), SSRF, SQL injection, XSS, CSRF, server side template injection, race conditions, mass assignment, CORS misconfiguration, credential and PII exposure, subdomain takeover</p>
+  <p class="kv"><b>Standards and process:</b> OWASP Top 10, OWASP API Security Top 10, OWASP LLM Top 10, CVSS severity rating, secure SDLC and CI/CD security, SAST and SCA alongside DAST, coordinated and responsible disclosure, vulnerability management from triage to retest, proof of concept development, report writing, remediation guidance</p>
+  <p class="kv"><b>AI and cloud security:</b> LLM, agentic and RAG application testing, Model Context Protocol (MCP) server security, prompt injection, AI red teaming, cloud security and IAM across AWS, Azure and GCP: dangling CNAME and subdomain takeover, Azure AD tenant disclosure, exposed managed database services, Firebase authentication enumeration</p>
 
   <h2>Technical Skills</h2>
-  <p class="kv"><b>Tools:</b> Burp Suite, Postman, Wireshark, Kali Linux, Android Studio, Cisco Packet Tracer, Git, Apache, Nginx, Linux CLI</p>
+  <p class="kv"><b>Tools:</b> Burp Suite, Nmap, Metasploit, Postman, Wireshark, Kali Linux, Android Studio, Cisco Packet Tracer, Git, Apache, Nginx, Linux CLI</p>
   <p class="kv"><b>Platforms and networking:</b> Linux, Windows, Active Directory tooling, TCP/IP, DNS, routing and firewalls, REST and GraphQL APIs, web servers</p>
   <p class="kv"><b>Programming and scripting:</b> Python, Bash, PHP, JavaScript, SQL, Ruby, C, C++, HTML, CSS</p>
   <p class="kv"><b>Professional:</b> leadership, teamwork, communication, problem solving, time management, decision making, research</p>
@@ -71,6 +71,7 @@
       <li>Reported vulnerabilities to 386 organizations across 38 countries, earning 331 Hall of Fame listings and first researcher status at 45 programs, including City of Berlin, Commerzbank, BankAxept, Port of Tallinn and the University of St Andrews.</li>
       <li>Focus on broken access control, business logic, authentication and API flaws: an IDOR exposing 85,000+ email addresses, mass assignment leading to account takeover, and a self XSS chained into stored XSS.</li>
       <li>Reconnaissance at scale: an exposed Apache Guacamole instance found through dorking led to shell access on a Nokia subdomain (Nokia Hall of Fame, June 2026).</li>
+      <li>Cloud and AI surfaces: a dangling AWS CNAME and an Azure AD tenant disclosure at a German media group, an exposed managed database at a national dairy brand, Firebase authentication enumeration at a Finnish retailer, and information disclosure and blind SSRF reached through Model Context Protocol servers.</li>
       <li>Found two vulnerabilities in Netwrix PingCastle, an Active Directory assessment tool: an update package installed with no integrity verification and a path traversal reachable through prefix matching. Fixed in 4.0.0.31 and published by Netwrix as advisory ADV-2026-018 at CVSS 9.0, which credits me by name. CVE identifiers are requested and pending.</li>
       <li>Published CVE-2025-56697 for a stored XSS, and coordinated SQL injection and information disclosure fixes through CERT-In on Indian government and public sector assets.</li>
       <li>Every report carries reproduction steps, business impact and remediation advice, then a retest once the fix lands. 136 of these acknowledgements are public pages linked from my portfolio.</li>

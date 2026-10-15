@@ -1,7 +1,7 @@
 // Interactive dotted globe. Raw WebGL, no library.
 // Land dots come from Natural Earth (tools/build-globe.mjs); markers and arcs come from data/orgs.json.
-import LAND from "./land-dots.js?v=94bd9b22";
-import { ORIGIN, COUNTRIES } from "./globe-data.js?v=94bd9b22";
+import LAND from "./land-dots.js?v=0ebaefb1";
+import { ORIGIN, COUNTRIES } from "./globe-data.js?v=0ebaefb1";
 
 const DEG = Math.PI / 180;
 const CAM = 4;                         // camera distance, globe radius is 1
