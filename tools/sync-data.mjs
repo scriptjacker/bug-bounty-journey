@@ -35,7 +35,11 @@ for (const o of d.orgs) {
   o.first = !!o.first;
   o.top = d.prestige.some((p) => p.domain === o.domain);
 }
-for (const p of d.prestige) if (!seen.has(p.domain)) errors.push(`prestige entry ${p.domain} is not in orgs`);
+for (const p of d.prestige) {
+  if (!seen.has(p.domain)) errors.push(`prestige entry ${p.domain} is not in orgs`);
+  // The top names render p.name directly, so a missing one prints "undefined" on the page.
+  if (!p.name) errors.push(`prestige entry ${p.domain} has no name`);
+}
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 
 d.prestige.forEach((p, i) => (p.rank = i + 1));
