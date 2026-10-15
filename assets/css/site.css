@@ -750,6 +750,14 @@ a.role__org:hover { color: var(--red); border-color: var(--red); }
 /* Talks sits in the wide column under the roles, so the two columns end near each other
    instead of leaving most of a screen blank beside the sidebar. */
 .dossier__main .side-block { margin-top: clamp(34px, 4vw, 52px); }
+/* Portrait at the head of the side column. The frame and the red hairline match the
+   proof cards so it reads as another record in the dossier rather than a stock headshot. */
+.portrait { margin-bottom: clamp(30px, 4vw, 44px); }
+.portrait__img { display: block; width: 100%; max-width: 320px; height: auto; border: 1px solid var(--line); border-radius: 2px; filter: grayscale(1) contrast(1.04); }
+.portrait__cap { display: flex; flex-direction: column; gap: 3px; margin-top: 12px; max-width: 320px; padding-left: 11px; border-left: 2px solid var(--red); }
+.portrait__cap b { font-size: 0.95rem; font-weight: 600; }
+.portrait__cap span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--text-3); }
+@media (max-width: 899px) { .portrait__img, .portrait__cap { max-width: 260px; } }
 .wins li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line); }
 .wins b { font-family: var(--stencil); font-weight: 800; font-size: 1.5rem; line-height: 1; color: var(--red); white-space: nowrap; }
 .wins li:first-child b { font-size: 1.3rem; }

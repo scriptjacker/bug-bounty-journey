@@ -153,7 +153,7 @@ if (globe) {
   const syncStill = () => { if (still) still.src = root.dataset.theme === "light" ? still.dataset.lightSrc : darkSrc; };
   syncStill();
   document.addEventListener("themechange", syncStill);
-  const start = () => import("./globe.js?v=ace53cb8").then((m) => m.mountGlobe(globe)).catch((err) => {
+  const start = () => import("./globe.js?v=04a8d971").then((m) => m.mountGlobe(globe)).catch((err) => {
     console.warn("Globe unavailable:", err);
     globe.classList.add("no-webgl");
   });
@@ -168,7 +168,7 @@ if (globe) {
 /* ---------- Command palette ---------- */
 let palette;
 const openPalette = async (query = "") => {
-  palette ??= await import("./palette.js?v=ace53cb8");
+  palette ??= await import("./palette.js?v=04a8d971");
   palette.open(query);
 };
 $$("[data-palette-open]").forEach((b) => b.addEventListener("click", () => openPalette()));
