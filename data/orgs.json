@@ -333,7 +333,7 @@
 {"domain":"nelogica.com.br","name":"Nelogica","sector":"company","country":"BR","first":false,"top":false,"recognition":["hof"],"reported":["Memory corruption"]},
 {"domain":"neoshare.de","name":"Neoshare","sector":"company","country":"DE","first":false,"top":false,"recognition":["cert"]},
 {"domain":"networkapp.com","name":"NetworkApp","sector":"company","country":"NL","first":false,"top":false,"recognition":["hof"],"reported":["Server-side template injection","HTML injection"]},
-{"domain":"netwrix.com","name":"Netwrix","sector":"company","country":"US","first":false,"top":false,"recognition":["hof","cve"],"reported":["Remote code execution","Credential exposure"]},
+{"domain":"netwrix.com","name":"Netwrix","sector":"company","country":"US","first":false,"top":false,"recognition":["hof","cve","ack"],"url":"https://community.netwrix.com/t/adv-2026-018-multiple-vulnerabilities-in-netwrix-pingcastle/161045","bug":"Download of Code Without Integrity Check in PingCastle, CVSS 9.0","reported":["Remote code execution","Credential exposure"]},
 {"domain":"neura.edu.au","name":"NeuRA","sector":"education","country":"AU","first":false,"top":false,"recognition":[],"reported":["Information disclosure"]},
 {"domain":"nextapp.co","name":"NextApp","sector":"company","country":"EU","first":false,"top":false,"recognition":["hof"]},
 {"domain":"nexus.org","name":"Nexus","sector":"nonprofit","country":"US","first":false,"top":false,"recognition":["hof"],"reported":["Information disclosure"]},
