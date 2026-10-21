@@ -438,7 +438,7 @@
 {"domain":"swile.co","name":"Swile","sector":"company","country":"FR","first":false,"top":false,"recognition":["hof"],"url":"https://www.swile.co/security/hall-of-fame.txt"},
 {"domain":"swordhealth.com","name":"Sword Health","sector":"company","country":"US","first":false,"top":false,"recognition":["hof"],"url":"https://swordhealth.com/security/hall-of-fame","reported":["HTML injection"]},
 {"domain":"tabletoptournaments.net","name":"Tabletop Tournaments","sector":"company","country":"EU","first":false,"top":false,"recognition":["hof"]},
-{"domain":"thales.com","name":"Thales","sector":"enterprise","country":"FR","first":false,"top":true,"recognition":["cert"],"note":"Certificate in process"},
+{"domain":"thales.com","name":"Thales","sector":"enterprise","country":"FR","first":false,"top":true,"recognition":["letter"]},
 {"domain":"thundersquared.com","name":"Thundersquared","sector":"independent","country":"EU","first":false,"top":false,"recognition":["hof"]},
 {"domain":"thws.de","name":"THWS Würzburg-Schweinfurt","sector":"education","country":"DE","first":true,"top":false,"recognition":["hof"]},
 {"domain":"ticketbahia.com","name":"TicketBahia","sector":"company","country":"AR","first":false,"top":false,"recognition":[],"reported":["Account takeover","Business logic flaw","Session handling"]},

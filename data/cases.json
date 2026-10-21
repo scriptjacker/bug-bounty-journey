@@ -2,6 +2,31 @@
  "note": "Case files for the homepage. Every case was reported, fixed and then written up publicly. Targets stay redacted unless the program allows naming them (Nokia, Kashipara). Requests are trimmed copies of what is already published in the writeups: no live tokens, no customer data.",
  "cases": [
   {
+   "id": "pingcastle",
+   "class": "Update integrity, CWE-494 and CWE-22",
+   "severity": "Critical",
+   "title": "Two flaws in PingCastle's auto updater",
+   "meta": [
+    [
+     "Product",
+     "Netwrix PingCastle 4.0.0 and earlier"
+    ],
+    [
+     "Component",
+     "PingCastleAutoUpdater.exe"
+    ],
+    [
+     "Outcome",
+     "Fixed in 4.0.0.31, advisory ADV-2026-018"
+    ]
+   ],
+   "story": "PingCastle audits Active Directory, so it runs with the reach an auditor has. Its updater replaced the installed binaries with whatever it downloaded, without checking the package was really Netwrix's, and the check meant to keep extracted files inside the update folder compared paths by prefix, so a crafted name walked straight past it. Netwrix scored the pair 9.0 and said exploitation could reach the Active Directory environment being assessed. Fixed in 4.0.0.31, with the advisory crediting me by name and the CVE identifiers still pending.",
+   "link": "https://community.netwrix.com/t/adv-2026-018-multiple-vulnerabilities-in-netwrix-pingcastle/161045",
+   "stamp": "Fixed",
+   "steps": [],
+   "linkLabel": "Read the Netwrix advisory"
+  },
+  {
    "id": "nokia",
    "class": "Exposed remote access",
    "severity": "Critical",
@@ -424,7 +449,8 @@
      "See it on NVD",
      "https://nvd.nist.gov/vuln/detail/CVE-2025-56697"
     ]
-   ]
+   ],
+   "linkLabel": "View the CVE record"
   }
  ]
 }
