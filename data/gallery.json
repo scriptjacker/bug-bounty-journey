@@ -1963,5 +1963,29 @@
   "category": "talk",
   "w": 1280,
   "h": 904
+ },
+ {
+  "src": "assets/awards/techfusion-2026-awards.jpg",
+  "title": "TechFusion 2026 trophies and certificates, Vaish College of Engineering, Rohtak",
+  "domain": "vce.ac.in",
+  "category": "award",
+  "w": 1280,
+  "h": 906
+ },
+ {
+  "src": "assets/awards/techfusion-2026-scoreboard.webp",
+  "title": "TechFusion 2026 CTF scoreboard, ScriptJackers first with 1900 points and 9 of 9 solved",
+  "domain": "vce.ac.in",
+  "category": "award",
+  "w": 1644,
+  "h": 751
+ },
+ {
+  "src": "assets/awards/techfusion-2026-team.jpg",
+  "title": "TechFusion 2026 prize ceremony with the ScriptJackers team",
+  "domain": "vce.ac.in",
+  "category": "award",
+  "w": 1280,
+  "h": 720
  }
 ]

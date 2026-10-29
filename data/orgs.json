@@ -2,7 +2,7 @@
 "sectors": {"company":"Company","enterprise":"Enterprise","government":"Government","education":"Education","finance":"Finance","media":"Media","nonprofit":"Nonprofit and civic","independent":"Independent","sports":"Sports","healthcare":"Healthcare"},
 "countries": [
 {"code":"NL","name":"Netherlands","lat":52.37,"lon":4.9,"count":71},
-{"code":"US","name":"United States","lat":38.9,"lon":-77.04,"count":55},
+{"code":"US","name":"United States","lat":38.9,"lon":-77.04,"count":57},
 {"code":"DE","name":"Germany","lat":52.52,"lon":13.4,"count":51},
 {"code":"AU","name":"Australia","lat":-35.28,"lon":149.13,"count":30},
 {"code":"EU","name":"Europe (multi country)","lat":null,"lon":null,"count":30},
@@ -184,7 +184,7 @@
 {"domain":"bytebloggerbase.com","name":"ByteBloggerBase","sector":"company","country":"IN","first":false,"top":false,"recognition":["swag"]},
 {"domain":"cambridge.org","name":"Cambridge University Press","sector":"education","country":"GB","first":false,"top":true,"recognition":["hof"],"url":"https://www.cambridge.org/legal/security-and-vulnerability-disclosure-policy/acknowledgement","reported":["CSRF","CORS misconfiguration","Session handling"]},
 {"domain":"ccv.eu","name":"CCV Group (Payments)","sector":"finance","country":"NL","first":false,"top":false,"recognition":["hof"],"reported":["PII exposure","Information disclosure"]},
-{"domain":"cert-in.org.in","name":"CERT-In","sector":"government","country":"IN","first":false,"top":true,"recognition":["ack"],"reported":["SQL injection","Information disclosure"]},
+{"domain":"cert-in.org.in","name":"CERT-In","sector":"government","country":"IN","first":false,"top":true,"recognition":["hof","ack"],"reported":["SQL injection","Information disclosure"]},
 {"domain":"cuni.cz","name":"Charles University, Prague","sector":"education","country":"CZ","first":false,"top":true,"recognition":["hof"]},
 {"domain":"tu-chemnitz.de","name":"Chemnitz University of Technology","sector":"education","country":"DE","first":false,"top":false,"recognition":["hof"],"url":"https://www.tu-chemnitz.de/urz/www/server.html#thanks"},
 {"domain":"chillforceltd.co.uk","name":"Chillforce Ltd","sector":"company","country":"GB","first":false,"top":false,"recognition":["hof"],"url":"https://www.chillforceltd.co.uk/responsible-disclosure/security-hall-of-fame/"},
@@ -203,6 +203,7 @@
 {"domain":"coloop.ai","name":"Coloop AI","sector":"company","country":"EU","first":true,"top":false,"recognition":["hof"],"url":"https://www.coloop.ai/hall-of-fame","reported":["Business logic flaw","Authentication flaw","Information disclosure"]},
 {"domain":"commerzbank.de","name":"Commerzbank","sector":"finance","country":"DE","first":true,"top":true,"recognition":["hof"],"url":"https://www.commerzbank.de/konzern/sec/index.html","reported":["Information disclosure"]},
 {"domain":"cougarboard.com","name":"CougarBoard","sector":"company","country":"US","first":false,"top":false,"recognition":["hof"],"reported":["SSRF","Credential exposure","Authentication flaw"]},
+{"domain":"createyourvpn.com","name":"CreateYourVPN","sector":"company","country":"US","first":false,"top":false,"recognition":["hof"]},
 {"domain":"cscherr.de","name":"CSCherr","sector":"independent","country":"DE","first":true,"top":false,"recognition":["hof"],"url":"https://static.cscherr.de/security.txt"},
 {"domain":"ctw.inc","name":"CTW Inc","sector":"company","country":"JP","first":true,"top":false,"recognition":["hof","cert"],"reported":["Credential exposure","PII exposure"]},
 {"domain":"danacita.co.id","name":"Danacita","sector":"company","country":"ID","first":false,"top":false,"recognition":["hof"],"url":"https://danacita.co.id/acknowledgments.txt"},
@@ -396,6 +397,7 @@
 {"domain":"register.si","name":"Register.si (Domain Registry)","sector":"government","country":"SI","first":false,"top":false,"recognition":["ack"],"reported":["XSS","Information disclosure"]},
 {"domain":"rehive.com","name":"Rehive","sector":"company","country":"ZA","first":false,"top":false,"recognition":["hof"]},
 {"domain":"rently.com","name":"Rently","sector":"company","country":"US","first":false,"top":false,"recognition":["hof"],"url":"https://use.rently.com/responsible-disclosure/"},
+{"domain":"reready.co","name":"ReReady","sector":"company","country":"US","first":false,"top":false,"recognition":["hof"],"reported":["Credential exposure"]},
 {"domain":"resideo.com","name":"Resideo Technologies","sector":"enterprise","country":"US","first":false,"top":false,"recognition":["hof"],"url":"https://www.resideo.com/us/en/responsible-disclosure/hall-of-fame/"},
 {"domain":"resol.de","name":"RESOL (Solar Energy)","sector":"company","country":"DE","first":false,"top":false,"recognition":["hof"],"reported":["Business logic flaw"]},
 {"domain":"rijkzwaan.nl","name":"Rijk Zwaan (Global Seeds)","sector":"enterprise","country":"NL","first":false,"top":false,"recognition":["swag","bounty"],"reported":["Account takeover","Authentication flaw","Session handling"]},
@@ -504,7 +506,7 @@
 {"domain":"zetes.com","name":"Zetes","sector":"company","country":"BE","first":false,"top":false,"recognition":["hof"]},
 {"domain":"zieglergroup.com","name":"Ziegler Group","sector":"company","country":"DE","first":false,"top":false,"recognition":["hof"]},
 {"domain":"ziekenhuisamstelland.nl","name":"Ziekenhuis Amstelland","sector":"healthcare","country":"NL","first":false,"top":false,"recognition":["hof"],"url":"https://www.ziekenhuisamstelland.nl/over-ons/kwaliteit-veiligheid/responsible-disclosure/"},
-{"domain":"zkteco.com","name":"ZKTeco","sector":"company","country":"CN","first":false,"top":true,"recognition":[],"reported":["Credential exposure","Information disclosure"]},
+{"domain":"zkteco.com","name":"ZKTeco","sector":"company","country":"CN","first":false,"top":true,"recognition":["swag"],"reported":["Credential exposure","Information disclosure"]},
 {"domain":"zonecollege.nl","name":"Zone College","sector":"education","country":"NL","first":false,"top":false,"recognition":["hof"]},
 {"domain":"zuyd.nl","name":"Zuyd University","sector":"education","country":"NL","first":false,"top":false,"recognition":["hof"]}
 ]
