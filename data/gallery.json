@@ -1987,5 +1987,29 @@
   "category": "award",
   "w": 1280,
   "h": 720
+ },
+ {
+  "src": "assets/awards/cyber-arena-2026-leaderboard.jpg",
+  "title": "Cyber Arena 2026 leaderboard, ScriptJackers first of 68 squads with 8858 points",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 1600,
+  "h": 757
+ },
+ {
+  "src": "assets/awards/cyber-arena-2026-team.jpg",
+  "title": "Cyber Arena 2026, the ScriptJackers team at Lovely Professional University",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 720,
+  "h": 535
+ },
+ {
+  "src": "assets/awards/cyber-arena-2026-ceremony.jpg",
+  "title": "Cyber Arena 2026 prize ceremony, CompTIA and Quick Heal Academy",
+  "domain": "lpu.in",
+  "category": "award",
+  "w": 1417,
+  "h": 735
  }
 ]
