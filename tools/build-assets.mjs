@@ -1,11 +1,11 @@
 // Pass one part to build only that part:  node tools/build-assets.mjs cv   (icons, og, globe or cv)
 // Renders brand assets: favicons, apple touch icon, manifest icons (from tools/templates/icon.svg.mjs),
-// the social share image (assets/og.jpg) and the CV PDF. Run:  npm run assets
+// the social share image (assets/og.jpg) and the CV (see tools/cv/). Run:  npm run assets
 import { createServer } from "node:http";
 import { readFile, writeFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { execFileSync } from "node:child_process";
-import { chromium } from "playwright";
+import { launch } from "./launch-browser.mjs";
 import { iconSVG } from "./templates/icon.svg.mjs";
 import sharp from "sharp";
 
@@ -23,7 +23,7 @@ const base = `http://127.0.0.1:${server.address().port}`;
 
 const only = process.argv[2];
 const want = (part) => !only || only === part;
-const browser = await chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+const browser = await launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
 
 if (want("icons")) {
 // Icons, all from one SVG drawing so the favicon, app icons and touch icon always match.
@@ -60,12 +60,10 @@ for (const theme of ["dark", "light"]) {
 }
 
 if (want("cv")) {
-// CV
-const cv = await browser.newPage();
-await cv.goto(`${base}/tools/templates/cv.html`, { waitUntil: "networkidle" });
-await cv.evaluate(() => document.fonts.ready);
-await cv.pdf({ path: join(root, "Parth-Narula-CV.pdf"), format: "A4", printBackground: true, preferCSSPageSize: true, tagged: true, outline: false });
-await cv.close();
+// CV, public version to the site root plus the Word file and any private version in cv-out/.
+// Content lives in tools/cv/content.mjs. Check the result with  npm run cv:check
+const { buildPdfs } = await import("./cv/build.mjs");
+await buildPdfs(browser);
 }
 
 await browser.close();

@@ -2,9 +2,11 @@
 // a pinned Playwright, the site's own data, and a scorekeeper that fails loudly.
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { extname, join, normalize } from "node:path";
-import { chromium } from "playwright";
+import { launch } from "../tools/launch-browser.mjs";
+
+export { launch };
 
 export const root = new URL("..", import.meta.url).pathname;
 export const PAGES = ["/", "/gallery.html", "/recognition.html", "/404.html"];
@@ -33,19 +35,6 @@ export function serve() {
   });
   return new Promise((ok) => server.listen(0, "127.0.0.1", () =>
     ok({ base: `http://127.0.0.1:${server.address().port}`, close: () => server.close() })));
-}
-
-// A pinned Playwright can expect a different browser build than the one installed, as in some
-// cloud containers. Fall back to an installed Chromium rather than downloading one.
-export async function launch() {
-  try {
-    return await chromium.launch();
-  } catch (err) {
-    for (const p of [process.env.CHROMIUM_PATH, "/opt/pw-browsers/chromium"]) {
-      if (p && existsSync(p)) return chromium.launch({ executablePath: p });
-    }
-    throw err;
-  }
 }
 
 const json = (f) => JSON.parse(readFileSync(join(root, f), "utf8"));

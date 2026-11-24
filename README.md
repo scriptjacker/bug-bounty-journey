@@ -6,7 +6,7 @@ Portfolio of Parth Narula (ScriptJacker). One site that combines the old persona
 - **Proof archive** (`gallery.html`): Hall of Fame screenshots, letters, certificates and swag photos with filters, search and a lightbox that links to the live page where one exists.
 - **Organizations** (`recognition.html`): the most recognizable names and every publicly listed organization, first researcher programs first, with links to public Halls of Fame.
 - **AI security talk** (`talks/ai-security/`): the 57 slide deck I wrote and delivered, hosted as it was presented.
-- **CV** (`Parth-Narula-CV.pdf`): one page, text based, readable by applicant tracking systems.
+- **CV** (`Parth-Narula-CV.pdf`): two pages, text based and checked against three PDF parsers. Built from `tools/cv/`, see [CV](#cv).
 
 It is a plain static site. No framework, no server code and no build step is needed to host it.
 
@@ -33,7 +33,7 @@ To preview locally: `npm run serve` (or any static file server) and open http://
 | Case files and their replays | `data/cases.json` |
 | Organizations, sectors, countries, Top 50 | `data/orgs.json` |
 | Proof archive items | `data/gallery.json` (`src`, `title`, `domain`, `category`: `hof`, `letter`, `cert`, `swag`, `award` for competition results, `credential` for my certifications or `talk` for talks and workshops; optional `verify` link) |
-| CV content | `tools/templates/cv.html` |
+| CV content | `tools/cv/content.mjs` |
 | Colors, type, spacing | `assets/css/site.css` (tokens at the top) |
 
 ### Adding an organization
@@ -90,6 +90,22 @@ npm run test:a11y         # axe on every page, in the dark and the light theme
 Expected counts come from `data/`, so adding an organization, a photo or a case file never means editing a test. The suite exits non zero on any failure and on a crash, so a run that dies part way can never pass for a clean one.
 
 If Playwright cannot find the browser build it was pinned to, the suite falls back to an installed Chromium (`/opt/pw-browsers/chromium`, or set `CHROMIUM_PATH`) instead of downloading one.
+
+## CV
+
+```bash
+npm run cv         # builds the CV: Parth-Narula-CV.pdf for the site, Word and private versions in cv-out/
+npm run cv:check   # reads every file back the way an applicant tracking system would
+```
+
+All the wording lives in `tools/cv/content.mjs`. The PDF and the Word file are rendered from the same data, so they never disagree. Counts that the site can prove (first researcher programs, countries) are read from `data/orgs.json`.
+
+There are two versions:
+
+- **Public** (`Parth-Narula-CV.pdf`, linked from the site): research, competitions and ScriptJacker work without client names.
+- **Client version** (`cv-out/Parth-Narula-CV-Penetration-Tester.pdf` and `.docx`): the same CV plus named client engagements and references. It is only built when `private/cv-clients.json` exists. `private/` and `cv-out/` are gitignored, because this repository is public. Keep that file somewhere safe outside the repository; its shape is in `tools/cv/README.md`.
+
+`npm run cv:check` needs poppler-utils and `pip install pdfminer.six pypdf pdfplumber python-docx` (LibreOffice too, for the Word page count). It fails on a split URL, a heading a parser cannot find, a date that drifts away from its entry, small type, a half empty last page or a long dash, and it reports the keyword match against role profiles built from real job ads (`tools/cv/keywords.json`). Terms that are not true yet are listed as gaps and never added to raise a number.
 
 ## The bounty badge
 

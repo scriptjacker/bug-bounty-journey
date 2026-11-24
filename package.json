@@ -9,6 +9,8 @@
     "vendor": "node tools/vendor.mjs",
     "serve": "npx --yes serve -l 4173 .",
     "assets": "node tools/build-assets.mjs",
+    "cv": "node tools/cv/build.mjs",
+    "cv:check": "python3 tools/cv/ats_check.py",
     "prerender": "node tools/prerender.mjs",
     "build": "npm run data && npm run images && npm run globe && npm run prerender && npm run assets && npm run stamp",
     "data": "node tools/sync-data.mjs",
