@@ -76,6 +76,21 @@ Adding a new proof image: put the file in `assets/hof/` (or `letters`, `certs`, 
 
 Why `npm run stamp` matters: browsers and Hostinger's cache keep old copies of CSS and JS. The stamp gives every changed file a new address, so nobody ever sees new pages with an old stylesheet.
 
+## Tests
+
+Run `npm test` before you push. It checks the markup, then opens every page in a real browser.
+
+```bash
+npm test                  # all three below, stops at the first that fails
+npm run test:html         # html-validate on the four pages
+npm run test:functional   # navigation, directory, archive, lightbox, case files, verify mode, phone layout
+npm run test:a11y         # axe on every page, in the dark and the light theme
+```
+
+Expected counts come from `data/`, so adding an organization, a photo or a case file never means editing a test. The suite exits non zero on any failure and on a crash, so a run that dies part way can never pass for a clean one.
+
+If Playwright cannot find the browser build it was pinned to, the suite falls back to an installed Chromium (`/opt/pw-browsers/chromium`, or set `CHROMIUM_PATH`) instead of downloading one.
+
 ## The bounty badge
 
 `bounty` renders as a plain **Bounty** badge in the directory. It says a program paid, and nothing else.
