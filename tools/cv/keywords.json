@@ -341,8 +341,7 @@
     "aliases": [
      "JSON Web Token"
     ],
-    "weight": 1,
-    "claimable": "ask"
+    "weight": 1
    },
    {
     "term": "vulnerability management",
@@ -545,8 +544,7 @@
    },
    {
     "term": "ISO 27001",
-    "weight": 1,
-    "claimable": "ask"
+    "weight": 1
    },
    {
     "term": "SIEM",
