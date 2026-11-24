@@ -187,9 +187,14 @@ def check_docx_pages(path):
         return
     with tempfile.TemporaryDirectory() as tmp:
         subprocess.run([soffice, "--headless", "--convert-to", "pdf", "--outdir", tmp, str(path)], capture_output=True, check=True)
-        info = subprocess.run(["pdfinfo", str(Path(tmp) / (path.stem + ".pdf"))], capture_output=True, text=True).stdout
-    pages = int(re.search(r"Pages:\s+(\d+)", info).group(1))
+        import pdfplumber
+
+        with pdfplumber.open(str(Path(tmp) / (path.stem + ".pdf"))) as pdf:
+            pages = len(pdf.pages)
+            last = pdf.pages[-1]
+            fill = max((c["bottom"] for c in last.chars), default=0) / last.height
     report(pages <= 2, "Word version fits on two pages", f"{pages} pages")
+    note("Word last page filled to", f"{fill:.0%}")
 
 
 def bullets_of(cv):

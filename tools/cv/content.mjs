@@ -40,12 +40,13 @@ const CONTACT = [
 ];
 
 const SKILLS = [
-  ["Penetration testing", "Vulnerability Assessment and Penetration Testing (VAPT), web application penetration testing, API security testing (REST and GraphQL), Android and mobile application security testing, network penetration testing, cloud security assessment, LLM and AI application security, reconnaissance and OSINT, manual exploitation, proof of concept (PoC) development"],
-  ["Vulnerability classes", "broken access control (IDOR, BOLA), business logic flaws, authentication and session management, OAuth 2.0 and OpenID Connect (redirect URI validation, missing PKCE), server side request forgery (SSRF), SQL injection (SQLi), cross site scripting (XSS), cross site request forgery (CSRF), server side template injection (SSTI), race conditions, mass assignment, CORS misconfiguration, subdomain takeover, sensitive data exposure, prompt injection"],
-  ["Standards and process", "OWASP Top 10, OWASP API Security Top 10, OWASP Top 10 for LLM Applications, CVSS severity scoring, risk rating, secure SDLC, DevSecOps and CI/CD security, SAST, DAST and SCA, vulnerability management, coordinated vulnerability disclosure, technical report writing, remediation guidance and retesting"],
-  ["Security tools", "Burp Suite, OWASP ZAP, Nmap, Metasploit, Wireshark, Postman, Kali Linux, Android Studio, Git, Cisco Packet Tracer"],
-  ["Platforms and cloud", "Linux, Windows, Active Directory, AWS, Microsoft Azure and Azure AD, Google Cloud (GCP), Firebase, containers and container security, Apache, Nginx, TCP/IP, DNS, firewalls"],
-  ["Programming and scripting", "Python, Bash, JavaScript, PHP, SQL, Ruby, C, C++, HTML, CSS"],
+  ["Penetration testing", "Vulnerability Assessment and Penetration Testing (VAPT), web application penetration testing, API security testing (REST and GraphQL), Android and mobile application security testing, network penetration testing, cloud security assessment, LLM and AI application security, red teaming, black box, grey box and white box testing, reconnaissance and OSINT, manual exploitation, proof of concept (PoC) development"],
+  ["Application security", "secure code review, threat modeling, secure SDLC, DevSecOps and CI/CD security, SAST, DAST and software composition analysis (SCA), container security"],
+  ["Vulnerability classes", "broken access control and privilege escalation (IDOR, BOLA), business logic flaws, authentication and session management, OAuth 2.0 and OpenID Connect (redirect URI validation, missing PKCE), server side request forgery (SSRF), SQL injection (SQLi), cross site scripting (XSS), cross site request forgery (CSRF), server side template injection (SSTI), race conditions, mass assignment, CORS misconfiguration, subdomain takeover, sensitive data exposure, prompt injection"],
+  ["Standards and methodology", "OWASP Top 10, OWASP API Security Top 10, OWASP Top 10 for LLM Applications, OWASP Web Security Testing Guide (WSTG), PTES, MITRE ATT&CK, CVSS severity scoring, risk rating, vulnerability management, coordinated vulnerability disclosure, technical report writing, remediation guidance and retesting"],
+  ["Security tools", "Burp Suite, OWASP ZAP, Nmap, Nessus, OpenVAS, Qualys, Metasploit, Wireshark, Postman, Frida, MobSF, jadx, Android Studio, Kali Linux, Git, Cisco Packet Tracer"],
+  ["Platforms and cloud", "Linux, Windows, Active Directory, AWS, Microsoft Azure and Azure AD, Google Cloud (GCP), Firebase, Docker, Kubernetes, Apache, Nginx, TCP/IP, DNS, firewalls"],
+  ["Programming and scripting", "Python, Bash, PowerShell, JavaScript, PHP, SQL, Ruby, C, C++, HTML, CSS"],
 ];
 
 const CERTS = [
@@ -83,9 +84,10 @@ export function buildCv({ variant = "public", priv = null } = {}) {
     when: "2023 to Present",
     bullets: [
       "Lead manual Vulnerability Assessment and Penetration Testing (VAPT) for 150+ clients across web applications, REST and GraphQL APIs, Android apps and networks, reporting 2,500+ vulnerabilities through to remediation.",
-      "Scope each engagement with the client on a discovery call, test against the OWASP Top 10 and OWASP API Security Top 10, and deliver reports with CVSS ratings, reproduction steps, business impact and remediation guidance.",
+      "Scope each test as black, grey or white box on a discovery call, follow the OWASP Web Security Testing Guide (WSTG) and PTES, and deliver reports with CVSS ratings, reproduction steps, business impact and remediation guidance.",
       "Test multi tenant SaaS platforms with separate tenant and role accounts to prove tenant isolation, role based access control and API authorization.",
-      "Combine SAST and software composition analysis (SCA) with dynamic testing (DAST) on mobile and web projects, and review CI/CD pipelines as part of secure SDLC work.",
+      "Review source code and threat model new features with development teams, pairing SAST and software composition analysis (SCA) with dynamic testing (DAST) and CI/CD pipeline review as part of secure SDLC work.",
+      "Test Android apps with Frida, MobSF and jadx, and back network assessments with Nmap and Nessus scans before verifying every finding by hand.",
       "Retest every fix and walk development teams through findings on calls until each issue is closed.",
     ],
   };
@@ -142,6 +144,10 @@ export function buildCv({ variant = "public", priv = null } = {}) {
     { title: "Agent driven reconnaissance and penetration testing", org: "Python, private, in progress", when: "Jun 2026 to Present", text: "Layers of models plan a test and choose the approach per target instead of one fixed methodology, calling my own scripts and wordlists when needed." },
     { title: "ScriptJacker Recon Tool", org: "Python, Ruby, Bash, github.com/scriptjacker/scriptjacker", when: "May 2024", text: "Runs full reconnaissance in one pass: subdomain enumeration, directory brute forcing, DNS recon, JavaScript analysis and vulnerability scanning." },
   ];
+
+  // The client version spends its space on named engagements, so the private, unfinished
+  // project gives way.
+  if (withClients) projects.shift();
 
   const sections = [
     { heading: "Professional Summary", blocks: [{ type: "para", text: summary }] },

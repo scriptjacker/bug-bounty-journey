@@ -19,7 +19,7 @@ from docx.oxml.ns import qn
 from docx.shared import Mm, Pt, RGBColor
 
 FONT = "Calibri"
-BODY = Pt(10.5)
+BODY = Pt(10)
 INK = RGBColor(0x15, 0x18, 0x1C)
 SOFT = RGBColor(0x2B, 0x31, 0x38)
 RED = RGBColor(0xA3, 0x12, 0x1A)
@@ -106,7 +106,7 @@ def main(src, out):
 
     sec = doc.sections[0]
     sec.page_width, sec.page_height = Mm(210), Mm(297)
-    sec.left_margin = sec.right_margin = Mm(14)
+    sec.left_margin = sec.right_margin = Mm(13)
     sec.top_margin, sec.bottom_margin = Mm(12), Mm(12)
     text_width = sec.page_width - sec.left_margin - sec.right_margin
 

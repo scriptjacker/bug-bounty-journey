@@ -2,117 +2,611 @@
  "_about": "Role profiles for tools/cv/ats_check.py, built from real job ads for penetration testing, VAPT and application security roles (India and remote). Each term lists the spellings a recruiter or an ATS might search. 'weight' 2 marks a term that appears in most ads for that role. 'claimable' false marks a term the CV must not carry until it is true (a certification not held, a tool not used): it is reported as a gap, never added to reach a score.",
  "profiles": {
   "Penetration Tester / VAPT": [
-   {"term": "penetration testing", "aliases": ["penetration tester", "pentest", "pen test"], "weight": 2},
-   {"term": "vulnerability assessment", "weight": 2},
-   {"term": "VAPT", "weight": 2},
-   {"term": "web application", "weight": 2},
-   {"term": "API", "aliases": ["REST", "GraphQL"], "weight": 2},
-   {"term": "mobile", "aliases": ["Android"], "weight": 1},
-   {"term": "network", "weight": 2},
-   {"term": "cloud", "weight": 1},
-   {"term": "OWASP Top 10", "weight": 2},
-   {"term": "Burp Suite", "weight": 2},
-   {"term": "Nmap", "weight": 2},
-   {"term": "Metasploit", "weight": 2},
-   {"term": "Nessus", "weight": 1, "claimable": "ask"},
-   {"term": "Kali Linux", "weight": 1},
-   {"term": "Wireshark", "weight": 1},
-   {"term": "SQL injection", "aliases": ["SQLi"], "weight": 2},
-   {"term": "XSS", "aliases": ["cross site scripting", "cross-site scripting"], "weight": 2},
-   {"term": "CSRF", "aliases": ["cross site request forgery"], "weight": 1},
-   {"term": "SSRF", "aliases": ["server side request forgery"], "weight": 1},
-   {"term": "IDOR", "weight": 1},
-   {"term": "authentication", "weight": 1},
-   {"term": "access control", "aliases": ["authorization"], "weight": 1},
-   {"term": "privilege escalation", "weight": 1, "claimable": "ask"},
-   {"term": "reconnaissance", "aliases": ["recon", "OSINT"], "weight": 1},
-   {"term": "exploitation", "aliases": ["exploited", "exploit"], "weight": 2},
-   {"term": "proof of concept", "aliases": ["PoC"], "weight": 1},
-   {"term": "report", "aliases": ["reporting", "reports"], "weight": 2},
-   {"term": "remediation", "weight": 2},
-   {"term": "CVSS", "weight": 1},
-   {"term": "risk", "weight": 1},
-   {"term": "red team", "aliases": ["red teaming"], "weight": 1, "claimable": "ask"},
-   {"term": "OSCP", "weight": 1, "claimable": false},
-   {"term": "CEH", "aliases": ["Certified Ethical Hacker"], "weight": 1},
-   {"term": "Python", "weight": 2},
-   {"term": "Bash", "weight": 1},
-   {"term": "PowerShell", "weight": 1, "claimable": "ask"},
-   {"term": "Active Directory", "weight": 1},
-   {"term": "Linux", "weight": 1},
-   {"term": "Windows", "weight": 1},
-   {"term": "TCP/IP", "weight": 1},
-   {"term": "firewall", "aliases": ["firewalls"], "weight": 1},
-   {"term": "black box", "aliases": ["grey box", "gray box", "white box"], "weight": 1, "claimable": "ask"},
-   {"term": "MITRE ATT&CK", "weight": 1, "claimable": "ask"},
-   {"term": "PTES", "aliases": ["OWASP Testing Guide", "WSTG"], "weight": 1, "claimable": "ask"},
-   {"term": "scoping", "aliases": ["scope"], "weight": 1},
-   {"term": "retest", "aliases": ["retesting"], "weight": 1},
-   {"term": "client", "aliases": ["clients"], "weight": 1},
-   {"term": "vulnerability management", "weight": 1}
+   {
+    "term": "penetration testing",
+    "aliases": [
+     "penetration tester",
+     "pentest",
+     "pen test"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "vulnerability assessment",
+    "weight": 2
+   },
+   {
+    "term": "VAPT",
+    "weight": 2
+   },
+   {
+    "term": "web application",
+    "weight": 2
+   },
+   {
+    "term": "API",
+    "aliases": [
+     "REST",
+     "GraphQL"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "mobile",
+    "aliases": [
+     "Android"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "network",
+    "weight": 2
+   },
+   {
+    "term": "cloud",
+    "weight": 1
+   },
+   {
+    "term": "OWASP Top 10",
+    "weight": 2
+   },
+   {
+    "term": "Burp Suite",
+    "weight": 2
+   },
+   {
+    "term": "Nmap",
+    "weight": 2
+   },
+   {
+    "term": "Metasploit",
+    "weight": 2
+   },
+   {
+    "term": "Nessus",
+    "weight": 1
+   },
+   {
+    "term": "Kali Linux",
+    "weight": 1
+   },
+   {
+    "term": "Wireshark",
+    "weight": 1
+   },
+   {
+    "term": "SQL injection",
+    "aliases": [
+     "SQLi"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "XSS",
+    "aliases": [
+     "cross site scripting",
+     "cross-site scripting"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "CSRF",
+    "aliases": [
+     "cross site request forgery"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "SSRF",
+    "aliases": [
+     "server side request forgery"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "IDOR",
+    "weight": 1
+   },
+   {
+    "term": "authentication",
+    "weight": 1
+   },
+   {
+    "term": "access control",
+    "aliases": [
+     "authorization"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "privilege escalation",
+    "weight": 1
+   },
+   {
+    "term": "reconnaissance",
+    "aliases": [
+     "recon",
+     "OSINT"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "exploitation",
+    "aliases": [
+     "exploited",
+     "exploit"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "proof of concept",
+    "aliases": [
+     "PoC"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "report",
+    "aliases": [
+     "reporting",
+     "reports"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "remediation",
+    "weight": 2
+   },
+   {
+    "term": "CVSS",
+    "weight": 1
+   },
+   {
+    "term": "risk",
+    "weight": 1
+   },
+   {
+    "term": "red team",
+    "aliases": [
+     "red teaming"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "OSCP",
+    "weight": 1,
+    "claimable": false
+   },
+   {
+    "term": "CEH",
+    "aliases": [
+     "Certified Ethical Hacker"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "Python",
+    "weight": 2
+   },
+   {
+    "term": "Bash",
+    "weight": 1
+   },
+   {
+    "term": "PowerShell",
+    "weight": 1
+   },
+   {
+    "term": "Active Directory",
+    "weight": 1
+   },
+   {
+    "term": "Linux",
+    "weight": 1
+   },
+   {
+    "term": "Windows",
+    "weight": 1
+   },
+   {
+    "term": "TCP/IP",
+    "weight": 1
+   },
+   {
+    "term": "firewall",
+    "aliases": [
+     "firewalls"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "black box",
+    "aliases": [
+     "grey box",
+     "gray box",
+     "white box"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "MITRE ATT&CK",
+    "weight": 1
+   },
+   {
+    "term": "PTES",
+    "aliases": [
+     "OWASP Testing Guide",
+     "WSTG"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "scoping",
+    "aliases": [
+     "scope"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "retest",
+    "aliases": [
+     "retesting"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "client",
+    "aliases": [
+     "clients"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "vulnerability management",
+    "weight": 1
+   }
   ],
   "Application Security Engineer": [
-   {"term": "application security", "aliases": ["AppSec"], "weight": 2},
-   {"term": "secure code review", "aliases": ["code review", "source code review"], "weight": 2, "claimable": "ask"},
-   {"term": "SAST", "weight": 2},
-   {"term": "DAST", "weight": 2},
-   {"term": "SCA", "aliases": ["software composition analysis"], "weight": 1},
-   {"term": "threat modeling", "aliases": ["threat modelling"], "weight": 2, "claimable": "ask"},
-   {"term": "secure SDLC", "aliases": ["SSDLC", "secure software development"], "weight": 2},
-   {"term": "CI/CD", "weight": 2},
-   {"term": "DevSecOps", "weight": 1},
-   {"term": "OWASP Top 10", "weight": 2},
-   {"term": "API security", "weight": 2},
-   {"term": "authentication", "weight": 1},
-   {"term": "OAuth", "weight": 1},
-   {"term": "JWT", "aliases": ["JSON Web Token"], "weight": 1, "claimable": "ask"},
-   {"term": "vulnerability management", "weight": 1},
-   {"term": "remediation", "weight": 2},
-   {"term": "developers", "aliases": ["development teams", "engineering teams"], "weight": 1},
-   {"term": "penetration testing", "aliases": ["penetration tester"], "weight": 2},
-   {"term": "cloud security", "weight": 1},
-   {"term": "AWS", "weight": 1},
-   {"term": "Azure", "weight": 1},
-   {"term": "GCP", "aliases": ["Google Cloud"], "weight": 1},
-   {"term": "containers", "aliases": ["container security"], "weight": 1},
-   {"term": "Docker", "weight": 1, "claimable": "ask"},
-   {"term": "Kubernetes", "weight": 1, "claimable": "ask"},
-   {"term": "bug bounty", "weight": 1},
-   {"term": "LLM", "aliases": ["AI security", "prompt injection"], "weight": 1},
-   {"term": "Python", "weight": 2},
-   {"term": "JavaScript", "weight": 1},
-   {"term": "Burp Suite", "weight": 2},
-   {"term": "risk", "weight": 1},
-   {"term": "CVSS", "weight": 1}
+   {
+    "term": "application security",
+    "aliases": [
+     "AppSec"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "secure code review",
+    "aliases": [
+     "code review",
+     "source code review"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "SAST",
+    "weight": 2
+   },
+   {
+    "term": "DAST",
+    "weight": 2
+   },
+   {
+    "term": "SCA",
+    "aliases": [
+     "software composition analysis"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "threat modeling",
+    "aliases": [
+     "threat modelling"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "secure SDLC",
+    "aliases": [
+     "SSDLC",
+     "secure software development"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "CI/CD",
+    "weight": 2
+   },
+   {
+    "term": "DevSecOps",
+    "weight": 1
+   },
+   {
+    "term": "OWASP Top 10",
+    "weight": 2
+   },
+   {
+    "term": "API security",
+    "weight": 2
+   },
+   {
+    "term": "authentication",
+    "weight": 1
+   },
+   {
+    "term": "OAuth",
+    "weight": 1
+   },
+   {
+    "term": "JWT",
+    "aliases": [
+     "JSON Web Token"
+    ],
+    "weight": 1,
+    "claimable": "ask"
+   },
+   {
+    "term": "vulnerability management",
+    "weight": 1
+   },
+   {
+    "term": "remediation",
+    "weight": 2
+   },
+   {
+    "term": "developers",
+    "aliases": [
+     "development teams",
+     "engineering teams"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "penetration testing",
+    "aliases": [
+     "penetration tester"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "cloud security",
+    "weight": 1
+   },
+   {
+    "term": "AWS",
+    "weight": 1
+   },
+   {
+    "term": "Azure",
+    "weight": 1
+   },
+   {
+    "term": "GCP",
+    "aliases": [
+     "Google Cloud"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "containers",
+    "aliases": [
+     "container security"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "Docker",
+    "weight": 1
+   },
+   {
+    "term": "Kubernetes",
+    "weight": 1
+   },
+   {
+    "term": "bug bounty",
+    "weight": 1
+   },
+   {
+    "term": "LLM",
+    "aliases": [
+     "AI security",
+     "prompt injection"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "Python",
+    "weight": 2
+   },
+   {
+    "term": "JavaScript",
+    "weight": 1
+   },
+   {
+    "term": "Burp Suite",
+    "weight": 2
+   },
+   {
+    "term": "risk",
+    "weight": 1
+   },
+   {
+    "term": "CVSS",
+    "weight": 1
+   }
   ],
   "Security Analyst / VAPT Analyst (India)": [
-   {"term": "vulnerability assessment", "weight": 2},
-   {"term": "penetration testing", "aliases": ["penetration tester"], "weight": 2},
-   {"term": "VAPT", "weight": 2},
-   {"term": "web application security", "aliases": ["web application penetration testing"], "weight": 2},
-   {"term": "network security", "aliases": ["network penetration testing"], "weight": 2},
-   {"term": "Nessus", "weight": 2, "claimable": "ask"},
-   {"term": "Qualys", "weight": 1, "claimable": "ask"},
-   {"term": "Burp Suite", "weight": 2},
-   {"term": "Nmap", "weight": 2},
-   {"term": "Metasploit", "weight": 1},
-   {"term": "Kali Linux", "weight": 1},
-   {"term": "Wireshark", "weight": 1},
-   {"term": "OWASP", "weight": 2},
-   {"term": "CEH", "weight": 2},
-   {"term": "CVSS", "weight": 1},
-   {"term": "report", "aliases": ["reports", "reporting"], "weight": 2},
-   {"term": "remediation", "weight": 2},
-   {"term": "risk", "aliases": ["risk assessment", "risk rating"], "weight": 1},
-   {"term": "Linux", "weight": 1},
-   {"term": "Windows", "weight": 1},
-   {"term": "firewall", "aliases": ["firewalls"], "weight": 1},
-   {"term": "TCP/IP", "weight": 1},
-   {"term": "ISO 27001", "weight": 1, "claimable": "ask"},
-   {"term": "SIEM", "weight": 1, "claimable": false},
-   {"term": "incident response", "weight": 1, "claimable": false},
-   {"term": "CERT-In", "weight": 1}
+   {
+    "term": "vulnerability assessment",
+    "weight": 2
+   },
+   {
+    "term": "penetration testing",
+    "aliases": [
+     "penetration tester"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "VAPT",
+    "weight": 2
+   },
+   {
+    "term": "web application security",
+    "aliases": [
+     "web application penetration testing"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "network security",
+    "aliases": [
+     "network penetration testing"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "Nessus",
+    "weight": 2
+   },
+   {
+    "term": "Qualys",
+    "weight": 1
+   },
+   {
+    "term": "Burp Suite",
+    "weight": 2
+   },
+   {
+    "term": "Nmap",
+    "weight": 2
+   },
+   {
+    "term": "Metasploit",
+    "weight": 1
+   },
+   {
+    "term": "Kali Linux",
+    "weight": 1
+   },
+   {
+    "term": "Wireshark",
+    "weight": 1
+   },
+   {
+    "term": "OWASP",
+    "weight": 2
+   },
+   {
+    "term": "CEH",
+    "weight": 2
+   },
+   {
+    "term": "CVSS",
+    "weight": 1
+   },
+   {
+    "term": "report",
+    "aliases": [
+     "reports",
+     "reporting"
+    ],
+    "weight": 2
+   },
+   {
+    "term": "remediation",
+    "weight": 2
+   },
+   {
+    "term": "risk",
+    "aliases": [
+     "risk assessment",
+     "risk rating"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "Linux",
+    "weight": 1
+   },
+   {
+    "term": "Windows",
+    "weight": 1
+   },
+   {
+    "term": "firewall",
+    "aliases": [
+     "firewalls"
+    ],
+    "weight": 1
+   },
+   {
+    "term": "TCP/IP",
+    "weight": 1
+   },
+   {
+    "term": "ISO 27001",
+    "weight": 1,
+    "claimable": "ask"
+   },
+   {
+    "term": "SIEM",
+    "weight": 1,
+    "claimable": false
+   },
+   {
+    "term": "incident response",
+    "weight": 1,
+    "claimable": false
+   },
+   {
+    "term": "CERT-In",
+    "weight": 1
+   }
   ]
  },
- "actionVerbs": ["lead", "led", "scope", "scoped", "test", "tested", "combine", "combined", "retest", "retested", "report", "reported", "found", "find", "published", "publish", "exploited", "exploit", "mentor", "mentored", "delivered", "deliver", "built", "build", "ran", "run", "runs", "designed", "design", "secured", "secure", "coordinated", "automated", "developed", "wrote", "write", "trained", "identified", "assessed", "reviewed", "review", "audited", "created"]
+ "actionVerbs": [
+  "lead",
+  "led",
+  "scope",
+  "scoped",
+  "test",
+  "tested",
+  "combine",
+  "combined",
+  "retest",
+  "retested",
+  "report",
+  "reported",
+  "found",
+  "find",
+  "published",
+  "publish",
+  "exploited",
+  "exploit",
+  "mentor",
+  "mentored",
+  "delivered",
+  "deliver",
+  "built",
+  "build",
+  "ran",
+  "run",
+  "runs",
+  "designed",
+  "design",
+  "secured",
+  "secure",
+  "coordinated",
+  "automated",
+  "developed",
+  "wrote",
+  "write",
+  "trained",
+  "identified",
+  "assessed",
+  "reviewed",
+  "review",
+  "audited",
+  "created"
+ ]
 }
