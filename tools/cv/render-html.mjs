@@ -11,23 +11,27 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = new URL("../..", import.meta.url).pathname;
-const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const escAttr = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+// Words with a hyphen inside (CVE-2025-56697, ADV-2026-018, CERT-EU, EC-Council) never break
+// at the hyphen: a parser that meets "CVE-2025-" at the end of a line loses the identifier.
+const esc = (s) => escAttr(s).replace(/[A-Za-z0-9.]+(?:-[A-Za-z0-9.]+)+/g, (w) => `<span class="nb">${w}</span>`);
 const font = (pkg, file) => `data:font/woff2;base64,${readFileSync(join(root, "node_modules/@fontsource", pkg, "files", file)).toString("base64")}`;
 
 const CSS = `
+  :root { --accent: #1f3a5f; }
   @font-face { font-family: "Geist"; src: url(${font("geist", "geist-latin-400-normal.woff2")}) format("woff2"); font-weight: 400; }
   @font-face { font-family: "Geist"; src: url(${font("geist", "geist-latin-600-normal.woff2")}) format("woff2"); font-weight: 600; }
   @font-face { font-family: "Geist"; src: url(${font("geist", "geist-latin-700-normal.woff2")}) format("woff2"); font-weight: 700; }
   @page { size: A4; margin: 11mm 13mm 10mm; }
   * { box-sizing: border-box; }
   html { font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0; }
-  body { margin: 0; font-family: "Geist", Arial, sans-serif; font-size: 9.8pt; line-height: 1.36; color: #15181c; }
+  body { margin: 0; font-family: "Geist", Arial, sans-serif; font-size: 10pt; line-height: 1.36; color: #15181c; }
   a { color: inherit; text-decoration: none; }
   h1 { font-size: 22pt; margin: 0; font-weight: 700; line-height: 1.05; letter-spacing: -0.2px; }
   .headline { font-size: 11pt; color: #2b3138; margin: 3px 0 4px; font-weight: 600; }
   .contact { font-size: 9.4pt; line-height: 1.45; color: #2b3138; margin: 0; padding-bottom: 6px; border-bottom: 1.3px solid #15181c; }
   .contact b { font-weight: 600; color: #15181c; }
-  h2 { font-size: 10.6pt; color: #a3121a; margin: 9px 0 3px; font-weight: 700; padding-bottom: 2px; border-bottom: 0.6px solid #c9ced4; text-transform: uppercase; letter-spacing: 0.5px; break-after: avoid; page-break-after: avoid; }
+  h2 { font-size: 10.6pt; color: var(--accent); margin: 9px 0 3px; font-weight: 700; padding-bottom: 2px; border-bottom: 0.6px solid #c9ced4; text-transform: uppercase; letter-spacing: 0.5px; break-after: avoid; page-break-after: avoid; }
   p { margin: 0; }
   .kv { margin: 2px 0; }
   .kv b, .line b, .top b, .top-inline b, .eng b { font-weight: 600; }
@@ -38,6 +42,7 @@ const CSS = `
   .when { font-size: 9.2pt; color: #4a525c; white-space: nowrap; font-weight: 600; }
   .line { margin: 1.5px 0; break-inside: avoid; }
   .sep { color: #9aa1a9; }
+  .nb { white-space: nowrap; }
   ul { margin: 2px 0 0; padding-left: 14px; }
   li { margin: 1.5px 0; padding-left: 1px; break-inside: avoid; }
   li::marker { color: #6b737d; }
@@ -76,12 +81,12 @@ function block(b) {
   }
 }
 
-export function renderHtml(cv) {
+export function renderHtml(cv, { accent } = {}) {
   // Two deliberate lines (how to reach me, where my work is) so no address ever wraps in
   // the middle, which would hand a parser half a LinkedIn URL.
   const item = (c) => {
     const t = c.strong ? `<b>${esc(c.text)}</b>` : esc(c.text);
-    return c.href ? `<a href="${esc(c.href)}">${t}</a>` : t;
+    return c.href ? `<a href="${escAttr(c.href)}">${t}</a>` : t;
   };
   const cut = cv.contact.findIndex((c) => c.lineEnd) + 1;
   const contact = [cv.contact.slice(0, cut), cv.contact.slice(cut)].map((g) => g.map(item).join(" | ")).join("<br>");
@@ -90,9 +95,9 @@ export function renderHtml(cv) {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>${esc(cv.meta.title)}</title>
-<meta name="author" content="${esc(cv.meta.author)}">
-<style>${CSS}</style>
+<title>${escAttr(cv.meta.title)}</title>
+<meta name="author" content="${escAttr(cv.meta.author)}">
+<style>${CSS}${accent ? `:root{--accent:${accent}}` : ""}</style>
 </head>
 <body>
 <h1>${esc(cv.name)}</h1>

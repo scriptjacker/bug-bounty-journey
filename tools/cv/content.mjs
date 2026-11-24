@@ -5,9 +5,12 @@
 //
 // Style rules, kept on purpose:
 //   - Every bullet opens with a verb and, where there is one, carries a number.
-//   - Acronyms appear next to their full form once, so a recruiter searching either finds it.
-//   - No dashes in prose. Date ranges read "Nov 2023 to Present".
+//   - No "I" or "my", no filler ("hands on", "among others", "passionate"), no long dashes.
+//   - Acronyms sit next to their full form once, so a recruiter searching either finds it.
+//   - Date ranges read "Nov 2023 to Present".
 //   - Nothing goes in that the portfolio or an email cannot back up.
+//
+// A bullet can be a plain string (both versions) or { text, only: "public" | "clients" }.
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
@@ -40,13 +43,13 @@ const CONTACT = [
 ];
 
 const SKILLS = [
-  ["Penetration testing", "Vulnerability Assessment and Penetration Testing (VAPT), web application penetration testing, API security testing (REST and GraphQL), Android and mobile application security testing, network penetration testing, cloud security assessment, LLM and AI application security, red teaming, black box, grey box and white box testing, reconnaissance and OSINT, manual exploitation, proof of concept (PoC) development"],
-  ["Application security", "secure code review, threat modeling, secure SDLC, DevSecOps and CI/CD security, SAST, DAST and software composition analysis (SCA), container security"],
-  ["Vulnerability classes", "broken access control and privilege escalation (IDOR, BOLA), business logic flaws, authentication and session management, JSON Web Token (JWT) attacks, OAuth 2.0 and OpenID Connect (redirect URI validation, missing PKCE), server side request forgery (SSRF), SQL injection (SQLi), cross site scripting (XSS), cross site request forgery (CSRF), server side template injection (SSTI), race conditions, mass assignment, CORS misconfiguration, subdomain takeover, sensitive data exposure, prompt injection"],
-  ["Standards and methodology", "OWASP Top 10, OWASP API Security Top 10, OWASP Top 10 for LLM Applications, OWASP Web Security Testing Guide (WSTG), PTES, MITRE ATT&CK, ISO 27001, CVSS severity scoring, risk rating, vulnerability management, coordinated vulnerability disclosure, technical report writing, remediation guidance and retesting"],
-  ["Security tools", "Burp Suite, OWASP ZAP, Nmap, Nessus, OpenVAS, Qualys, Metasploit, Wireshark, Postman, Frida, MobSF, jadx, Android Studio, Kali Linux, Git, Cisco Packet Tracer"],
-  ["Platforms and cloud", "Linux, Windows, Active Directory, AWS, Microsoft Azure and Azure AD, Google Cloud (GCP), Firebase, Docker, Kubernetes, Apache, Nginx, TCP/IP, DNS, firewalls"],
-  ["Programming and scripting", "Python, Bash, PowerShell, JavaScript, PHP, SQL, Ruby, C, C++, HTML, CSS"],
+  ["Offensive testing", "Vulnerability Assessment and Penetration Testing (VAPT) of web applications, REST and GraphQL APIs, Android apps, cloud, and LLM and AI applications; network security and infrastructure testing; red teaming; black, grey and white box testing; reconnaissance, OSINT and manual exploitation"],
+  ["Application security", "web application security, secure code review, threat modeling, secure SDLC, SAST, DAST, software composition analysis (SCA), CI/CD and DevSecOps, container security"],
+  ["Vulnerabilities", "broken access control (IDOR, BOLA), privilege escalation, business logic flaws, authentication, OAuth 2.0 and OpenID Connect, JWT attacks, SSRF, SQL injection, cross site scripting (XSS), CSRF, SSTI, race conditions, mass assignment, CORS, subdomain takeover, prompt injection"],
+  ["Methodology", "OWASP Top 10, OWASP API Security Top 10, OWASP Top 10 for LLM Applications, OWASP Web Security Testing Guide (WSTG), PTES, MITRE ATT&CK, CVSS, ISO 27001, risk rating, vulnerability management"],
+  ["Tools", "Burp Suite, OWASP ZAP, Nmap, Nessus, Qualys, Metasploit, Wireshark, Postman, Frida, MobSF, jadx"],
+  ["Cloud security and platforms", "AWS, Azure and Azure AD, Google Cloud (GCP), Firebase, identity and access management (IAM), Docker, Kubernetes, Linux, Kali Linux, Windows, Active Directory, TCP/IP, DNS, firewalls"],
+  ["Programming", "Python, Bash, PowerShell, JavaScript, PHP, SQL, Ruby, C, C++, Git"],
 ];
 
 const CERTS = [
@@ -59,7 +62,7 @@ const CERTS = [
 ];
 
 const EDUCATION = [
-  { title: "Bachelor of Computer Applications (BCA), Cybersecurity", org: "Lovely Professional University, Phagwara, Punjab", note: "CGPA 9.75", when: "Aug 2025 to Present" },
+  { title: "Bachelor of Computer Applications (BCA), Cybersecurity", org: "Lovely Professional University (LPU), Punjab", note: "CGPA 9.75", when: "Aug 2025 to Present" },
   { title: "Senior Secondary (Class XII), Commerce", org: "Vishvas Senior Secondary School, Hisar, Haryana", note: "86%", when: "Mar 2025" },
   { title: "Matriculation (Class X)", org: "St. Mary's School, Hisar, Haryana", note: "84%", when: "Mar 2023" },
 ];
@@ -68,31 +71,33 @@ export function buildCv({ variant = "public", priv = null } = {}) {
   const f = facts();
   const withClients = variant === "clients";
   if (withClients && !priv) throw new Error(`the client version needs ${PRIVATE_FILE}`);
+  const keep = (list) => list.filter((b) => typeof b === "string" || b.only === variant).map((b) => (typeof b === "string" ? b : b.text));
 
   const headline = withClients
     ? "Penetration Tester | Application Security Consultant | Security Researcher"
     : "Penetration Tester and Security Researcher | Web, API, Mobile, Cloud and AI Security";
 
+  const record = `Reported vulnerabilities to ${f.orgsHeadline} organizations including Apple, NVIDIA and the United Nations, with ${f.hofHeadline} Hall of Fame listings, a CVSS 9.0 Netwrix advisory and CVE-2025-56697. CEH, eWPTX, eJPT and APIsec certified.`;
   const summary = withClients
-    ? `Penetration tester and application security consultant who runs manual VAPT engagements for SaaS companies in the Netherlands, Belgium, Germany and Slovenia through ScriptJacker LLP, covering web applications, APIs, Android apps and cloud. ${f.orgsHeadline} organizations have fixed vulnerabilities I reported, among them Apple, NVIDIA, Nokia, WHO, CERT-EU and the United Nations, with ${f.hofHeadline} Hall of Fame listings and first researcher status at ${f.first} programs. Credited in Netwrix advisory ADV-2026-018 (CVSS 9.0) and CVE-2025-56697. CEH, eWPTX, eJPT and APIsec certified. Seeking a Penetration Tester, Security Consultant or Application Security Engineer role.`
-    : `Penetration tester and security researcher with hands on experience in web application, API, Android, cloud and AI security testing. ${f.orgsHeadline} organizations have fixed vulnerabilities I reported, among them Apple, NVIDIA, Nokia, WHO, CERT-EU and the United Nations, with ${f.hofHeadline} Hall of Fame listings and first researcher status at ${f.first} programs. Credited in Netwrix advisory ADV-2026-018 (CVSS 9.0) and CVE-2025-56697. Founder of ScriptJacker LLP, delivering manual VAPT to 150+ clients. CEH, eWPTX, eJPT and APIsec certified. Seeking a Penetration Tester, VAPT Analyst or Application Security Engineer role.`;
+    ? `Penetration tester and application security consultant. Through ScriptJacker LLP, runs manual VAPT engagements for SaaS companies in the Netherlands, Belgium, Germany and Slovenia, covering web applications, APIs, Android apps and cloud. ${record} Open to penetration testing, security consulting and application security roles.`
+    : `Penetration tester and security researcher working on web applications, APIs, Android apps, cloud and AI systems. Founder of ScriptJacker LLP, which has run manual security testing for 150+ clients. ${record} Open to penetration testing, VAPT and AppSec roles.`;
 
   const scriptjacker = {
     type: "job",
     title: "Founder and Lead Penetration Tester",
     org: "ScriptJacker LLP",
     when: "2023 to Present",
-    bullets: [
-      "Lead manual Vulnerability Assessment and Penetration Testing (VAPT) for 150+ clients across web applications, REST and GraphQL APIs, Android apps and networks, reporting 2,500+ vulnerabilities through to remediation.",
-      "Scope each test as black, grey or white box on a discovery call, follow the OWASP Web Security Testing Guide (WSTG) and PTES, and deliver reports with CVSS ratings, reproduction steps, business impact and remediation guidance.",
-      "Test multi tenant SaaS platforms with separate tenant and role accounts to prove tenant isolation, role based access control and API authorization.",
-      "Review source code and threat model new features with development teams, pairing SAST and software composition analysis (SCA) with dynamic testing (DAST) and CI/CD pipeline review as part of secure SDLC work.",
-      "Test Android apps with Frida, MobSF and jadx, and back network assessments with Nmap and Nessus scans before verifying every finding by hand.",
-      "Retest every fix and walk development teams through findings on calls until each issue is closed.",
-    ],
+    bullets: keep([
+      "Run manual Vulnerability Assessment and Penetration Testing (VAPT) for 150+ clients across web applications, REST and GraphQL APIs, Android apps, networks and cloud, with 2,500+ vulnerabilities reported and resolved.",
+      "Agree scope and test type (black, grey or white box) with each client on a discovery call, then test against the OWASP Web Security Testing Guide (WSTG), PTES and the OWASP API Security Top 10.",
+      "Write reports a developer can act on: CVSS score, reproduction steps, proof of concept, business impact and specific remediation for every finding.",
+      { only: "public", text: "Test multi tenant SaaS products with separate tenant and role accounts, proving that one customer cannot read or change another customer's data." },
+      "Review source code and threat model new features with developers, and add SAST and software composition analysis (SCA) to dynamic testing (DAST) in CI/CD pipelines.",
+      "Reverse engineer Android apps with jadx and Frida, run MobSF static checks, and scan network and infrastructure targets with Nmap and Nessus before confirming each result by hand.",
+      "Communicate findings to engineering teams on calls and retest every fix until each issue is closed.",
+    ]),
   };
   if (withClients) {
-    scriptjacker.bullets.splice(2, 1);
     scriptjacker.subhead = "Selected client engagements";
     scriptjacker.engagements = priv.engagements;
     if (priv.otherClients) scriptjacker.otherClients = priv.otherClients;
@@ -101,53 +106,46 @@ export function buildCv({ variant = "public", priv = null } = {}) {
   const research = {
     type: "job",
     title: "Security Researcher",
-    org: "Independent, vulnerability disclosure and bug bounty programs",
+    org: "Independent, bug bounty and vulnerability disclosure",
     when: "Nov 2023 to Present",
-    bullets: [
-      `Reported vulnerabilities to ${f.orgsHeadline} organizations in ${f.countries}+ countries, including Apple, NVIDIA, Nokia, WHO, UNESCO, CERT-EU and the United Nations, earning ${f.hofHeadline} Hall of Fame listings and first researcher status at ${f.first} programs.`,
-      "Found two flaws in Netwrix PingCastle, an Active Directory security assessment tool: an update installed with no integrity check and a path traversal through prefix matching. Published as Netwrix advisory ADV-2026-018 at CVSS 9.0, with two CVEs pending.",
-      "Published CVE-2025-56697 for a stored XSS, and coordinated SQL injection and information disclosure fixes through CERT-In on Indian government assets.",
-      "Exploited an IDOR that exposed 85,000+ email addresses, a mass assignment flaw leading to account takeover, and an exposed Apache Guacamole gateway on a Nokia subdomain, found through Google dorking, that led to shell access.",
-      "Tested cloud and AI attack surfaces: subdomain takeover through a dangling AWS CNAME, Azure AD tenant disclosure, exposed managed databases, Firebase authentication enumeration, and OAuth flaws and blind SSRF in Model Context Protocol (MCP) servers.",
-    ],
+    bullets: keep([
+      `Reported vulnerabilities to ${f.orgsHeadline} organizations in ${f.countries}+ countries, including Apple, NVIDIA, Nokia, WHO, UNESCO, CERT-EU and the United Nations. Listed on ${f.hofHeadline} Halls of Fame, and the first researcher on ${f.first} of them.`,
+      "Found two flaws in Netwrix PingCastle, an Active Directory audit tool: updates installed without an integrity check, and a path traversal via prefix matching. Netwrix advisory ADV-2026-018 (CVSS 9.0), two CVEs pending.",
+      "Published CVE-2025-56697 for a stored XSS, and reported SQL injection and information disclosure on Indian government sites through CERT-In.",
+      { only: "public", text: "Exploited an IDOR exposing 85,000+ email addresses, turned mass assignment into account takeover, and reached shell access via an Apache Guacamole gateway on a Nokia subdomain found by Google dorking." },
+      "Tested cloud and AI targets: subdomain takeover through a dangling AWS CNAME, Azure AD tenant disclosure, exposed managed databases, Firebase account enumeration, and OAuth flaws and blind SSRF in Model Context Protocol (MCP) servers.",
+    ]),
   };
-  if (withClients) research.bullets.splice(3, 1);
 
   const mentor = {
     type: "job",
     title: "Mentor, Bug Bounty and Web Security",
     org: "Unihackers",
     when: "Jun 2025 to Present",
-    bullets: [
-      "Mentor students and new bug hunters using real cases from my own reports, and write guides on API security testing, request tampering and prompt injection.",
-      "Delivered a web application penetration testing masterclass to about 150 students at Guru Jambheshwar University of Science and Technology, Hisar (Oct 2025), and a 57 slide AI security talk with live demos.",
-    ],
+    bullets: keep([
+      "Mentor students and new bug hunters with real cases from past reports, and write guides on API testing, request tampering and prompt injection.",
+      { only: "public", text: "Taught a web application penetration testing masterclass to about 150 students at Guru Jambheshwar University of Science and Technology, Hisar (Oct 2025), and gave a 57 slide AI security talk with live demos." },
+    ]),
   };
-  if (withClients) mentor.bullets = [mentor.bullets[0]];
 
   const intern = {
     type: "job",
     title: "Penetration Tester Intern",
     org: "Forensic Academy",
     when: "Aug 2023 to Sep 2023",
-    bullets: ["Built and secured an enterprise network in Cisco Packet Tracer, ran a web application penetration test against a live target and delivered the written report. Graded A+."],
+    bullets: ["Built and secured an enterprise network in Cisco Packet Tracer, then tested a live web application and wrote the report. Graded A+."],
   };
 
-  const achievements = [
-    "AIR 21 of 10,000 participants at the HackWithIndia 2026 Web Hacking Competition.",
-    "Team lead of ScriptJackers: 9 CTF podium finishes with 7 first places, including 1st of 68 squads at Cyber Arena 2026 (CompTIA and Quick Heal Academy), the TechFusion 2026 CTF, Rootbreach at NIT Jalandhar, Cyber War 2026, RCS 2026, Cyberthon 2026 and Encrypted CTF.",
-    "Letters of appreciation from Thales PSIRT, Drexel University (CISO), Maastricht University, GeeksforGeeks and Nykaa, among others.",
-  ];
-  if (withClients) achievements.splice(2, 1);
+  const achievements = keep([
+    "Ranked 21st of 10,000 (All India Rank 21) in the HackWithIndia 2026 Web Hacking Competition.",
+    "Led team ScriptJackers to 9 CTF podium finishes and 7 wins, including 1st of 68 squads at Cyber Arena 2026 (CompTIA and Quick Heal Academy), TechFusion 2026, Rootbreach at NIT Jalandhar, Cyber War 2026, RCS 2026, Cyberthon 2026 and Encrypted CTF.",
+    { only: "public", text: "Letters of appreciation from Thales PSIRT, Drexel University CISO, Maastricht University, GeeksforGeeks, Nykaa." },
+  ]);
 
   const projects = [
-    { title: "Agent driven reconnaissance and penetration testing", org: "Python, private, in progress", when: "Jun 2026 to Present", text: "Layers of models plan a test and choose the approach per target instead of one fixed methodology, calling my own scripts and wordlists when needed." },
-    { title: "ScriptJacker Recon Tool", org: "Python, Ruby, Bash, github.com/scriptjacker/scriptjacker", when: "May 2024", text: "Runs full reconnaissance in one pass: subdomain enumeration, directory brute forcing, DNS recon, JavaScript analysis and vulnerability scanning." },
-  ];
-
-  // The client version spends its space on named engagements, so the private, unfinished
-  // project gives way.
-  if (withClients) projects.shift();
+    { title: "Agent driven penetration testing framework", org: "Python, private, in progress", when: "Jun 2026 to Present", text: "Automates reconnaissance and testing: AI agents choose the approach per target and call custom scripts.", only: "public" },
+    { title: "ScriptJacker Recon Tool", org: "Python, Ruby, Bash, github.com/scriptjacker/scriptjacker", when: "May 2024", text: "Automates full reconnaissance in one run: subdomain enumeration, directory brute forcing, DNS recon, JavaScript analysis and vulnerability scanning." },
+  ].filter((p) => !p.only || p.only === variant);
 
   const sections = [
     { heading: "Professional Summary", blocks: [{ type: "para", text: summary }] },

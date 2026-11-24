@@ -96,6 +96,9 @@ def check_text(engines):
         o = set(words(engines[other]))
         jac = len(base & o) / max(1, len(base | o))
         report(jac >= 0.97, f"{names[0]} and {other} agree on the words", f"{jac:.3f} overlap, only in {other}: {sorted(o - base)[:8]}")
+    for name, t in engines.items():
+        split = re.findall(r"\S+-\n\S*", t)
+        report(not split, f"{name}: no word split across lines at a hyphen", ", ".join(x.replace(chr(10), "") for x in split[:5]))
     dashes = DASHES.findall(engines[names[0]])
     report(not dashes, "no long dashes (house style)", f"{len(dashes)} found")
 
@@ -167,6 +170,23 @@ def check_layout(path, cv):
         fill = bottom / last.height
         report(pages == 1 or fill >= 0.5, "last page at least half full", f"{fill:.0%}")
         note("last page filled to", f"{fill:.0%}")
+        # Cosmetic: a paragraph whose last line holds one or two words wastes a line and looks
+        # unfinished. Reported, not failed.
+        orphans = []
+        for page in pdf.pages:
+            rows = []  # words on one baseline, allowing for bold and regular sitting a hair apart
+            for w in sorted(page.extract_words(use_text_flow=True), key=lambda w: (w["top"], w["x0"])):
+                if rows and abs(rows[-1][0] - w["top"]) < 2.5:
+                    rows[-1][1].append(w)
+                else:
+                    rows.append((w["top"], [w]))
+            rows = [r for r in rows if not r[1][0]["text"].isupper()]  # section headings
+            full = page.width - 2 * min(w["x0"] for _, ws in rows for w in ws)
+            for (_, prev), (_, cur) in zip(rows, rows[1:]):
+                pw = max(w["x1"] for w in prev) - min(w["x0"] for w in prev)
+                if len(cur) <= 2 and pw > 0.85 * full and cur[0]["x0"] > min(w["x0"] for w in prev) - 1:
+                    orphans.append(" ".join(w["text"] for w in cur))
+        note("one or two word last lines", ", ".join(orphans) or "none")
     fonts = subprocess.run(["pdffonts", str(path)], capture_output=True, text=True).stdout.splitlines()[2:]
     report(all(" yes " in l for l in fonts), "every font embedded", "; ".join(fonts))
     info = subprocess.run(["pdfinfo", str(path)], capture_output=True, text=True).stdout
@@ -206,8 +226,15 @@ def bullets_of(cv):
     return out
 
 
+# Stock phrases recruiters skim past and words that make a CV read as generated.
+STOCK = re.compile(r"\b(I|my|me|leverag\w*|robust|seamless\w*|passionate|proven track|results driven|detail oriented|dynamic(?! testing| application)|spearhead\w*|utiliz\w*|hands on|cutting edge|synerg\w*|go getter|team player|hard working|responsible for|various|etc|among others|delve|tapestry|showcas\w*|furthermore|moreover|in today's|ever evolving|landscape|meticulous\w*|navigat\w*|elevat\w*|empower\w*)\b", re.I)
+
+
 def check_writing(cv):
     print("writing")
+    text = json.dumps(cv["sections"])
+    found = sorted(set(m.group(0) for m in STOCK.finditer(text)))
+    report(not found, "no stock phrases or generated sounding words", ", ".join(found))
     verbs = set(KEYWORDS["actionVerbs"])
     items = bullets_of(cv)
     led = [b for b in items if b.split()[0].lower().strip(":,") in verbs or re.match(r"(AIR|Team lead|Letters|Other clients)", b)]

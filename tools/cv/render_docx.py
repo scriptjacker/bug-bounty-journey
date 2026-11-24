@@ -22,7 +22,7 @@ FONT = "Calibri"
 BODY = Pt(10)
 INK = RGBColor(0x15, 0x18, 0x1C)
 SOFT = RGBColor(0x2B, 0x31, 0x38)
-RED = RGBColor(0xA3, 0x12, 0x1A)
+ACCENT = RGBColor(0x1F, 0x3A, 0x5F)
 
 
 def set_font(run_or_style, size=None, bold=None, color=None):
@@ -117,7 +117,7 @@ def main(src, out):
     spacing_normal.line_spacing = 1.08
 
     h1 = doc.styles["Heading 1"]
-    set_font(h1, size=Pt(11.5), bold=True, color=RED)
+    set_font(h1, size=Pt(11.5), bold=True, color=ACCENT)
     h1.font.all_caps = True
     h1.paragraph_format.space_before = Pt(8)
     h1.paragraph_format.space_after = Pt(2)
@@ -230,7 +230,7 @@ def main(src, out):
                     spacing(q, before=3, after=1)
                     keep_with_next(q)
                     run(q, b["subhead"], bold=True, color=SOFT)
-                    items = [{"lead": f'{e["client"]} ({e["country"]}), {e["when"]}: ', "text": e["text"]} for e in b["engagements"]]
+                    items = [{"lead": e["client"], "text": f' ({e["country"]}), {e["when"]}: {e["text"]}'} for e in b["engagements"]]
                     if b.get("otherClients"):
                         items.append(b["otherClients"])
                     bullets(items)
